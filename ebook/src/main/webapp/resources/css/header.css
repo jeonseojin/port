@@ -1,5 +1,8 @@
 @charset "UTF-8";
-body{
+		.container.body{
+			min-height: 800px;
+		}
+		body{
             position: relative;
             margin: 0;
             overflow: scroll;
@@ -19,26 +22,21 @@ body{
             color: black;
             text-decoration: none;
         }
-        bu
-        /* body */
-        .ko-kr{
-            font-family: 'Noto Sans KR', 'Apple SD Gothic Neo', NanumBarunGothic, NanumGothic, 'Malgun Gothic', dotum, sans-serif;
-            word-break: keep-all;
-        }
+        
         /* 전체 */
-        .common{
+        .com{
             position: relative;
             box-sizing: border-box;
             margin-left: auto;
             margin-right: auto;
         }
-        .common::after{
+        .com::after{
             content: '';
             display: block;
             clear: both;
         }
         /* header -> 메뉴 */
-        .common-menu{
+        .com-menu{
             z-index: 7;
             background-color: #fff;
             line-height: 64px;
@@ -89,22 +87,95 @@ body{
             border-radius: 2px;
             text-transform: uppercase;
             color: rgb(0,0,0);
-            font-size: 14px;
+            font-size: 16px;
             font-weight: bold;
             line-height: 48px;
         }
         
         /* 검색창 열기 */
         .search-btn{
+            padding: 0;
             overflow: hidden;
             position: absolute;
             width: 48px;
             height: 48px;
             border: 0;
-            line-height: 48px;
-            font-size: 25px;
+            font-size: 1px;
             color: black;
-            background-color: transparent;
+            color: transparent;
+            background: url("http://cdn.lezhin.com/files/assets/img/icon-search.svg") no-repeat 50% 16px/20px;
+        }
+        /* 검색창 */
+        .search{
+            position: absolute;
+            z-index: 6;
+            box-sizing: border-box;
+            text-align: left;
+        }
+        .search-field{
+            position: absolute;
+            top: 0;
+            right: 0;
+        }
+        .search-input{
+            display: block;
+            color: #000;
+            outline: 0;
+            border: 0;
+            border-radius: 0;
+            background: #fff;
+            -webkit-appearance: none;
+            appearance: none;
+        }
+        .search-list{
+            position: absolute;
+            overflow-y: auto;
+            z-index: 100;
+            width: 280px;
+            font-size: 16px;
+            background-color: #fff;
+            box-shadow: 0 1px 2px rgba(128,128,128,0);
+        }
+        .search-item{
+            display: block;
+            background-position: 100% 0;
+            background-repeat: no-repeat;
+            background-size: 50px 50px;
+            cursor: pointer;
+            height: 58px;
+            margin: 0;
+            padding: 4px 10px;
+            position: relative;
+        }
+        .search-thumb{
+            position: absolute;
+            right: 4px;
+            top: 4px;
+            width: 50px;
+            height: 50px;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: 50px 50px;
+        }
+        .search-img{
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+        .search-title{
+            font-weight: bold;
+        }
+        .search-artist{
+            font-size: 14px;
+            color: #666;
+        }
+        .search-title,.search-artist{
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            padding-right: 50px;
+            text-align: left;
+            margin: 0;
         }
 
         /* 로그인관련 */
@@ -138,11 +209,66 @@ body{
             color: #000;
             font-weight: bold;
         }
+        .logNav{
+            transform: translateX(calc(var(--translate-logNav)*1px)) translateZ(0);
+        }
+        .logNav{
+            --translate-logNav: 0;
+            background: #fff;
+            z-index: 5;
+            text-align: left;
+            -webkit-transform: translateZ(0);
+            transform: translateZ(0);
+            will-change: opacity, transform;
+            padding: 20px;
+        }
+        .logNav-before .account{
+            padding: 0 16px 16px;
+        }
+        .account{
+            max-width: 300px;
+            margin: auto;
+            line-height: 0;
+        }
+        .login-heading{
+            margin-top: 15px;
+            text-align: center;
+        }
+        .login-item{
+            position: relative;
+            margin: 12px 0;
+            padding-top: 16px;
+            font-size: 0;
+        }
+        .login-input{
+            display: block;
+            width: 100%;
+            height: 45px;
+            margin-bottom: 8px;
+            line-height: 32px;
+            padding: 0 2px;
+            -webkit-appearance: none;
+            border: 0;
+            border-radius: 0;
+            border-bottom: 1px solid #c5cbd3;
+            box-sizing: border-box;
+            font-size: 16px;
+            font-weight: bold;
+        }
+        .login-btn{
+            width: 100%;
+            height: 40px;
+            border: none;
+            background-color: #ed1c24;
+            font-size: 14px;
+            color: #fff;
+            margin-top: 20px;
+        }
 
         /* 브라우저 min */
         @media(min-width: 961px){
             /* min 961 -> 메뉴 */
-            .common-menu{
+            .com-menu{
                 border-top: 24px solid #fff;
                 border-bottom: 24px solid #fff;
             }
@@ -181,6 +307,49 @@ body{
                 right: 124px;
                 transform: translateY(-50%);
             }
+             /* min 961 -> 검색창 */
+             .search{
+                position: absolute;
+                top: 16px;
+                right: 124px;
+                width: 280px;
+                transform-origin: 100% 0;
+                border: 1px solid #dbdee3;
+            }
+            .search-filed-btn{
+                content: '';
+                position: absolute;
+                border: none;
+                z-index: 2;
+                top: 0;
+                right: 5px;
+                width: 35px;
+                height: 35px;
+                background: url("http://cdn.lezhin.com/files/assets/img/home_search_icon.png") no-repeat center;
+                background-size: contain;
+            }
+            .search-input{
+                width: 280px;
+                height: 35px;
+                line-height: 20px;
+                padding: 6px 40px 8px 8px;
+                border-bottom: 1px solid #000;
+                font-size: 16px;
+                box-shadow: 0 0 0 10px #fff;
+            }
+            .search-list{
+                top: 48px;
+                left: auto;
+                right: 0;
+            }
+            .search-title,.search-artist{
+                height: 25px;
+                line-height: 25px;
+            }
+            .search-title{
+                font-size: 16px;
+            }
+
             /* min 961 -> 로그인 관련 열기 */
             .logNav-btn{
                 top: 50%;
@@ -202,21 +371,30 @@ body{
                 border-bottom: 4px solid #000;
                 font-size: 12px;
             }
+            .logNav{
+                position: absolute;
+                top: 64px;
+                right: 16px;
+                width: 280px;
+                height: 450px;
+                transform-origin: 100% 0;
+                border: 1px solid #dbdee3;
+            }
         }
         @media(min-width: 640px){
             /* min 640 -> 전체 */
-            .common{
+            .com{
                 padding-left: 16px;
                 padding-right: 16px;
             }
             /* min 640 -> 공통메뉴 */
-            .common-menu{
+            .com-menu{
                 box-shadow: -1000px 0 0 #fff, 1000px 0 0 #fff;
             }
         }
         @media(min-width: 1281px){
             /* min 1281 -> 전체 */
-            .common{
+            .com{
                 max-width: 1212px;
             }
             
@@ -237,7 +415,7 @@ body{
 
         @media(max-width: 1280px) and (min-width: 961px){
             /* max 1280 -> 전체 */
-            .common{
+            .com{
                 max-width: 1036px;
             }
         }
@@ -254,15 +432,15 @@ body{
         
         @media(max-width: 960px){
             /* max 960 -> 전체 */
-            .common{
+            .com{
                 width: 100%;
             }
             /* max 960 -> 공통메뉴 */
-            .common-menu{
+            .com-menu{
                 border-top: 8px solid #fff;
                 border-bottom: 8px solid #fff;
             }
-            .common-menu::before,.common-menu::after{
+            .com-menu::before,.com-menu::after{
                 position: absolute;
                 z-index: 2;
                 top: 48px;
@@ -270,11 +448,11 @@ body{
                 width: 24px;
                 pointer-events: none;
             }
-            .common-menu::before{
+            .com-menu::before{
                 left: 0;
                 background: linear-gradient(to left, #fff, rgba(255,255,255,0));
             }
-            .common-menu::after{
+            .com-menu::after{
                 right: 0;
                 background: linear-gradient(to left, #fff, rgba(255,255,255,0));
             }
@@ -332,4 +510,8 @@ body{
                 border-bottom: 3px solid #000;
                 font-size: 10px;
             }
+        }
+
+        .display-none{
+            display: none;
         }

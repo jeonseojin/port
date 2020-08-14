@@ -1,11 +1,22 @@
 package kr.green.ebook.controller;
 
+import java.util.HashMap;
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+
+import kr.green.ebook.service.MemberService;
+import kr.green.ebook.vo.MemberVo;
 
 /**
  * Handles requests for the application home page.
@@ -15,18 +26,95 @@ public class HomeController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	
-	//메인
+	@Autowired
+	MemberService memberService;
+	
+	
+	//기본홈
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public ModelAndView home(ModelAndView mv) {
 		logger.info("URI:/");
 		mv.setViewName("/main/home");
 		return mv;
 	}
-	@RequestMapping(value = "/main", method = RequestMethod.GET)
-	public ModelAndView main(ModelAndView mv) {
+	
+
+	// 로그인 동작
+	@RequestMapping(value = "/signin", method = RequestMethod.GET)
+	public ModelAndView signin(ModelAndView mv) {
+		logger.info("URI:/signin:GET");
+		mv.setViewName("/main/signin");
+		return mv;
+	}
+	@RequestMapping(value = "/signin", method = RequestMethod.POST)
+	public ModelAndView signin(ModelAndView mv, MemberVo member) {
+		logger.info("URI:/signin:POST");
+		MemberVo dbMember = memberService.isMember(member);
+		if(dbMember != null) {//성공
+			mv.setViewName("redirect:/");
+			mv.addObject("member", dbMember);
+		}else {//실패
+			mv.setViewName("redirect:/signup");
+		}
+		return mv;
+	}
+	@RequestMapping(value = "/common/signin", method = RequestMethod.POST)
+	public ModelAndView hSignin(ModelAndView mv, MemberVo member) {
 		logger.info("URI:/");
-		mv.setViewName("/main/main");
+		MemberVo dbMember = memberService.isMember(member);
+		if(dbMember != null) {//성공
+			mv.setViewName("redirect:/");
+			mv.addObject("member", dbMember);
+		}else {//실패
+			mv.setViewName("redirect:/signup");
+		}
+		System.out.println(mv);
 		return mv;
 	}
 	
+	//로그아웃
+	@RequestMapping(value = "/signout", method = RequestMethod.GET)
+	public ModelAndView signout(ModelAndView mv, HttpServletRequest r) {
+		logger.info("URI:/signout:GET");
+		mv.setViewName("redirect:/");
+		r.getSession().removeAttribute("member");
+		return mv;
+	}
+	
+	//회원가입 화면
+	@RequestMapping(value = "/signup", method = RequestMethod.GET)
+	public ModelAndView signup(ModelAndView mv) {
+		logger.info("URI:/signup");
+		mv.setViewName("/main/signup");
+		return mv;
+	}
+	// 회원가입 정보 전송
+	@RequestMapping(value = "/signup", method = RequestMethod.POST)
+	public ModelAndView signupPost(ModelAndView mv, MemberVo member) {
+		logger.info("URI:/signup");
+		if(memberService.signup(member)) {//실패
+			mv.setViewName("redirect:/signup");
+		}else {//성공
+			mv.setViewName("redirect:/");
+			mv.addObject("member", member);
+		}
+		return mv;
+	}
+	
+	//아이디 중복 확인
+		@RequestMapping(value ="/idCheck")
+		@ResponseBody
+		public Map<Object, Object> idcheck(@RequestBody String id){
+		    Map<Object, Object> map = new HashMap<Object, Object>();
+		    map.put("res",memberService.getMember(id)==null);
+		    return map;
+		}
+	//이름 중복 확인
+		@RequestMapping(value ="/nameCheck")
+		@ResponseBody
+		public Map<Object, Object> namecheck(@RequestBody String name){
+		    Map<Object, Object> map = new HashMap<Object, Object>();
+		    map.put("res",memberService.getMember(name)==null);
+		    return map;
+		}
 }
