@@ -23,7 +23,7 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 
 	    if(member != null) {
 	        HttpSession session = request.getSession();
-	        session.setAttribute("Member", member);
+	        session.setAttribute("member", member);
 	    }
 	}
 }

@@ -46,11 +46,10 @@
 	<interceptors>
 		<interceptor>
 			<mapping path="/main/signin"/>
-			<mapping path="/header/signin"/>
+			<mapping path="/common/signin"/>
 			<beans:ref bean="loginInterceptor"/>
 		</interceptor>
 		<interceptor>
-			<mapping path="/header/signin"/>
 	        <mapping path="/board/register"/>
 	        <mapping path="/board/modify"/>
 	        <mapping path="/board/delete"/>

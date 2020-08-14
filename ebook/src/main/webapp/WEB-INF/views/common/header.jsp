@@ -77,6 +77,8 @@
 			            <b class="logNav-text">${member.name}</b>
 			            <i class="logNav_notiNum"></i>
 			        </button>
+			        <nav class="logNav display-none">
+			        </nav>
 		    </div>
         </c:if>
     </header>
