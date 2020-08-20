@@ -66,7 +66,7 @@ public class HomeController {
 			mv.setViewName("redirect:/");
 			mv.addObject("member", dbMember);
 		}else {//실패
-			mv.setViewName("redirect:/signup");
+			mv.setViewName("redirect:/signin");
 		}
 		System.out.println(mv);
 		return mv;

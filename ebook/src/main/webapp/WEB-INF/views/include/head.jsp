@@ -11,3 +11,4 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/header.css/">
 <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/signup.css/">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/home.css/">

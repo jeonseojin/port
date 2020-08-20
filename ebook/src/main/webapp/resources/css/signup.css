@@ -7,21 +7,69 @@
 .signup-item{
 	position: absolute;
 	display: block;
-	width: 80%;
+	width: 100%;
 	margin: auto;
 	line-height: 32px;
-	padding: 0 2px;
-	border: none;
+	padding: 20px;
 	box-sizing: border-box;
 	font-size: 16px;
 	font-weight: bold;
+	border: 2px solid #dee2e6;
+	border-top: 0;
 }
 .sign-up{
 	border: 0;
-	width: 100%
-	
+	width: 100%;
 }
 .sign-up>input{
 	border: none;
-	width: 100%
+	width: 100%;
+	border-bottom: 1px solid #dee2e6;
+}
+.box-gender,.gender-box{
+	width: 50%
+}
+.gender-box{
+	border-top: 1px solid #dee2e6;
+	border: none;
+}
+.error{
+	font-size: 12px;
+}
+.signup-btn{
+	border: none;
+	background-color: #19ce60;
+	color: #fff;
+	width: 50%;
+	margin: auto 0;
+}
+@media (min-width: 960px){
+	.signup-item{
+		min-height: 400px;
+		font: 12px;
+	}
+	.sign-up{
+		
+	}
+}
+/*admin user*/
+.color-gray{
+	color: gray;
+}
+.ad-toon{
+	position: relative;
+	padding-top: 20px;
+	width: 100%;
+	min-height: 700px;
+}
+.table,.table th{
+	border-top: 0;
+}
+.user-admin{
+	margin-top: 30px;
+	text-align: center;
+}
+.adt-plot{
+	min-width: 150px;
+	text-align: center;
 }

@@ -6,12 +6,12 @@
 	<div class="signup-item">
 		<div class="sign-up">
 			<h6>아이디</h6>			
-			<input type="text" class="sign-id" id="id" name="id" placeholder="아이디">
+			<input type="text" class="sign-id" id="id" name="id">
 			<label for="id" id="id-error" class="error"></label>
 		</div>
 		<div class="sign-up">
 			<h6>비밀번호</h6>
-			<input type="password" class="sign-pw" id="pw" name="pw" placeholder="비밀번호">
+			<input type="password" class="sign-pw" id="pw" name="pw">
 			<label for="pw" id="pw-error" class="error"></label>
 		</div>
 		
@@ -29,7 +29,7 @@
 		<div class="sign-up">
 			<h6>성별</h6>
 			<div class="box-gender">
-				<select name="gender" id="gender">
+				<select name="gender" id="gender" class="gender-box">
 					<option value="male">남자</option>
 					<option value="female">여자</option>
 				</select>
@@ -79,7 +79,37 @@ $(function(){
 		    if(id.length == 0)
 			    $('#id-error').html('필수 항목입니다.');
 		    else
-			    $('#name-error').html('아이디는 세글자 이상이어야 합니다.');
+			    $('#id-error').html('아이디는 세글자 이상이어야 합니다.');
+		}
+	})
+	$('input[name=name]').keyup(function(){
+		var id = $(this).val();
+		if(id.length >= 3){
+			$.ajax({
+		        async:true,
+		        type:'POST',
+		        data:id,
+		        url:"<%=request.getContextPath()%>/nameCheck",
+		        dataType:"json",
+		        contentType:"application/json; charset=UTF-8",
+		        success : function(data){
+			        	var str;
+		            if(data['res']){
+			            str = 
+				        '<p style="color:green;">사용 가능한 아아디입니다.</p>'
+		            }else{
+		            	str = 
+				        '<p style="color:red;">이미 가입되있거나 탈퇴한 아이디입니다.</p>'
+		            }
+		            $('#name-error').html(str);
+		           
+		        }
+		    });
+	    }else{
+		    if(id.length == 0)
+			    $('#name-error').html('필수 항목입니다.');
+		    else
+			    $('#name-error').html('이름/별명은 세글자 이상이어야 합니다.');
 		}
 	})
 	//유효성 검사

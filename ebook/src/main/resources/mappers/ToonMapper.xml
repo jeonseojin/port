@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.green.ebook.dao.AdminDao">
+  <select id="toonList" resultType="kr.green.ebook.vo.ToonVo">
+		select * from toon
+  </select>
+    <select id="getTotalCountByToon" resultType="int">
+		select
+			count(*)
+		from
+			toon
+			where lastEpisode = 'N' or 'Y'
+  			<if test="cri.type==0">
+  				and (t_num like concat('%',#{cri.search},'%')
+  					or title like concat('%',#{cri.search},'%')
+  					or autor like concat('%',#{cri.search},'%'))
+  			</if>
+  			<if test="cri.type==1">
+  				and t_num like concat('%',#{cri.search},'%')
+  			</if>
+  			<if test="cri.type==2">
+  				and title like concat('%',#{cri.search},'%')
+  			</if>
+  			<if test="cri.type==3">
+  				and autor like concat('%',#{cri.search},'%')
+  			</if>
+  </select>
+</mapper>

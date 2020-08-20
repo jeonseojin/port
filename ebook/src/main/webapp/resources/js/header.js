@@ -1,13 +1,11 @@
 $(function(){
-            var id = $('#id').val();
-            var isLogin = $('#isLogin').val();
-            if(isLogin == 'false' && id != '')
-                alert(id+'가 없거나 비밀번호가 잘못 되었습니다.')
-                
+                           
             $('.search-btn').click(function(e){
                 e.stopPropagation();
                 e.preventDefault();
                 $('.logNav').stop().slideUp(); 
+                $('.search').stop().slideToggle(); 
+                $('.search-input').focus();
             })
             $('.logNav-btn').click(function(e){
                 e.stopPropagation();
@@ -26,9 +24,21 @@ $(function(){
             $('.login-btn').click(function(){
             	$('.login-form').submit();
             })
+            $('.rating .rating-link').click(function(e){
+                e.preventDefault();
+                $('.rating .rating-link').attr('aria-selected','false');
+                $(this).attr('aria-selected','true');
+                logView();
+            })
         
         $(document).click(function(e){
                 $('.search').stop().slideUp(); 
                 $('.logNav').stop().slideUp(); 
         })
+        function logView(){
+            var target = $('.rating .rating-link[aria-selected=true]').attr('data-target');
+            $('.logNav-list>.log-list').addClass('display-none');
+            $('.logNav-list .'+target).removeClass('display-none');
+        }
+        logView();
 })

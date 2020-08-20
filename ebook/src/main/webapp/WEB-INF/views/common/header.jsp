@@ -63,9 +63,13 @@
 							<input type="text" class="login-input" name="id" placeholder="아이디">
 							<input type="password" class="login-input" name="pw" placeholder="비밀번호">
 							<br>
-							<button type="submit" class="login-btn">Login</button>		
+							<button type="submit" class="login-btn">Login</button>	
+							<br>	
+							<div class="s-bb"><a href="<%=request.getContextPath()%>/signup" class="s-btn">회원가입</a></div>
+                    		<p class="c-help">이용 중 도움이 필요하시면 [<a href="#">고객지원</a>] 페이지로 문의해주세요</p>
 							<input type="hidden" value="${isLogin}" id="isLogin">
 							<input type="hidden" value="${id}" id="id">
+							
 			            </div>
 			        </nav>
 		        </div>
@@ -77,8 +81,104 @@
 			            <b class="logNav-text">${member.name}</b>
 			            <i class="logNav_notiNum"></i>
 			        </button>
-			        <nav class="logNav display-none">
+			        <c:if test="${member.auth=='USER'}">
+						<nav class="logNav display-none" >
+				            <div class="rating">
+				                <a href="#" class="rating-link" aria-selected="true" data-target="my">MY</a>
+				                <a href="#" class="rating-link" data-target="look">최근/찜/소장</a>
+				                <a href="#" class="rating-link" data-target="signal">알림</a>
+				            </div>
+				            <div class="logNav-list">
+				                <div class="log-list my">
+				                    <div class="logUser">
+				                        <h3 class="log-user">
+				                            <span>${member.name}</span><span class="log-user-id">(${member.id})</span>
+				                        </h3>
+				                        <div class="log-coinList">
+				                            <span class="">${member.coin}</span>코인
+				                            <a href="#" class="log-coin">코인 충전</a>
+				                        </div>
+				                    </div>  
+				                    <a class="logNav-link" href="#">내서재</a>
+				                    <a class="logNav-link" href="#">내정보</a>
+				                    <a class="logNav-link" href="#">고객지원</a>
+				                    <a class="logNav-link logNav-link-last" href="<%=request.getContextPath()%>/signout">로그아웃</a>
+				                </div>
+				                <div class="log-list look">
+				                	<div class="look-box">
+				                		<span class="log-look-span">최근</span>
+				                    <div class="log-look-box">
+				                        <div class="log-look-item">
+				                            <a class="log-look" href="#">
+				                                <img class="search-img" src="https://cdn.lezhin.com/v2/comics/5331411003506688/images/thumbnail?updated=1464059206774&amp;width=100" alt="">
+				                            </a> 
+				                            <a class="log-look" href="#">
+				                                <img class="search-img" src="https://cdn.lezhin.com/v2/comics/5331411003506688/images/thumbnail?updated=1464059206774&amp;width=100" alt="">
+				                            </a>  
+				                            <a class="log-look" href="#">
+				                                <img class="search-img" src="https://cdn.lezhin.com/v2/comics/5331411003506688/images/thumbnail?updated=1464059206774&amp;width=100" alt="">
+				                            </a>  
+				                            <a href="#" class="log-look-the">더보기</a> 
+				                        </div>
+				                    </div>
+				                    <span class="log-look-span">찜</span>
+				                    <div class="log-look-box">
+				                        <div class="log-look-item">
+				                            <a class="log-look" href="#">
+				                                <img class="search-img" src="https://cdn.lezhin.com/v2/comics/5331411003506688/images/thumbnail?updated=1464059206774&amp;width=100" alt="">
+				                            </a> 
+				                            <a class="log-look" href="#">
+				                                <img class="search-img" src="https://cdn.lezhin.com/v2/comics/5331411003506688/images/thumbnail?updated=1464059206774&amp;width=100" alt="">
+				                            </a>  
+				                            <a class="log-look" href="#">
+				                                <img class="search-img" src="https://cdn.lezhin.com/v2/comics/5331411003506688/images/thumbnail?updated=1464059206774&amp;width=100" alt="">
+				                            </a>
+				                            <a href="#" class="log-look-the">더보기</a> 
+				                        </div>
+				                    </div>
+				                    <span class="log-look-span">소장</span>
+				                    <div class="log-look-box">
+				                        <div class="log-look-item">
+				                            <a class="log-look" href="#">
+				                                <img class="search-img" src="https://cdn.lezhin.com/v2/comics/5331411003506688/images/thumbnail?updated=1464059206774&amp;width=100" alt="">
+				                            </a> 
+				                            <a class="log-look" href="#">
+				                                <img class="search-img" src="https://cdn.lezhin.com/v2/comics/5331411003506688/images/thumbnail?updated=1464059206774&amp;width=100" alt="">
+				                            </a>  
+				                            <a class="log-look" href="#">
+				                                <img class="search-img" src="https://cdn.lezhin.com/v2/comics/5331411003506688/images/thumbnail?updated=1464059206774&amp;width=100" alt="">
+				                            </a> 
+				                            <a href="#" class="log-look-the">더보기</a> 
+				                        </div>
+				                    </div>
+			                    </div>
+			                </div>
+			                <div class="log-list signal">
+			                    <a class="logNav-link" href="#"></a>
+			                </div>
+			            </div>
+			            <div class="logNav-last">
+			                
+			            </div>
 			        </nav>
+		    		</c:if>
+		    		 <c:if test="${member.auth=='ADMIN'}">
+		    		 	<nav class="logNav display-none">
+		    		 		<div class="logUser">
+		    		 			<span class="log-spanadmin">관리자</span>
+				            	<h3 class="log-admin">
+				                	<span>${member.name}</span><span class="log-user-id">(${member.id})</span>
+				                </h3>
+				            </div>
+		    		 		<a class="logNav-link" href="<%=request.getContextPath()%>/admin/user">회원관리</a>
+		    		 		<a class="logNav-link" href="<%=request.getContextPath()%>/admin/toon">작품관리</a>
+		    		 		<a class="logNav-link" href="<%=request.getContextPath()%>/admin/event">이벤트관리</a>
+		    		 		<a class="logNav-link" href="<%=request.getContextPath()%>/admin/claim">문의관리</a>
+		    		 		<a class="logNav-link" href="<%=request.getContextPath()%>/admin/pay">충전관리</a>
+		    		 		<a class="logNav-link logNav-link-last" href="<%=request.getContextPath()%>/signout">로그아웃</a>
+		    		 	</nav>
+		    		 </c:if>
 		    </div>
         </c:if>
+
     </header>
