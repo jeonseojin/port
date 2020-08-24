@@ -3,14 +3,14 @@ package kr.green.ebook.vo;
 public class ToonVo {
 	private int t_num;
 	private String title;
-	private String autor;
+	private String artist;
 	private String plot;
-	private int choise;
+	private int choice;
 	private int like;
 	private String t_img;
-	private int g_num;
-	private int m_num;
+	private int g_code;
 	private String lastEpisode;
+	
 	public int getT_num() {
 		return t_num;
 	}
@@ -23,11 +23,11 @@ public class ToonVo {
 	public void setTitle(String title) {
 		this.title = title;
 	}
-	public String getAutor() {
-		return autor;
+	public String getartist() {
+		return artist;
 	}
-	public void setAutor(String autor) {
-		this.autor = autor;
+	public void setartist(String artist) {
+		this.artist = artist;
 	}
 	public String getPlot() {
 		return plot;
@@ -35,11 +35,11 @@ public class ToonVo {
 	public void setPlot(String plot) {
 		this.plot = plot;
 	}
-	public int getChoise() {
-		return choise;
+	public int getchoice() {
+		return choice;
 	}
-	public void setChoise(int choise) {
-		this.choise = choise;
+	public void setchoice(int choice) {
+		this.choice = choice;
 	}
 	public int getLike() {
 		return like;
@@ -53,17 +53,11 @@ public class ToonVo {
 	public void setT_img(String t_img) {
 		this.t_img = t_img;
 	}
-	public int getG_num() {
-		return g_num;
+	public int getg_code() {
+		return g_code;
 	}
-	public void setG_num(int g_num) {
-		this.g_num = g_num;
-	}
-	public int getM_num() {
-		return m_num;
-	}
-	public void setM_num(int m_num) {
-		this.m_num = m_num;
+	public void setg_code(int g_code) {
+		this.g_code = g_code;
 	}
 	public String getLastEpisode() {
 		return lastEpisode;
@@ -73,9 +67,8 @@ public class ToonVo {
 	}
 	@Override
 	public String toString() {
-		return "ToonVo [t_num=" + t_num + ", title=" + title + ", autor=" + autor + ", plot=" + plot + ", choise="
-				+ choise + ", like=" + like + ", t_img=" + t_img + ", g_num=" + g_num + ", m_num=" + m_num
-				+ ", lastEpisode=" + lastEpisode + "]";
+		return "ToonVo [t_num=" + t_num + ", title=" + title + ", artist=" + artist + ", plot=" + plot + ", choice="
+				+ choice + ", like=" + like + ", t_img=" + t_img + ", g_code=" + g_code + ", lastEpisode=" + lastEpisode + "]";
 	}
 	
 	

@@ -64,7 +64,9 @@
             padding: 0;
             list-style: none;
         }
-
+		.search{
+			height: 35px;
+		}
         /* 사이트 네비게이션 */
         .gnb-list{
             white-space: nowrap;

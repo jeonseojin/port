@@ -68,7 +68,6 @@ public class HomeController {
 		}else {//실패
 			mv.setViewName("redirect:/signin");
 		}
-		System.out.println(mv);
 		return mv;
 	}
 	

@@ -14,4 +14,6 @@ public interface AdminDao {
 
 	int getTotalCountByToon(@Param("cri")Criteria cri);
 
+	void insertToon(@Param("toon")ToonVo toon);
+
 }

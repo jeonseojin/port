@@ -30,7 +30,6 @@ public class MemberServiceImp implements MemberService {
 	@Override
 	public MemberVo isMember(MemberVo member) {
 		MemberVo dbMember = memberDao.getMember(member.getId());
-		System.out.println(dbMember);
 		if(dbMember != null && passwordEncoder.matches(member.getPw(), dbMember.getPw())) {
 			return dbMember;
 		}

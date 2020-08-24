@@ -12,3 +12,4 @@
 <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/header.css/">
 <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/signup.css/">
 <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/home.css/">
+

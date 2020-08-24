@@ -52,7 +52,7 @@
 		
 	}
 }
-/*admin user*/
+/*admin user/toon */
 .color-gray{
 	color: gray;
 }
@@ -72,4 +72,40 @@
 .adt-plot{
 	min-width: 150px;
 	text-align: center;
+}
+.toon-text-box{
+	border: none;
+}
+.toon-text-title{
+	width: 250px;
+}
+.toon-plot-box{
+	position: absolute;
+	width: 100%;
+	border: 1px solid #dee2e6;
+	height: 500px;
+}
+.ad-plot-box{
+	width: 100%;
+	height: 600px;
+}
+.ad-plot-h{
+	margin: 15px auto;
+	font-weight: bold;
+	text-align: center;
+	font-size: 17px;
+}
+.ad-plot{
+	margin-top: 2px;
+	width: 100%;
+	min-height: 350px;
+	border: 1px solid #dee2e6;
+}
+.check-box{
+	width: 100px;
+	height: 20px;
+	float: left;
+}
+.checkbox{
+	margin-right: 5px;
 }

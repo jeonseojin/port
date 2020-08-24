@@ -3,9 +3,15 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.green.ebook.dao.AdminDao">
+<!-- 전체작품 -->
+<select id="getToon" resultType="kr.green.ebook.vo.ToonVo">
+		select * from toon
+  </select>
+<!-- 작품내용을 저장해 놓음 -->
   <select id="toonList" resultType="kr.green.ebook.vo.ToonVo">
 		select * from toon
   </select>
+ <!-- 작품페이지네이션 -->
     <select id="getTotalCountByToon" resultType="int">
 		select
 			count(*)
@@ -13,18 +19,20 @@
 			toon
 			where lastEpisode = 'N' or 'Y'
   			<if test="cri.type==0">
-  				and (t_num like concat('%',#{cri.search},'%')
-  					or title like concat('%',#{cri.search},'%')
-  					or autor like concat('%',#{cri.search},'%'))
+  				and (title like concat('%',#{cri.search},'%')
+  					or artist like concat('%',#{cri.search},'%'))
   			</if>
   			<if test="cri.type==1">
-  				and t_num like concat('%',#{cri.search},'%')
-  			</if>
-  			<if test="cri.type==2">
   				and title like concat('%',#{cri.search},'%')
   			</if>
-  			<if test="cri.type==3">
-  				and autor like concat('%',#{cri.search},'%')
+  			<if test="cri.type==2">
+  				and artist like concat('%',#{cri.search},'%')
   			</if>
   </select>
+<!-- 등록 -->
+	<insert id="insertToon">
+		insert into
+			toon(title,artist,plot,t_img)
+			values(#{toon.title},#{toon.artist},#{toon.plot},#{toon.t_img})
+	</insert>
 </mapper>

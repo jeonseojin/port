@@ -118,7 +118,7 @@
         /* 브라우저 min 961 */
         @media (min-width: 961px){
             .com-home{
-                min-height: 800px;
+                min-height: 1000px;
             }
             .main-banner{
                 margin-bottom: 44px;

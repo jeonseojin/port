@@ -48,7 +48,6 @@
 	</c:forEach>
 	<li class="page-item <c:if test="${!pm.next}">disabled</c:if>"><a class="page-link" href="<%=request.getContextPath()%>/admin/user?page=${pm.endPage+1}&type=${pm.cri.type}&search=${pm.cri.search}"><i class="fas fa-chevron-right"></i></a></li>
 </ul>
-<!-- 검색 -->
 <!-- 검색창 -->
 <form action="<%=request.getContextPath()%>/admin/user">
 	<div class="input-group mb-3">

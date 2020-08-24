@@ -16,18 +16,26 @@ public class AdminServiceImp implements AdminService {
 	@Autowired
     AdminDao adminDao;
 	
-//	작품 + 정렬
+	//작품 + 정렬
 	@Override
 	public ArrayList<ToonVo> toonList(Criteria cri) {
 		return adminDao.toonList(cri);
 	}
-
+	
+	// 작품페이지네이션
 	@Override
 	public PageMaker getPageMakerByToon(Criteria cri) {
-		PageMaker pm = new PageMaker();
-		pm.setCri(cri);
-		pm.setTotalCount(adminDao.getTotalCountByToon(cri));
-		return null;
+		PageMaker tpm = new PageMaker();
+		tpm.setCri(cri);
+		tpm.setTotalCount(adminDao.getTotalCountByToon(cri));
+		return tpm;
+	}
+
+	//작품등록
+	@Override
+	public void insertToon(ToonVo toon) {
+		adminDao.insertToon(toon);
+		toon.setLastEpisode("N");
 	}
 
   

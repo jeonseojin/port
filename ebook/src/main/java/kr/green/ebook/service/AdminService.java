@@ -12,4 +12,6 @@ public interface AdminService {
 
 	PageMaker getPageMakerByToon(Criteria cri);
 
+	void insertToon(ToonVo toon);
+
 }
