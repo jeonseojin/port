@@ -1,5 +1,6 @@
 package kr.green.ebook.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -15,8 +16,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import kr.green.ebook.pagination.Criteria;
+import kr.green.ebook.pagination.PageMaker;
+import kr.green.ebook.service.AdminService;
 import kr.green.ebook.service.MemberService;
 import kr.green.ebook.vo.MemberVo;
+import kr.green.ebook.vo.ToonVo;
 
 /**
  * Handles requests for the application home page.
@@ -28,27 +33,27 @@ public class HomeController {
 	
 	@Autowired
 	MemberService memberService;
-	
+	@Autowired
+	AdminService adminService;
 	
 	//기본홈
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public ModelAndView home(ModelAndView mv) {
-		logger.info("URI:/");
+	public ModelAndView home(ModelAndView mv, Criteria cri) {
 		mv.setViewName("/main/home");
+		ArrayList<ToonVo> tlist = adminService.toonList(cri);
+		mv.addObject("tlist", tlist);
+		System.out.println(tlist);
 		return mv;
 	}
-	
 
 	// 로그인 동작
 	@RequestMapping(value = "/signin", method = RequestMethod.GET)
 	public ModelAndView signin(ModelAndView mv) {
-		logger.info("URI:/signin:GET");
 		mv.setViewName("/main/signin");
 		return mv;
 	}
 	@RequestMapping(value = "/signin", method = RequestMethod.POST)
 	public ModelAndView signin(ModelAndView mv, MemberVo member) {
-		logger.info("URI:/signin:POST");
 		MemberVo dbMember = memberService.isMember(member);
 		if(dbMember != null) {//성공
 			mv.setViewName("redirect:/");
@@ -56,11 +61,11 @@ public class HomeController {
 		}else {//실패
 			mv.setViewName("redirect:/signup");
 		}
+		System.out.println(member);
 		return mv;
 	}
 	@RequestMapping(value = "/common/signin", method = RequestMethod.POST)
 	public ModelAndView hSignin(ModelAndView mv, MemberVo member) {
-		logger.info("URI:/");
 		MemberVo dbMember = memberService.isMember(member);
 		if(dbMember != null) {//성공
 			mv.setViewName("redirect:/");
@@ -74,7 +79,6 @@ public class HomeController {
 	//로그아웃
 	@RequestMapping(value = "/signout", method = RequestMethod.GET)
 	public ModelAndView signout(ModelAndView mv, HttpServletRequest r) {
-		logger.info("URI:/signout:GET");
 		mv.setViewName("redirect:/");
 		r.getSession().removeAttribute("member");
 		return mv;
@@ -83,14 +87,12 @@ public class HomeController {
 	//회원가입 화면
 	@RequestMapping(value = "/signup", method = RequestMethod.GET)
 	public ModelAndView signup(ModelAndView mv) {
-		logger.info("URI:/signup");
 		mv.setViewName("/main/signup");
 		return mv;
 	}
 	// 회원가입 정보 전송
 	@RequestMapping(value = "/signup", method = RequestMethod.POST)
 	public ModelAndView signupPost(ModelAndView mv, MemberVo member) {
-		logger.info("URI:/signup");
 		if(memberService.signup(member)) {//실패
 			mv.setViewName("redirect:/signup");
 		}else {//성공

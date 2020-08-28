@@ -13,18 +13,14 @@
 			<div class="signin-input">
 				<input type="password" class="form-control" name="pw" placeholder="비밀번호">
 			</div>
-			<button type="submit" class="btn btn-success">로 그 인</button>
-			
+			<button type="submit" class="signin-btn">로 그 인</button>
+			<p class="signin-help">이용 중 도움이 필요하시면 [<a href="#">고객지원</a>] 페이지로 문의해주세요</p>
 			<input type="hidden" value="${isLogin}" id="isLogin">
 			<input type="hidden" value="${id}" id="id">
 		</div>
 	</form>
+	
 </c:if>
-<script type="text/javascript">
-	$(function(){
-		var id = $('#id').val();
-		var isLogin = $('#isLogin').val()
-		if(isLogin == 'false' && id != '')
-			alert(id+'가 없가나 비밀번호가 잘못 되었습니다.')
-	})
-</script>
+<c:if test="${member!=null}">
+	<h1>로그인 페이지입니다. ${member.name}님은 이미 로그인 중이므로 접근할 수 없습니다.</h1>
+</c:if>

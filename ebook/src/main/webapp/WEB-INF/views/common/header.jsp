@@ -8,19 +8,19 @@
         <nav id="gnb" class="gnb">
             <ul class="gnb-list">
                 <li class="gnb-item">
-                    <a class="gnb-link" href="<%=request.getContextPath()%>/s">연재</a>
+                    <a class="gnb-link" href="<%=request.getContextPath()%>/toon">연재</a>
                 </li>
                 <li class="gnb-item">
-                    <a class="gnb-link" href="<%=request.getContextPath()%>/">랭킹</a>
+                    <a class="gnb-link" href="<%=request.getContextPath()%>/toon/kanking">랭킹</a>
                 </li>
                 <li class="gnb-item">
-                    <a class="gnb-link" href="<%=request.getContextPath()%>/">무료</a>
+                    <a class="gnb-link" href="<%=request.getContextPath()%>/toon/free">무료</a>
                 </li>
                 <li class="gnb-item">
-                    <a class="gnb-link" href="<%=request.getContextPath()%>/">이벤트</a>
+                    <a class="gnb-link" href="<%=request.getContextPath()%>/toon/event">이벤트</a>
                 </li>
                 <li class="gnb-item">
-                    <a class="gnb-link" href="<%=request.getContextPath()%>/">완결</a>
+                    <a class="gnb-link" href="<%=request.getContextPath()%>/toon/theend">완결</a>
                 </li>
             </ul>
         </nav>
@@ -28,28 +28,26 @@
         <button class="search-btn"></button>
         <div class="search display-none">
             <fieldset class="search-field">
-                <input type="text" class="search-input" placeholder="작품/작가명을 검색해주세요.">
-                <div class="search-list display-none" >
-                    <a href="#" class="search-item">
-                        <div class="search-thumb">
-                            <img class="search-img" src="https://cdn.lezhin.com/v2/comics/5331411003506688/images/thumbnail?updated=1464059206774&amp;width=100" alt="">
-                        </div>
-                        <p class="search-title">제목(방과후 개그부)</p>
-                        <p class="search-artist">작가(타카시마 히로미)</p>
-                    </a>
-                    <a href="#" class="search-item">
-                        <div class="search-thumb">
-                            <img class="search-img" src="https://cdn.lezhin.com/v2/comics/5331411003506688/images/thumbnail?updated=1464059206774&amp;width=100" alt="">
-                        </div>
-                        <p class="search-title">제목(방과후 개그부)</p>
-                        <p class="search-artist">작가(타카시마 히로미)</p>
-                    </a>
-                </div>
-                <button class="search-filed-btn"></button>
+            	<form action="<%=request.getContextPath()%>/" target="">
+	                <input type="text" class="search-input" placeholder="작품/작가명을 검색해주세요."  name="search" value="${pm.cri.search}" autocomplete="off">
+					<button class="search-filed-btn" type="submit"></button>
+	        	</form>
+				<div class="search-list" style="display: none;">
+	            	<c:if test="${tlist.size() != 0}">
+		              	<c:forEach var="toon" items="${tlist}">
+				           	<a href="#" class="search-item ">
+				            	<div class="search-thumb"><img class="search-img" src="/ebook/resources/img${toon.t_img}" alt=""></div>
+				            	<p class="search-title">${toon.title}</p>
+				            	<p class="search-artist">${toon.artist}</p>
+				          	</a>
+			           	</c:forEach>
+		           	</c:if>
+		           	<c:if test="${tlist.size()==0}"><h6>작가/작품이 없습니다.</h6></c:if>
+				</div>
             </fieldset>
         </div>
 
-        <!-- 로그인 -->
+        <!-- 로그인 전 -->
         <c:if test="${member==null}">
 	        <form method="post" action="<%=request.getContextPath()%>/common/signin" class="login-form">
 	        	<div class="account">
@@ -75,12 +73,15 @@
 		        </div>
 	        </form>
         </c:if>
+        
+        <!-- 로그인 후 -->
         <c:if test="${member!=null}">
         	<div class="account">
 			        <button type="button" class="logNav-btn">
 			            <b class="logNav-text">${member.name}</b>
 			            <i class="logNav_notiNum"></i>
 			        </button>
+			        <!-- 사용자 -->
 			        <c:if test="${member.auth=='USER'}">
 						<nav class="logNav display-none" >
 				            <div class="rating">
@@ -109,45 +110,36 @@
 				                		<span class="log-look-span">최근</span>
 				                    <div class="log-look-box">
 				                        <div class="log-look-item">
-				                            <a class="log-look" href="#">
-				                                <img class="search-img" src="https://cdn.lezhin.com/v2/comics/5331411003506688/images/thumbnail?updated=1464059206774&amp;width=100" alt="">
-				                            </a> 
-				                            <a class="log-look" href="#">
-				                                <img class="search-img" src="https://cdn.lezhin.com/v2/comics/5331411003506688/images/thumbnail?updated=1464059206774&amp;width=100" alt="">
-				                            </a>  
-				                            <a class="log-look" href="#">
-				                                <img class="search-img" src="https://cdn.lezhin.com/v2/comics/5331411003506688/images/thumbnail?updated=1464059206774&amp;width=100" alt="">
-				                            </a>  
+				                        	
+				                        	<c:if test="${tlist.size()!=0}">
+				                        	<c:forEach var="toon" items="${tlist}">
+					                            <a class="log-look" href="#">
+					                                <img class="search-img" src="/ebook/resources/img${toon.t_img}" style="height: 53px;" alt="">
+					                            </a>
+					                        </c:forEach>
+				                            </c:if> 
 				                            <a href="#" class="log-look-the">더보기</a> 
 				                        </div>
 				                    </div>
 				                    <span class="log-look-span">찜</span>
 				                    <div class="log-look-box">
 				                        <div class="log-look-item">
-				                            <a class="log-look" href="#">
-				                                <img class="search-img" src="https://cdn.lezhin.com/v2/comics/5331411003506688/images/thumbnail?updated=1464059206774&amp;width=100" alt="">
-				                            </a> 
-				                            <a class="log-look" href="#">
-				                                <img class="search-img" src="https://cdn.lezhin.com/v2/comics/5331411003506688/images/thumbnail?updated=1464059206774&amp;width=100" alt="">
-				                            </a>  
-				                            <a class="log-look" href="#">
-				                                <img class="search-img" src="https://cdn.lezhin.com/v2/comics/5331411003506688/images/thumbnail?updated=1464059206774&amp;width=100" alt="">
-				                            </a>
+				                            <c:forEach var="toon" items="${tlist}">
+					                            <a class="log-look" href="#">
+					                                <img class="search-img" src="/ebook/resources/img${toon.t_img}" style="height: 53px;" alt="">
+					                            </a>
+					                        </c:forEach>
 				                            <a href="#" class="log-look-the">더보기</a> 
 				                        </div>
 				                    </div>
 				                    <span class="log-look-span">소장</span>
 				                    <div class="log-look-box">
 				                        <div class="log-look-item">
-				                            <a class="log-look" href="#">
-				                                <img class="search-img" src="https://cdn.lezhin.com/v2/comics/5331411003506688/images/thumbnail?updated=1464059206774&amp;width=100" alt="">
-				                            </a> 
-				                            <a class="log-look" href="#">
-				                                <img class="search-img" src="https://cdn.lezhin.com/v2/comics/5331411003506688/images/thumbnail?updated=1464059206774&amp;width=100" alt="">
-				                            </a>  
-				                            <a class="log-look" href="#">
-				                                <img class="search-img" src="https://cdn.lezhin.com/v2/comics/5331411003506688/images/thumbnail?updated=1464059206774&amp;width=100" alt="">
-				                            </a> 
+				                            <c:forEach var="toon" items="${tlist}">
+					                            <a class="log-look" href="#">
+					                                <img class="search-img" src="/ebook/resources/img${toon.t_img}" style="height: 53px;" alt="">
+					                            </a>
+					                        </c:forEach>
 				                            <a href="#" class="log-look-the">더보기</a> 
 				                        </div>
 				                    </div>
@@ -162,6 +154,7 @@
 			            </div>
 			        </nav>
 		    		</c:if>
+		    		<!-- 관리자 -->
 		    		 <c:if test="${member.auth=='ADMIN'}">
 		    		 	<nav class="logNav display-none">
 		    		 		<div class="logUser">
@@ -181,4 +174,16 @@
 		    </div>
         </c:if>
 
-    </header>
+   </header>
+
+<script>
+	$(function(){
+        $('.search-filed-btn').click(function(){
+        	$('.search-list').attr('style','display: block;');
+        })
+        $('.search-input').keyup(function(){
+        	$('.search-list').attr('style','display: block;');
+        })
+	})
+		
+</script>

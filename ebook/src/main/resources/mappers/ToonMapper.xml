@@ -10,17 +10,11 @@
 <!-- 작품내용을 저장해 놓음 -->
   <select id="toonList" resultType="kr.green.ebook.vo.ToonVo">
 		select * from toon
-  </select>
- <!-- 작품페이지네이션 -->
-    <select id="getTotalCountByToon" resultType="int">
-		select
-			count(*)
-		from
-			toon
-			where lastEpisode = 'N' or 'Y'
-  			<if test="cri.type==0">
+			where 1=1
+			<if test="cri.type==0">
   				and (title like concat('%',#{cri.search},'%')
-  					or artist like concat('%',#{cri.search},'%'))
+  					or artist like concat('%',#{cri.search},'%')
+  					or lastEpisode like concat('%',#{cri.search},'%'))
   			</if>
   			<if test="cri.type==1">
   				and title like concat('%',#{cri.search},'%')
@@ -28,11 +22,42 @@
   			<if test="cri.type==2">
   				and artist like concat('%',#{cri.search},'%')
   			</if>
+  			<if test="cri.type==3">
+  				and lastEpisode like concat('%',#{cri.search},'%')
+  			</if>
+  			order by t_num desc
+  			limit #{cri.startPage},#{cri.perPageNum}
+  </select>
+ <!-- 작품페이지네이션 -->
+    <select id="getTotalCountByToon" resultType="int">
+		select count(*) from toon
+			where 1=1
+  			<if test="cri.type==0">
+  				and (title like concat('%',#{cri.search},'%')
+  					or artist like concat('%',#{cri.search},'%')
+  					or lastEpisode like concat('%',#{cri.search},'%'))
+  			</if>
+  			<if test="cri.type==1">
+  				and title like concat('%',#{cri.search},'%')
+  			</if>
+  			<if test="cri.type==2">
+  				and artist like concat('%',#{cri.search},'%')
+  			</if>
+  			<if test="cri.type==3">
+  				and lastEpisode like concat('%',#{cri.search},'%')
+  			</if>
   </select>
 <!-- 등록 -->
 	<insert id="insertToon">
 		insert into
 			toon(title,artist,plot,t_img)
 			values(#{toon.title},#{toon.artist},#{toon.plot},#{toon.t_img})
+	</insert>
+	
+<!-- 장르 선택  -->
+	<insert id="toonType">
+		insert into
+			toon(g_code)
+			values(#{toon.g_code})
 	</insert>
 </mapper>

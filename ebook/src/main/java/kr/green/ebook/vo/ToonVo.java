@@ -1,5 +1,9 @@
 package kr.green.ebook.vo;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class ToonVo {
 	private int t_num;
 	private String title;
@@ -8,9 +12,18 @@ public class ToonVo {
 	private int choice;
 	private int like;
 	private String t_img;
-	private int g_code;
+	private String g_code;
 	private String lastEpisode;
+	private Date t_date;
+	private int t_week;
 	
+	
+	public int getT_week() {
+		return t_week;
+	}
+	public void setT_week(int t_week) {
+		this.t_week = t_week;
+	}
 	public int getT_num() {
 		return t_num;
 	}
@@ -23,10 +36,10 @@ public class ToonVo {
 	public void setTitle(String title) {
 		this.title = title;
 	}
-	public String getartist() {
+	public String getArtist() {
 		return artist;
 	}
-	public void setartist(String artist) {
+	public void setArtist(String artist) {
 		this.artist = artist;
 	}
 	public String getPlot() {
@@ -35,10 +48,10 @@ public class ToonVo {
 	public void setPlot(String plot) {
 		this.plot = plot;
 	}
-	public int getchoice() {
+	public int getChoice() {
 		return choice;
 	}
-	public void setchoice(int choice) {
+	public void setChoice(int choice) {
 		this.choice = choice;
 	}
 	public int getLike() {
@@ -53,10 +66,10 @@ public class ToonVo {
 	public void setT_img(String t_img) {
 		this.t_img = t_img;
 	}
-	public int getg_code() {
+	public String getG_code() {
 		return g_code;
 	}
-	public void setg_code(int g_code) {
+	public void setG_code(String g_code) {
 		this.g_code = g_code;
 	}
 	public String getLastEpisode() {
@@ -65,11 +78,30 @@ public class ToonVo {
 	public void setLastEpisode(String lastEpisode) {
 		this.lastEpisode = lastEpisode;
 	}
+	public String getT_date() {
+		SimpleDateFormat transFormat = new SimpleDateFormat("yyyy-MM-dd");
+		return transFormat.format(t_date);
+	}
+	public void setT_date(Date t_date) {
+		this.t_date = t_date;
+	}
+	public void setT_date(String t_date) {
+		SimpleDateFormat transFormat = new SimpleDateFormat("yyyy-MM-dd");
+		try {
+			this.t_date = transFormat.parse(t_date);
+		}catch (ParseException e) {
+			e.printStackTrace();
+		}
+	}
 	@Override
 	public String toString() {
 		return "ToonVo [t_num=" + t_num + ", title=" + title + ", artist=" + artist + ", plot=" + plot + ", choice="
-				+ choice + ", like=" + like + ", t_img=" + t_img + ", g_code=" + g_code + ", lastEpisode=" + lastEpisode + "]";
+				+ choice + ", like=" + like + ", t_img=" + t_img + ", g_code=" + g_code + ", lastEpisode=" + lastEpisode
+				+ ", t_date=" + t_date + ", t_week=" + t_week + "]";
 	}
+	
+	
+	
 	
 	
 }

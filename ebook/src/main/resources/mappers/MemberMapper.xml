@@ -17,17 +17,17 @@
   			where isDel='N'
   			<if test="cri.type==0">
   				and (id like concat('%',#{cri.search},'%')
-  					or name like concat('%',#{cri.search},'%')
-  					or email like concat('%',#{cri.search},'%'))
+  					or email like concat('%',#{cri.search},'%')
+  					or isDel like concat('%',#{cri.search},'%'))
   			</if>
   			<if test="cri.type==1">
   				and id like concat('%',#{cri.search},'%')
   			</if>
   			<if test="cri.type==2">
-  				and name like concat('%',#{cri.search},'%')
+  				and email like concat('%',#{cri.search},'%')
   			</if>
   			<if test="cri.type==3">
-  				and email like concat('%',#{cri.search},'%')
+  				and isDel like concat('%',#{cri.search},'%')
   			</if>
   			order by m_num desc
   			limit #{cri.startPage},#{cri.perPageNum}

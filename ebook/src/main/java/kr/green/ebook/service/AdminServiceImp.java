@@ -20,23 +20,29 @@ public class AdminServiceImp implements AdminService {
 	@Override
 	public ArrayList<ToonVo> toonList(Criteria cri) {
 		return adminDao.toonList(cri);
+
 	}
 	
 	// 작품페이지네이션
 	@Override
 	public PageMaker getPageMakerByToon(Criteria cri) {
-		PageMaker tpm = new PageMaker();
-		tpm.setCri(cri);
-		tpm.setTotalCount(adminDao.getTotalCountByToon(cri));
-		return tpm;
+		PageMaker pm = new PageMaker();
+		pm.setCri(cri);
+		pm.setTotalCount(adminDao.getTotalCountByToon(cri));
+		return pm;
 	}
 
 	//작품등록
 	@Override
 	public void insertToon(ToonVo toon) {
-		adminDao.insertToon(toon);
+		if(toon.getT_week() == 0) toon.setT_week(1);
+		if(toon.getG_code() == null || toon.getG_code().length()==0) toon.setG_code("#1");
 		toon.setLastEpisode("N");
+		adminDao.insertToon(toon);
+		
 	}
+
+
 
   
 }

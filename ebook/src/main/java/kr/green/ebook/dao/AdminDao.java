@@ -12,8 +12,10 @@ public interface AdminDao {
 //	작품리스트 정렬
 	ArrayList<ToonVo> toonList(@Param("cri")Criteria cri);
 
-	int getTotalCountByToon(@Param("cri")Criteria cri);
+	public int getTotalCountByToon(@Param("cri")Criteria cri);
 
 	void insertToon(@Param("toon")ToonVo toon);
+
+	ArrayList<ToonVo> getToon(@Param("cri")Criteria cri);
 
 }

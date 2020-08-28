@@ -54,7 +54,7 @@
 		<select class="form-control " id="sell" name="type">
 			<option value="0" <c:if test="${pm.cri.type==0}">selected</c:if>>전체</option>
 			<option value="1" <c:if test="${pm.cri.type==1}">selected</c:if>>아이디</option>
-			<option value="2" <c:if test="${pm.cri.type==2}">selected</c:if>>가입일자</option>
+			<option value="2" <c:if test="${pm.cri.type==2}">selected</c:if>>이메일</option>
 			<option value="3" <c:if test="${pm.cri.type==3}">selected</c:if>>탈퇴여부</option>
 		</select>
 		<input type="text" class="form-control" placeholder="회원 검색" name="search" value="${pm.cri.search}">

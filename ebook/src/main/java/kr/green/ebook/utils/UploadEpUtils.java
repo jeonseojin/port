@@ -7,7 +7,7 @@ import java.util.UUID;
 
 import org.springframework.util.FileCopyUtils;
 
-public class UploadFileUtils {
+public class UploadEpUtils {
 	public static String uploadFile(String uploadPath,String title, String originalName, byte[] 	
 			fileData)throws Exception{
 		UUID uid = UUID.randomUUID();

@@ -3,6 +3,7 @@ package kr.green.ebook.vo;
 public class GenreVo {
 	private int g_code;
 	private String g_type;
+	
 	public int getG_code() {
 		return g_code;
 	}
@@ -15,10 +16,14 @@ public class GenreVo {
 	public void setG_type(String g_type) {
 		this.g_type = g_type;
 	}
+	
 	@Override
 	public String toString() {
-		return "g_type ,";
+		return "GenreVo [g_code=" + g_code + ", g_type=" + g_type + "]";
 	}
+
+	
+	
 	
 	
 }

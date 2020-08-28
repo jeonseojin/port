@@ -2,11 +2,13 @@ $(function(){
                            
             $('.search-btn').click(function(e){
                 e.stopPropagation();
-                e.preventDefault();
                 $('.logNav').stop().slideUp(); 
                 $('.search').stop().slideToggle(); 
                 $('.search-input').focus();
             })
+	        $('.search-filed-btn').click(function(){
+	        	$('.search-list').removeClass('display-none');
+	        })
             $('.logNav-btn').click(function(e){
                 e.stopPropagation();
                 $('.search').stop().slideUp(); 
@@ -14,7 +16,6 @@ $(function(){
             })
             $('.search').click(function(e){
                 e.stopPropagation();
-                e.preventDefault();
                 $('.search').slideDown();
             })
             $('.logNav').click(function(e){
@@ -24,8 +25,7 @@ $(function(){
             $('.login-btn').click(function(){
             	$('.login-form').submit();
             })
-            $('.rating .rating-link').click(function(e){
-                e.preventDefault();
+            $('.rating .rating-link').click(function(){
                 $('.rating .rating-link').attr('aria-selected','false');
                 $(this).attr('aria-selected','true');
                 logView();

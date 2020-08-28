@@ -65,8 +65,8 @@ public class AdminController {
 		mv.setViewName("/admin/toon");
 		ArrayList<ToonVo> tlist = adminService.toonList(cri);
 		mv.addObject("tlist", tlist);
-		PageMaker tpm = adminService.getPageMakerByToon(cri);
-		mv.addObject("tpm", tpm);
+		PageMaker pm = adminService.getPageMakerByToon(cri);
+		mv.addObject("pm", pm);
 		return mv;
 	}
 	
@@ -77,8 +77,6 @@ public class AdminController {
 		String t_img = UploadFileUtils.uploadFile(uploadPath,"\\"+toon.getTitle(), file2.getOriginalFilename(), file2.getBytes());
 		toon.setT_img(t_img);
 		adminService.insertToon(toon);
-		System.out.println(t_img);
-		System.out.println(toon);
 		return mv;
 	}
 	
