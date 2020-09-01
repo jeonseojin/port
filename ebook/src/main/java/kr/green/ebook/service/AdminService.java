@@ -14,4 +14,6 @@ public interface AdminService {
 
 	void insertToon(ToonVo toon);
 
+	ArrayList<ToonVo> weekList(Criteria cri);
+
 }

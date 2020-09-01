@@ -46,18 +46,47 @@
   			<if test="cri.type==3">
   				and lastEpisode like concat('%',#{cri.search},'%')
   			</if>
+  			
   </select>
 <!-- 등록 -->
 	<insert id="insertToon">
 		insert into
-			toon(title,artist,plot,t_img)
-			values(#{toon.title},#{toon.artist},#{toon.plot},#{toon.t_img})
+			toon(title,artist,plot,t_img,t_week,g_code)
+			values(#{toon.title},#{toon.artist},#{toon.plot},#{toon.t_img},#{toon.t_week},#{toon.g_code})
 	</insert>
 	
 <!-- 장르 선택  -->
-	<insert id="toonType">
-		insert into
-			toon(g_code)
-			values(#{toon.g_code})
-	</insert>
+	<select id="toonType">
+		select * from toon where g_code
+		
+	</select>
+<!-- 요일 -->
+	<select id="weekList" resultType="kr.green.ebook.vo.ToonVo">
+		select * from toon where t_week
+	<!-- 요일별 -->
+			<if test="cri.week==0">
+				and t_week like '1' 
+			</if>
+			<if test="cri.week==1">
+				and t_week like '2'
+			</if>
+			<if test="cri.week==2">
+				and t_week like '3'
+			</if>
+			<if test="cri.week==3">
+				and t_week like '4' 
+			</if>
+			<if test="cri.week==4">
+				and t_week like '5' 
+			</if>
+			<if test="cri.week==5">
+				and t_week like '6' 
+			</if>
+			<if test="cri.week==6">
+				and t_week like '7'
+			</if>
+			<if test="cri.week==7">
+				and t_week like '8' 
+			</if>
+	</select>
 </mapper>

@@ -6,14 +6,16 @@
           <a class="nav-link active" data-toggle="tab" href="#" data-target="ad-toon-all">전체작품조회</a>
         </li>
         <li class="nav-item ad-toon-l">
-          <a class="nav-link" data-toggle="tab" href="#" aria-selected="true" data-target="ad-toon-data">작품정보</a>
+          <a class="nav-link" data-toggle="tab" href="#" data-target="ad-toon-data">작품정보</a>
         </li>
         <li class="nav-item ad-toon-l">
-          <a class="nav-link" data-toggle="tab" href="#"  data-target="ad-toon-record">작품등록</a>
+          <a class="nav-link" data-toggle="tab" href="#" data-target="ad-toon-record">작품등록</a>
         </li>
-        
         <li class="nav-item ad-toon-l">
-          <a class="nav-link" data-toggle="tab" href="#" data-target="ad-toon-delete">작품수정/삭제</a>
+          <a class="nav-link" data-toggle="tab" href="#" aria-selected="true" data-target="ad-toon-episode">작품연재등록</a>
+        </li>
+        <li class="nav-item ad-toon-l">
+          <a class="nav-link" data-toggle="tab" href="#" data-target="ad-toon-mo-del">작품수정/삭제</a>
         </li>
       </ul>
 <div class="ad-toon">
@@ -96,7 +98,7 @@
 				<h4 class="ad-plot-h">대표 이미지</h4>
 				<input type="file" name="file2" name="t-img">
 				<h4 class="ad-plot-h">연재 요일</h4>
-				<select name="t_week" id="t_week" class="t_week-box">
+				<select class="t_week-box" onchange="Selinput(this.value)">
 					<option value="1">월요일</option>
 					<option value="2">화요일</option>
 					<option value="3">수요일</option>
@@ -106,7 +108,9 @@
 					<option value="7">일요일</option>
 					<option value="8">열흘</option>
 				</select>
+				<input type="hidden" id="t_week" name="t_week">
 				<h4 class="ad-plot-h">장르선택</h4>
+				<div class="check-box display-none"><input type="checkbox" name="g_code" value="#1" class="checkbox" checked="checked">전체</div>
 				<div class="check-box"><input type="checkbox" name="g_code" value="#2" class="checkbox">로맨스</div>
 				<div class="check-box"><input type="checkbox" name="g_code" value="#3" class="checkbox">드라마</div>
 				<div class="check-box"><input type="checkbox" name="g_code" value="#4" class="checkbox">판타지</div>
@@ -115,7 +119,7 @@
 				<div class="check-box"><input type="checkbox" name="g_code" value="#7" class="checkbox">학원</div>
 				<div class="check-box"><input type="checkbox" name="g_code" value="#8" class="checkbox">미스터리</div>
 				<div class="check-box"><input type="checkbox" name="g_code" value="#9" class="checkbox">일상</div>
-				
+
 			</div>
 			<button class="btn btn-primary float-right">등록</button>
 		</form>
@@ -151,22 +155,33 @@
 				</c:if>
 			</table>
 	</div>
+	<div class="ad-toon-list ad-toon-episode">
+		<table class="table table-hover">
+			<thead>
+				<tr>
+					<th>제목</th>
+					<th><input type="text" class="toon-text-box toon-text-title" name="title" placeholder="제목을 입력하세요"></th>
+					<th>작가</th>
+					<th><input type="text" class="toon-text-box" name="artist" placeholder="작가를 입력하세요"></th>
+					<th>등록관리자</th>
+					<th>${member.name}(${member.id})</th>
+				</tr>
+			</thead>
+		</table>
+		<div class="ad-plot-box">
+			<h4 class="ad-plot-h">연재이미지</h4>
+			<input type="file" name="file2" name="t-img">
+			
+		</div>
+		<button class="btn btn-primary float-right">등록</button>
+	</div>
 	<div class="ad-toon-list ad-toon-mo_del"></div>
 </div>
 
     <script>
-	    $(function(){
-	        $('.nav .nav-link').click(function(e){
-	            e.preventDefault();
-	            $('.nav .nav-link').attr('aria-selected','false');
-	            $(this).attr('aria-selected','true');
-	            adtoonView();
-	        })
-	    })
-        function adtoonView(){
-            var target = $('.nav-item .nav-link[aria-selected=true]').attr('data-target');
-            $('.ad-toon>.ad-toon-list').addClass('display-none');
-            $('.ad-toon .'+target).removeClass('display-none');
-        }
-        adtoonView();
+    function Selinput(input){
+        document.getElementById("t_week").value =input;
+    }
+
+
     </script> 

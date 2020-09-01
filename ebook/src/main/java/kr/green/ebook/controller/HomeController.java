@@ -42,7 +42,6 @@ public class HomeController {
 		mv.setViewName("/main/home");
 		ArrayList<ToonVo> tlist = adminService.toonList(cri);
 		mv.addObject("tlist", tlist);
-		System.out.println(tlist);
 		return mv;
 	}
 

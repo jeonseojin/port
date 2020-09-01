@@ -4,6 +4,7 @@ public class Criteria {
 	private int page;//한 페이지 당 컨텐츠 갯수
 	private int perPageNum;
 	private int type;
+	private int week;
 	private String search;
 	
 	//Criteria 디폴트 생성자 : 현재 페이지를 1페이지로, 한 페이지에 10개의 컨텐츠
@@ -45,11 +46,16 @@ public class Criteria {
 	public void setSearch(String sech) {
 		this.search = sech;
 	}	
-	
+	public int getWeek() {
+		return type;
+	}
+	public void setWeek(int type) {
+		this.type=(type < 0 || type > 8) ? 1 : type;
+	}
 	// toString
 	@Override
 	public String toString() {
-		return "Criteria [page=" + page + ", perPageNum=" + perPageNum + ", type=" + type + ", search=" + search
+		return "Criteria [page=" + page + ", perPageNum=" + perPageNum + ", type=" + type + ", week=" + week +", search=" + search
 				+ "]";
 	}
 	

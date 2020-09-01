@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import org.apache.ibatis.annotations.Param;
 
 import kr.green.ebook.pagination.Criteria;
+import kr.green.ebook.pagination.PageMaker;
 import kr.green.ebook.vo.ToonVo;
 
 public interface AdminDao {
@@ -17,5 +18,7 @@ public interface AdminDao {
 	void insertToon(@Param("toon")ToonVo toon);
 
 	ArrayList<ToonVo> getToon(@Param("cri")Criteria cri);
+
+	ArrayList<ToonVo> weekList(@Param("cri")Criteria cri);
 
 }

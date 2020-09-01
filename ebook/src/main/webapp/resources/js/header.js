@@ -41,4 +41,19 @@ $(function(){
             $('.logNav-list .'+target).removeClass('display-none');
         }
         logView();
+        	    $(function(){
+	        $('.nav .nav-link').click(function(e){
+	            e.preventDefault();
+	            $('.nav .nav-link').attr('aria-selected','false');
+	            $(this).attr('aria-selected','true');
+	            adtoonView();
+	        })
+	    })
+
+        function adtoonView(){
+            var target = $('.nav-item .nav-link[aria-selected=true]').attr('data-target');
+            $('.ad-toon>.ad-toon-list').addClass('display-none');
+            $('.ad-toon .'+target).removeClass('display-none');
+        }
+        adtoonView();
 })

@@ -15,13 +15,13 @@ public class ToonVo {
 	private String g_code;
 	private String lastEpisode;
 	private Date t_date;
-	private int t_week;
+	private String t_week;
 	
 	
-	public int getT_week() {
+	public String getT_week() {
 		return t_week;
 	}
-	public void setT_week(int t_week) {
+	public void setT_week(String t_week) {
 		this.t_week = t_week;
 	}
 	public int getT_num() {
