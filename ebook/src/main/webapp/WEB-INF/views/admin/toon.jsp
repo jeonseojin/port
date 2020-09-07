@@ -96,7 +96,7 @@
 				<h4 class="ad-plot-h">줄거리</h4>
 				<textarea name="plot" class="ad-plot"></textarea>
 				<h4 class="ad-plot-h">대표 이미지</h4>
-				<input type="file" name="file2" name="t-img">
+				<input type="file" name="file2 t-img">
 				<h4 class="ad-plot-h">연재 요일</h4>
 				<select class="t_week-box" onchange="Selinput(this.value)">
 					<option value="1">월요일</option>
@@ -155,25 +155,32 @@
 				</c:if>
 			</table>
 	</div>
+	
 	<div class="ad-toon-list ad-toon-episode">
-		<table class="table table-hover">
-			<thead>
-				<tr>
-					<th>제목</th>
-					<th><input type="text" class="toon-text-box toon-text-title" name="title" placeholder="제목을 입력하세요"></th>
-					<th>작가</th>
-					<th><input type="text" class="toon-text-box" name="artist" placeholder="작가를 입력하세요"></th>
-					<th>등록관리자</th>
-					<th>${member.name}(${member.id})</th>
-				</tr>
-			</thead>
-		</table>
-		<div class="ad-plot-box">
-			<h4 class="ad-plot-h">연재이미지</h4>
-			<input type="file" name="file2" name="t-img">
+		<form action="<%=request.getContextPath()%>/admin/ep" method="post" id="uploadForm" enctype="multipart/form-data">
+			<table class="table table-hover">
+				<thead>
+					<tr>
+						<th>웹툰 제목</th>
+						<th><input type="text" class="toon-text-box toon-text-title e_t_title" name="e_t_title" placeholder="웹툰제목을 입력하세요">
+						<th>제목</th>
+						<th><input type="text" class="toon-text-box toon-text-title" name="e_title" placeholder="부제목을 입력하세요"></th>
+						<th><input type="text" class="toon-text-box toon-text-edition " name="e_edition" placeholder="몇">회</th>
+						<th>등록관리자</th>
+						<th>${member.name}(${member.id})</th>
+					</tr>
+				</thead>
+			</table>
 			
-		</div>
-		<button class="btn btn-primary float-right">등록</button>
+				<div class="ad-plot-box">
+					<h4 class="ad-plot-h">연재이미지</h4>
+			            <input id="uploadInputBox" type="file" name="file2" multiple />
+					<!-- 미리보기 영역 -->
+	            <div id="preview" class="content"></div>
+				</div>
+
+			<button class="btn btn-primary float-right btn-mul-img" type="submit">등록</button>
+		</form>
 	</div>
 	<div class="ad-toon-list ad-toon-mo_del"></div>
 </div>
@@ -182,6 +189,7 @@
     function Selinput(input){
         document.getElementById("t_week").value =input;
     }
+	
 
 
     </script> 

@@ -100,18 +100,6 @@
 	box-sizing: content-box;
 	text-align: center;
 }
-.toon-text-box{
-	border: none;
-}
-.toon-text-title{
-	width: 250px;
-}
-.toon-plot-box{
-	position: absolute;
-	width: 100%;
-	border: 1px solid #dee2e6;
-	height: 500px;
-}
 .ad-plot-box{
 	width: 100%;
 	height: 600px;

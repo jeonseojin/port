@@ -9,6 +9,7 @@ import kr.green.ebook.dao.AdminDao;
 import kr.green.ebook.dao.MemberDao;
 import kr.green.ebook.pagination.Criteria;
 import kr.green.ebook.pagination.PageMaker;
+import kr.green.ebook.vo.EpisodeVo;
 import kr.green.ebook.vo.ToonVo;
 
 @Service
@@ -39,8 +40,14 @@ public class AdminServiceImp implements AdminService {
 		if(toon.getG_code() == null || toon.getG_code().length()==0) toon.setG_code("#1");
 		toon.setLastEpisode("N");
 		adminDao.insertToon(toon);
-		
 	}
+	//연재작품등록
+	@Override
+	public void insertEp(EpisodeVo ep) {		
+		if(ep.getE_coin()==0) ep.setE_coin('2');
+		adminDao.insertEp(ep);
+	}
+
 
 	//연재페이지 요일별 분류
 	@Override

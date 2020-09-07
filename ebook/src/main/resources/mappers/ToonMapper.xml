@@ -48,11 +48,17 @@
   			</if>
   			
   </select>
-<!-- 등록 -->
+<!-- 작품 등록 -->
 	<insert id="insertToon">
 		insert into
 			toon(title,artist,plot,t_img,t_week,g_code)
 			values(#{toon.title},#{toon.artist},#{toon.plot},#{toon.t_img},#{toon.t_week},#{toon.g_code})
+	</insert>
+<!-- 연재 등록 -->
+	<insert id="insertEp">
+		insert into
+			episode(e_t_title,e_edition,e_title,e_img)
+			values(#{ep.e_t_title},#{ep.e_edition},#{ep.e_title},#{ep.e_img})
 	</insert>
 	
 <!-- 장르 선택  -->

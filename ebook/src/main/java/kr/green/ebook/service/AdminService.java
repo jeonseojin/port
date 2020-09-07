@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import kr.green.ebook.pagination.Criteria;
 import kr.green.ebook.pagination.PageMaker;
+import kr.green.ebook.vo.EpisodeVo;
 import kr.green.ebook.vo.ToonVo;
 
 public interface AdminService {
@@ -15,5 +16,9 @@ public interface AdminService {
 	void insertToon(ToonVo toon);
 
 	ArrayList<ToonVo> weekList(Criteria cri);
+
+	void insertEp(EpisodeVo ep);
+
+
 
 }

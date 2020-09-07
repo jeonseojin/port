@@ -1,11 +1,12 @@
 package kr.green.ebook.controller;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.Iterator;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -18,11 +19,12 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.green.ebook.pagination.Criteria;
@@ -30,6 +32,7 @@ import kr.green.ebook.pagination.PageMaker;
 import kr.green.ebook.service.AdminService;
 import kr.green.ebook.service.MemberService;
 import kr.green.ebook.utils.UploadFileUtils;
+import kr.green.ebook.vo.EpisodeVo;
 import kr.green.ebook.vo.MemberVo;
 import kr.green.ebook.vo.ToonVo;
 
@@ -72,7 +75,7 @@ public class AdminController {
 	
 	//작품등록 기능
 	@RequestMapping(value = "/admin/toon", method = RequestMethod.POST)
-	public ModelAndView adminToonPost(ModelAndView mv, ToonVo toon, HttpServletRequest r, MultipartFile file2) throws IOException, Exception {
+	public ModelAndView adminToonPost(ModelAndView mv, ToonVo toon, MultipartFile file2) throws IOException, Exception {
 		mv.setViewName("redirect:/admin/toon");
 		String t_img = UploadFileUtils.uploadFile(uploadPath,"\\"+toon.getTitle(), file2.getOriginalFilename(), file2.getBytes());
 		toon.setT_img(t_img);
@@ -80,27 +83,22 @@ public class AdminController {
 		return mv;
 	}
 	
-	//작품등록(파일다운로드) 기능
-	@RequestMapping(value = "/admin/download")
-	public ResponseEntity<byte[]> downloadFile(String fileName)throws Exception{
-	    InputStream in = null;
-	    ResponseEntity<byte[]> entity = null;
-	    try{
-	        String FormatName = fileName.substring(fileName.lastIndexOf(".")+1);
-	        HttpHeaders headers = new HttpHeaders();
-	        in = new FileInputStream(uploadPath+fileName);
-
-	        fileName = fileName.substring(fileName.indexOf("_")+1);
-	        headers.setContentType(MediaType.APPLICATION_OCTET_STREAM);
-	        headers.add("Content-Disposition",  "attachment; filename=\"" 
-				+ new String(fileName.getBytes("UTF-8"), "ISO-8859-1")+"\"");
-	        entity = new ResponseEntity<byte[]>(IOUtils.toByteArray(in),headers,HttpStatus.CREATED);
-	    }catch(Exception e) {
-	        e.printStackTrace();
-	        entity = new ResponseEntity<byte[]>(HttpStatus.BAD_REQUEST);
-	    }finally {
-	        in.close();
-	    }
-	    return entity;
+	//연재등록 기능
+	@RequestMapping(value = "/admin/ep", method = RequestMethod.POST)
+	public ModelAndView adminEpPost(ModelAndView mv, EpisodeVo ep, MultipartHttpServletRequest mr) throws IOException, Exception {
+		mv.setViewName("redirect:/admin/toon");
+		String filename = "";
+		byte[] fileby;
+		List<MultipartFile> fileList = mr.getFiles("file2");
+		for(MultipartFile filePart : fileList) {
+			filename = filePart.getOriginalFilename();
+			fileby = filePart.getBytes();
+			for(int i=1; i<=fileList.size();i++) {
+				String e_img = UploadFileUtils.uploadFile(uploadPath,"\\"+ ep.getE_t_title(),filename,fileby);
+				ep.setE_img(e_img);
+			}
+			adminService.insertEp(ep);
+		}
+		return mv;
 	}
 }
