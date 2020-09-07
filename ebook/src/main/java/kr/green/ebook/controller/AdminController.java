@@ -93,10 +93,8 @@ public class AdminController {
 		for(MultipartFile filePart : fileList) {
 			filename = filePart.getOriginalFilename();
 			fileby = filePart.getBytes();
-			for(int i=1; i<=fileList.size();i++) {
-				String e_img = UploadFileUtils.uploadFile(uploadPath,"\\"+ ep.getE_t_title(),filename,fileby);
-				ep.setE_img(e_img);
-			}
+			String e_img = UploadFileUtils.uploadFile(uploadPath,"\\"+ ep.getE_t_title(),filename,fileby);
+			ep.setE_img(e_img);
 			adminService.insertEp(ep);
 		}
 		return mv;

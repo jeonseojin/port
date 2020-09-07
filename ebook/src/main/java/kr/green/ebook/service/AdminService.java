@@ -19,6 +19,4 @@ public interface AdminService {
 
 	void insertEp(EpisodeVo ep);
 
-
-
 }

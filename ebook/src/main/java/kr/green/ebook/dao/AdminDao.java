@@ -18,10 +18,13 @@ public interface AdminDao {
 
 	void insertToon(@Param("toon")ToonVo toon);
 
-	ArrayList<ToonVo> getToon(@Param("cri")Criteria cri);
-
 	ArrayList<ToonVo> weekList(@Param("cri")Criteria cri);
 
 	void insertEp(@Param("ep")EpisodeVo ep);
 
+// 연재
+	
+	ToonVo getToon(@Param("title")String title);
+
+	void updateToon(@Param("toon")ToonVo toon);
 }

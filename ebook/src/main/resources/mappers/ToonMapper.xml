@@ -3,10 +3,7 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.green.ebook.dao.AdminDao">
-<!-- 전체작품 -->
-<select id="getToon" resultType="kr.green.ebook.vo.ToonVo">
-		select * from toon
-  </select>
+
 <!-- 작품내용을 저장해 놓음 -->
   <select id="toonList" resultType="kr.green.ebook.vo.ToonVo">
 		select * from toon
@@ -48,19 +45,41 @@
   			</if>
   			
   </select>
+ <!-- 전체작품 -->
+<select id="getToon" resultType="kr.green.ebook.vo.ToonVo">
+		select * from toon where t_title = #{title}
+</select>
 <!-- 작품 등록 -->
 	<insert id="insertToon">
 		insert into
 			toon(title,artist,plot,t_img,t_week,g_code)
 			values(#{toon.title},#{toon.artist},#{toon.plot},#{toon.t_img},#{toon.t_week},#{toon.g_code})
 	</insert>
+<!-- 작품 수정 및 업데이트 -->	
+	<update id="updateToon">
+		update toon
+			set
+				title = #{toon.title},
+				t_title = #{toon.t_title},
+				artist = #{toon.artist},
+				plot = #{toon.plot},
+				t_img = #{toon.t_img},
+				t_week = #{toon.t_week},
+				g_code = #{toon.g_code},
+				t_views = #{toon.t_views},
+				lastEpisode = #{toon.lastEpisode},
+				choice = #{toon.choice},
+				up = #{toon.up}
+			where
+				t_title = #{toon.t_title}
+	</update>
 <!-- 연재 등록 -->
 	<insert id="insertEp">
 		insert into
 			episode(e_t_title,e_edition,e_title,e_img)
 			values(#{ep.e_t_title},#{ep.e_edition},#{ep.e_title},#{ep.e_img})
 	</insert>
-	
+
 <!-- 장르 선택  -->
 	<select id="toonType">
 		select * from toon where g_code

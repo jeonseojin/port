@@ -10,14 +10,21 @@ public class ToonVo {
 	private String artist;
 	private String plot;
 	private int choice;
-	private int like;
+	private int up;
 	private String t_img;
 	private String g_code;
 	private String lastEpisode;
 	private Date t_date;
 	private String t_week;
+	private String t_title;
+	private int t_views;
 	
-	
+	public String getT_title() {
+		return t_title;
+	}
+	public void setT_title(String t_title) {
+		this.t_title = t_title;
+	}
 	public String getT_week() {
 		return t_week;
 	}
@@ -54,11 +61,11 @@ public class ToonVo {
 	public void setChoice(int choice) {
 		this.choice = choice;
 	}
-	public int getLike() {
-		return like;
+	public int getUp() {
+		return up;
 	}
-	public void setLike(int like) {
-		this.like = like;
+	public void setUp(int up) {
+		this.up = up;
 	}
 	public String getT_img() {
 		return t_img;
@@ -93,15 +100,19 @@ public class ToonVo {
 			e.printStackTrace();
 		}
 	}
+	
+	public int getViews() {
+		return t_views;
+	}
+	public void setViews(int t_views) {
+		this.t_views = t_views;
+	}
 	@Override
 	public String toString() {
 		return "ToonVo [t_num=" + t_num + ", title=" + title + ", artist=" + artist + ", plot=" + plot + ", choice="
-				+ choice + ", like=" + like + ", t_img=" + t_img + ", g_code=" + g_code + ", lastEpisode=" + lastEpisode
-				+ ", t_date=" + t_date + ", t_week=" + t_week + "]";
+				+ choice + ", up=" + up + ", t_img=" + t_img + ", g_code=" + g_code + ", lastEpisode=" + lastEpisode
+				+ ", t_date=" + t_date + ", t_week=" + t_week + ", t_title=" + t_title + ", t_views=" + t_views + "]";
 	}
-	
-	
-	
-	
+
 	
 }

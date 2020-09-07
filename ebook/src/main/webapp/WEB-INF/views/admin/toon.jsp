@@ -85,6 +85,8 @@
 					<tr>
 						<th>제목</th>
 						<th><input type="text" class="toon-text-box toon-text-title" name="title" placeholder="제목을 입력하세요"></th>
+						<th>영어제목</th>
+						<th><input type="text" class="toon-text-box" name="t_title" placeholder="영어제목을 입력하세요"></th>
 						<th>작가</th>
 						<th><input type="text" class="toon-text-box" name="artist" placeholder="작가를 입력하세요"></th>
 						<th>등록관리자</th>
@@ -182,6 +184,7 @@
 			<button class="btn btn-primary float-right btn-mul-img" type="submit">등록</button>
 		</form>
 	</div>
+	
 	<div class="ad-toon-list ad-toon-mo_del"></div>
 </div>
 
