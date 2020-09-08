@@ -45,15 +45,16 @@
   			</if>
   			
   </select>
- <!-- 전체작품 -->
+
+ <!-- 번호작품 -->
 <select id="getToon" resultType="kr.green.ebook.vo.ToonVo">
-		select * from toon where t_title = #{title}
+		select * from toon where t_num = #{num}
 </select>
 <!-- 작품 등록 -->
 	<insert id="insertToon">
 		insert into
-			toon(title,artist,plot,t_img,t_week,g_code)
-			values(#{toon.title},#{toon.artist},#{toon.plot},#{toon.t_img},#{toon.t_week},#{toon.g_code})
+			toon(title,t_title,artist,plot,t_img,t_week,t_code,t_typify)
+			values(#{toon.title},#{toon.t_title},#{toon.artist},#{toon.plot},#{toon.t_img},#{toon.t_week},#{toon.t_code},#{toon.t_typify})
 	</insert>
 <!-- 작품 수정 및 업데이트 -->	
 	<update id="updateToon">
@@ -64,8 +65,9 @@
 				artist = #{toon.artist},
 				plot = #{toon.plot},
 				t_img = #{toon.t_img},
+				t_typify = #{toon.t_typify},
 				t_week = #{toon.t_week},
-				g_code = #{toon.g_code},
+				t_code = #{toon.t_code},
 				t_views = #{toon.t_views},
 				lastEpisode = #{toon.lastEpisode},
 				choice = #{toon.choice},
@@ -80,38 +82,41 @@
 			values(#{ep.e_t_title},#{ep.e_edition},#{ep.e_title},#{ep.e_img})
 	</insert>
 
-<!-- 장르 선택  -->
-	<select id="toonType">
-		select * from toon where g_code
-		
-	</select>
 <!-- 요일 -->
 	<select id="weekList" resultType="kr.green.ebook.vo.ToonVo">
 		select * from toon where t_week
 	<!-- 요일별 -->
-			<if test="cri.week==0">
+			<if test="cri.week==1">
 				and t_week like '1' 
 			</if>
-			<if test="cri.week==1">
+			<if test="cri.week==2">
 				and t_week like '2'
 			</if>
-			<if test="cri.week==2">
+			<if test="cri.week==3">
 				and t_week like '3'
 			</if>
-			<if test="cri.week==3">
+			<if test="cri.week==4">
 				and t_week like '4' 
 			</if>
-			<if test="cri.week==4">
+			<if test="cri.week==5">
 				and t_week like '5' 
 			</if>
-			<if test="cri.week==5">
+			<if test="cri.week==6">
 				and t_week like '6' 
 			</if>
-			<if test="cri.week==6">
+			<if test="cri.week==7">
 				and t_week like '7'
 			</if>
-			<if test="cri.week==7">
+			<if test="cri.week==8">
 				and t_week like '8' 
 			</if>
+	</select>
+<!-- 요일(영어) 선택 -->
+	<select id="getWeek" resultType="kr.green.ebook.vo.WeekVo">
+		select * from week where w_code = #{t_week}
+	</select>
+<!-- 장르 선택  -->
+	<select id="toonType">
+		select * from toon where t_code
 	</select>
 </mapper>

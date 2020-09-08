@@ -96,9 +96,12 @@
 	text-align: center;
 }
 .adt-plot{
-	min-height: 120px;
+	min-width: 120px;
 	box-sizing: content-box;
 	text-align: center;
+}
+.adt-thplot{
+	max-width: 350px;
 }
 .ad-plot-box{
 	width: 100%;
@@ -109,6 +112,20 @@
 	font-weight: bold;
 	text-align: center;
 	font-size: 17px;
+}
+.ad-img-box{
+	position:relative;
+	width: 100%;
+	height: 400px;
+}
+.ad-img-h{
+	margin: 15px auto;
+	font-weight: bold;
+	text-align: center;
+}
+.ad-img-hs{
+	margin: 15px auto;
+	font-weight: bold;
 }
 .ad-plot{
 	margin-top: 2px;

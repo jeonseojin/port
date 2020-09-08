@@ -4,7 +4,7 @@
 <form action="<%=request.getContextPath()%>/toon">
     <div class="toon-week-box">
         <button class="toon-week" value="0" name="week" aria-selected="true">월</button>
-        <button class="toon-week"type="button" value="1" name="week">화</button>
+        <button class="toon-week" value="1" name="week">화</button>
         <button class="toon-week" value="2" name="week">수</button>
         <button class="toon-week" value="3" name="week">목</button>
         <button class="toon-week" value="4" name="week">금</button>

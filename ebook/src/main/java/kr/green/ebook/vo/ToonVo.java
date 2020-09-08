@@ -12,12 +12,13 @@ public class ToonVo {
 	private int choice;
 	private int up;
 	private String t_img;
-	private String g_code;
+	private String t_code;
 	private String lastEpisode;
 	private Date t_date;
-	private String t_week;
+	private int t_week;
 	private String t_title;
 	private int t_views;
+	private String t_typify;
 	
 	public String getT_title() {
 		return t_title;
@@ -25,10 +26,10 @@ public class ToonVo {
 	public void setT_title(String t_title) {
 		this.t_title = t_title;
 	}
-	public String getT_week() {
+	public int getT_week() {
 		return t_week;
 	}
-	public void setT_week(String t_week) {
+	public void setT_week(int t_week) {
 		this.t_week = t_week;
 	}
 	public int getT_num() {
@@ -73,11 +74,11 @@ public class ToonVo {
 	public void setT_img(String t_img) {
 		this.t_img = t_img;
 	}
-	public String getG_code() {
-		return g_code;
+	public String getT_code() {
+		return t_code;
 	}
-	public void setG_code(String g_code) {
-		this.g_code = g_code;
+	public void setT_code(String t_code) {
+		this.t_code = t_code;
 	}
 	public String getLastEpisode() {
 		return lastEpisode;
@@ -100,19 +101,33 @@ public class ToonVo {
 			e.printStackTrace();
 		}
 	}
-	
-	public int getViews() {
+	public int getT_views() {
 		return t_views;
 	}
-	public void setViews(int t_views) {
+	public void setT_views(int t_views) {
 		this.t_views = t_views;
+	}
+	public String getT_typify() {
+		return t_typify;
+	}
+	public void setT_typify(String t_typify) {
+		this.t_typify = t_typify;
 	}
 	@Override
 	public String toString() {
 		return "ToonVo [t_num=" + t_num + ", title=" + title + ", artist=" + artist + ", plot=" + plot + ", choice="
-				+ choice + ", up=" + up + ", t_img=" + t_img + ", g_code=" + g_code + ", lastEpisode=" + lastEpisode
-				+ ", t_date=" + t_date + ", t_week=" + t_week + ", t_title=" + t_title + ", t_views=" + t_views + "]";
+				+ choice + ", up=" + up + ", t_img=" + t_img + ", t_code=" + t_code + ", lastEpisode=" + lastEpisode
+				+ ", t_date=" + t_date + ", t_week=" + t_week + ", t_title=" + t_title + ", t_views=" + t_views
+				+ ", t_typify=" + t_typify + "]";
 	}
 
+	public String getOriFilesmall() {
+		int index = t_img.indexOf("_");
+		return t_img.substring(index+1);
+	}
+	public String getOriFilebig() {
+		int index = t_typify.indexOf("_");
+		return t_typify.substring(index+1);
+	}
 	
 }

@@ -13,10 +13,10 @@ public class ToonServiceImp implements ToonService {
 	
 	//toon
 	@Override
-	public ToonVo view(String title) {
-		ToonVo toon = adminDao.getToon(title);
+	public ToonVo view(Integer num) {
+		ToonVo toon = adminDao.getToon(num);
 		if(toon != null) {
-			toon.setViews(toon.getViews()+1);
+			toon.setT_views(toon.getT_views()+1);
 			adminDao.updateToon(toon);
 		}
 		return toon;

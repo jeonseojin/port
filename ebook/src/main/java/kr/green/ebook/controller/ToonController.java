@@ -35,12 +35,11 @@ public class ToonController {
 		return mv;
 	}
 	@RequestMapping(value = "/toon/ep", method = RequestMethod.GET)
-	public ModelAndView toonEp(ModelAndView mv,String title, Criteria cri) {
+	public ModelAndView toonEp(ModelAndView mv,Integer num, Criteria cri) {
 		mv.setViewName("/toon/ep");
-		ToonVo toon = toonService.view(title);
+		ToonVo toon = toonService.view(num);
 		mv.addObject("toon", toon);
 		mv.addObject("cri", cri);
-		System.out.println(toon);
 		return mv;
 	}
 }

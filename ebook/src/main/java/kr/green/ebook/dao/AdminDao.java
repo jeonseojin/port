@@ -7,7 +7,9 @@ import org.apache.ibatis.annotations.Param;
 import kr.green.ebook.pagination.Criteria;
 import kr.green.ebook.pagination.PageMaker;
 import kr.green.ebook.vo.EpisodeVo;
+import kr.green.ebook.vo.GenreVo;
 import kr.green.ebook.vo.ToonVo;
+import kr.green.ebook.vo.WeekVo;
 
 public interface AdminDao {
 
@@ -24,7 +26,11 @@ public interface AdminDao {
 
 // 연재
 	
-	ToonVo getToon(@Param("title")String title);
+	ToonVo getToon(@Param("num")Integer num);
 
 	void updateToon(@Param("toon")ToonVo toon);
+
+	WeekVo getWeek(@Param("t_week")int t_week);
+
+	GenreVo getGr(@Param("t_code")String t_code);
 }

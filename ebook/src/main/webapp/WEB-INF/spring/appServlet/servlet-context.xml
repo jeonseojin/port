@@ -50,8 +50,7 @@
 			<beans:ref bean="loginInterceptor"/>
 		</interceptor>
 		<interceptor>
-	        <mapping path="/admin/upload"/>
-	        <mapping path="//fileUpload"/>
+	        <mapping path="/admin/uplod"/>
 	        <beans:ref bean="authInterceptor"/>
 	    </interceptor>
 	</interceptors>
