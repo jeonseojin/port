@@ -20,8 +20,6 @@ public interface AdminDao {
 
 	void insertToon(@Param("toon")ToonVo toon);
 
-	ArrayList<ToonVo> weekList(@Param("cri")Criteria cri);
-
 	void insertEp(@Param("ep")EpisodeVo ep);
 
 // 연재
@@ -33,4 +31,9 @@ public interface AdminDao {
 	WeekVo getWeek(@Param("t_week")int t_week);
 
 	GenreVo getGr(@Param("t_code")String t_code);
+	
+	ArrayList<ToonVo> weekList(@Param("cri")Criteria cri);
+
+	ToonVo getToont(@Param("Title")String Title);
+
 }

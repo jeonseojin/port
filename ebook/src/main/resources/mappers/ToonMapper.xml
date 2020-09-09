@@ -29,18 +29,18 @@
     <select id="getTotalCountByToon" resultType="int">
 		select count(*) from toon
 			where 1=1
-  			<if test="cri.type==0">
+  			<if test="cri.type==1">
   				and (title like concat('%',#{cri.search},'%')
   					or artist like concat('%',#{cri.search},'%')
   					or lastEpisode like concat('%',#{cri.search},'%'))
   			</if>
-  			<if test="cri.type==1">
+  			<if test="cri.type==2">
   				and title like concat('%',#{cri.search},'%')
   			</if>
-  			<if test="cri.type==2">
+  			<if test="cri.type==3">
   				and artist like concat('%',#{cri.search},'%')
   			</if>
-  			<if test="cri.type==3">
+  			<if test="cri.type==4">
   				and lastEpisode like concat('%',#{cri.search},'%')
   			</if>
   			
@@ -49,6 +49,10 @@
  <!-- 번호작품 -->
 <select id="getToon" resultType="kr.green.ebook.vo.ToonVo">
 		select * from toon where t_num = #{num}
+</select>
+ <!-- 번호작품 -->
+<select id="getToont" resultType="kr.green.ebook.vo.ToonVo">
+		select * from toon where t_title = #{Title}
 </select>
 <!-- 작품 등록 -->
 	<insert id="insertToon">
@@ -84,32 +88,7 @@
 
 <!-- 요일 -->
 	<select id="weekList" resultType="kr.green.ebook.vo.ToonVo">
-		select * from toon where t_week
-	<!-- 요일별 -->
-			<if test="cri.week==1">
-				and t_week like '1' 
-			</if>
-			<if test="cri.week==2">
-				and t_week like '2'
-			</if>
-			<if test="cri.week==3">
-				and t_week like '3'
-			</if>
-			<if test="cri.week==4">
-				and t_week like '4' 
-			</if>
-			<if test="cri.week==5">
-				and t_week like '5' 
-			</if>
-			<if test="cri.week==6">
-				and t_week like '6' 
-			</if>
-			<if test="cri.week==7">
-				and t_week like '7'
-			</if>
-			<if test="cri.week==8">
-				and t_week like '8' 
-			</if>
+		select * from toon where t_week   			
 	</select>
 <!-- 요일(영어) 선택 -->
 	<select id="getWeek" resultType="kr.green.ebook.vo.WeekVo">

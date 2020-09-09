@@ -32,7 +32,7 @@
 					<c:forEach var="toon" items="${tlist}">
 						<tr class="textline-center">
 							<td>${toon.t_num}</td>
-							<td class="adt-thbox"><a  href="<%=request.getContextPath()%>/admin/detail?num=${toon.t_num}&week=${pm.cri.week}&page=${pm.cri.page}&type=${pm.cri.type}&search=${pm.cri.search}"><img class="adt-img-box" src="/ebook/resources/img${toon.t_img}"></a></td>
+							<td class="adt-thbox"><a  href="<%=request.getContextPath()%>/admin/detail?title=${toon.t_title}&page=${pm.cri.page}&type=${pm.cri.type}&search=${pm.cri.search}"><img class="adt-img-box" src="/ebook/resources/img${toon.t_img}"></a></td>
 							<td>${toon.title}</td>
 							<td class="adt-thplot">${toon.plot}</td>
 							<td>${toon.choice}</td>
@@ -45,7 +45,7 @@
 			</c:if>
 		</table>
 		<c:if test="${tlist.size()==0}"><h2 style="text-align: center;">검색하신 결과가 없습니다.</h2></c:if>
-	<div class="pagination-box">
+	<div>
 		<!-- 페이지네이션 -->
 		<ul class="pagination justify-content-center" style="margin:20px 0">
 			<li class="page-item <c:if test="${!pm.prev}">disabled</c:if>"><a class="page-link" href="<%=request.getContextPath()%>/admin/toon?page=${pm.startPage-1}&type=${pm.cri.type}&search=${pm.cri.search}"><i class="fas fa-chevron-left"></i></a></li>
@@ -58,10 +58,10 @@
 		<form action="<%=request.getContextPath()%>/admin/toon">
 			<div class="input-group mb-3">
 				<select class="form-control " id="sell" name="type">
-					<option value="0" <c:if test="${pm.cri.type==0}">selected</c:if>>전체</option>
-					<option value="1" <c:if test="${pm.cri.type==1}">selected</c:if>>제목</option>
-					<option value="2" <c:if test="${pm.cri.type==2}">selected</c:if>>작가</option>
-					<option value="3" <c:if test="${pm.cri.type==3}">selected</c:if>>완결여부</option>
+					<option value="0" <c:if test="${pm.cri.type==1}">selected</c:if>>전체</option>
+					<option value="1" <c:if test="${pm.cri.type==2}">selected</c:if>>제목</option>
+					<option value="2" <c:if test="${pm.cri.type==3}">selected</c:if>>작가</option>
+					<option value="3" <c:if test="${pm.cri.type==4}">selected</c:if>>완결여부</option>
 				</select>
 				<input type="text" class="form-control adt-input" placeholder="작품 검색" name="search" value="${pm.cri.search}">
 				<div class="input-group-append">
@@ -93,10 +93,12 @@
 				<h4 class="ad-plot-h">줄거리</h4>
 				<textarea name="plot" class="ad-plot"></textarea>
 				<h4 class="ad-plot-h">대표(big) 이미지</h4>
-				<input type="file" name="file1">
+				<input type="file" class="input-b-img" name="file1">
+				<div class="input-imgb-box"></div>
 				<h4 class="ad-plot-h">대표(small) 이미지</h4>
-				<input type="file" name="file2">
-				
+				<input type="file" class="input-s-img" name="file2">
+				<h4 class="ad-plot-h">이미지 미리보기</h4>
+				<div class="input-imgs-box"></div>
 				<h4 class="ad-plot-h">연재 요일</h4>
 				<select class="t_week-box" onchange="Selinput(this.value)">
 					<option value="1">월요일</option>
@@ -143,9 +145,9 @@
 			
 				<div class="ad-plot-box">
 					<h4 class="ad-plot-h">연재이미지</h4>
-			            <input id="uploadInputBox" type="file" name="file2" multiple />
+			            <input class="input-ep-img" type="file" name="file2" multiple />
 					<!-- 미리보기 영역 -->
-	            <div id="preview" class="content"></div>
+	            	<div class="ad-ep-preview"></div>
 				</div>
 
 			<button class="btn btn-primary float-right btn-mul-img" type="submit">등록</button>
@@ -159,7 +161,74 @@
     function Selinput(input){
         document.getElementById("t_week").value =input;
     }
-	
+    var sel_files=[];
+	$(document).ready(function(){
+		$('.input-b-img').on("change",handleBFilesSelect);
+	})
+	$(document).ready(function(){
+		$('.input-s-img').on("change",handleSFilesSelect);
+	})
+	$(document).ready(function(){
+		$('.input-ep-img').on("change",handleEpFilesSelect);
+	})
+	function handleBFilesSelect(e){
+		var files = e.target.files;
+		var filesArr = Array.prototype.slice.call(files);
 
+		filesArr.forEach(function(f){
+			$('.input-imgb-box').empty();
+			if(!f.type.match("image.*")){
+				alert("확장자는 이미지 확장자만 가능")
+				return;
+			}
+			sel_files.push(f);
 
+			var reader = new FileReader();
+			reader.onload = function(e){
+				var img_html = "<img src=\"" + e.target.result + "\"/>";
+				$('.input-imgb-box').append(img_html);
+			}
+			reader.readAsDataURL(f);
+		})
+    }
+	function handleSFilesSelect(e){
+		var files = e.target.files;
+		var filesArr = Array.prototype.slice.call(files);
+
+		filesArr.forEach(function(f){
+			$('.input-imgs-box').empty();
+			if(!f.type.match("image.*")){
+				alert("확장자는 이미지 확장자만 가능")
+				return;
+			}
+			sel_files.push(f);
+
+			var reader = new FileReader();
+			reader.onload = function(e){
+				var img_html = "<img src=\"" + e.target.result + "\"/>";
+				$('.input-imgs-box').append(img_html);
+			}
+			reader.readAsDataURL(f);
+		})
+    }    
+	function handleEpFilesSelect(e){
+		var files = e.target.files;
+		var filesArr = Array.prototype.slice.call(files);
+
+		filesArr.forEach(function(f){
+			$('.ad-ep-preview').empty();
+			if(!f.type.match("image.*")){
+				alert("확장자는 이미지 확장자만 가능")
+				return;
+			}
+			sel_files.push(f);
+
+			var reader = new FileReader();
+			reader.onload = function(e){
+				var img_html = "<img src=\"" + e.target.result + "\"/>";
+				$('.ad-ep-preview').append(img_html);
+			}
+			reader.readAsDataURL(f);
+		})
+    }    
     </script> 

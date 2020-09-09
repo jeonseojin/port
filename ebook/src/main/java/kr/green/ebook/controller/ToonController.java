@@ -28,16 +28,16 @@ public class ToonController {
 	@RequestMapping(value = "/toon", method = RequestMethod.GET)
 	public ModelAndView toon(ModelAndView mv, Criteria cri) {
 		mv.setViewName("/toon/week");
-		ArrayList<ToonVo> wlist = adminService.weekList(cri);
+		ArrayList<ToonVo> wlist = toonService.weekList(cri);
 		mv.addObject("wlist", wlist);
 		PageMaker pm = adminService.getPageMakerByToon(cri);
 		mv.addObject("pm", pm);
 		return mv;
 	}
 	@RequestMapping(value = "/toon/ep", method = RequestMethod.GET)
-	public ModelAndView toonEp(ModelAndView mv,Integer num, Criteria cri) {
+	public ModelAndView toonEp(ModelAndView mv,String Title, Criteria cri) {
 		mv.setViewName("/toon/ep");
-		ToonVo toon = toonService.view(num);
+		ToonVo toon = toonService.view(Title);
 		mv.addObject("toon", toon);
 		mv.addObject("cri", cri);
 		return mv;

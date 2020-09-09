@@ -43,7 +43,7 @@
 				<thead>
 					<tr>
 						<th>장르</th>
-						<th><input type="text" class="toon-text-box ad-tail-t" readonly="readonly" value="${toon.t_code}"></th>
+						<th><input type="text" class="toon-text-box ad-genre ad-tail-t" readonly="readonly" value="${toon.t_code}"></th>
 						<th><div class="check-box"><input type="checkbox" name="t_code" value="#2" class="checkbox">로맨스</div></th>
 						<th><div class="check-box"><input type="checkbox" name="t_code" value="#3" class="checkbox">드라마</div></th>
 						<th><div class="check-box"><input type="checkbox" name="t_code" value="#4" class="checkbox">판타지</div></th>
@@ -100,6 +100,15 @@
 	    document.getElementById("t_week").value =input;
 	}
 	$(function(){
+		console.log(123);
+		
+		var genre=$('.ad-genre').val();
+		genre = genre.split(',');
+		$('input[name=t_code]').each(function(){
+			if(genre.indexOf($(this).val())!= -1)
+				$(this).attr('checked','true');
+			console.log($(this).val())
+		})
 		$('.btn-big-del').click(function(){
 			$('.ad-big-del').empty();
 		})

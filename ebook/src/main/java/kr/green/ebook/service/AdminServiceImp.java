@@ -53,12 +53,6 @@ public class AdminServiceImp implements AdminService {
 		adminDao.insertEp(ep);
 	}
 
-
-//연재페이지 요일별(숫자로) 분류
-	@Override
-	public ArrayList<ToonVo> weekList(Criteria cri) {
-		return adminDao.weekList(cri);
-	}
 //웹툰수정하기
 	@Override
 	public void updateToon(ToonVo toon) {
@@ -76,6 +70,10 @@ public class AdminServiceImp implements AdminService {
 		if(num==null) return null;
 		return adminDao.getToon(num);
 	}
+		@Override
+	public ToonVo getToonT(String Title) {
+		return adminDao.getToont(Title);
+	}
 //요일찾기
 	@Override
 	public WeekVo getWeek(Integer t_week) {
@@ -88,6 +86,8 @@ public class AdminServiceImp implements AdminService {
 		if(t_code==null|| t_code.length()==0) return null;
 		return adminDao.getGr(t_code);
 	}
+
+
 
 
 

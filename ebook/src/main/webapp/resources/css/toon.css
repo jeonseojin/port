@@ -1,20 +1,72 @@
 @charset "UTF-8";
 .comicInfo{
     position: relative;
-    color: #fff;
-    background: rgb(255, 109, 109);
+    color: rgb(75, 75, 75);
+    background: rgb(255, 193, 164);
     transform: translateZ(0);
+    width: 100%;
+    height: 390px;
+}
+.comicInfo-Epdetail{
+	position: absolute;
+	left: 50%;
+	width: 700px;
+	margin-left: -489px;
 }
 .comicInfo-img{
 	position: absolute;
     z-index: 1;
     top: 0;
-    left: -9px;
+    right: 0;
 }
 .comicInfo-title{
-	margin: 0 0 16px;
-    line-height: 38px;
-    font-size: 28px;
-    font-weight: 500;
+	padding-top: 43px;
+	padding-right: 120px;
+	text-align: center;
+    line-height: 47px;
+    font-size: 38px;
+    font-weight: bold;
     color: #fff;
+}
+.comicInfo-genre{
+	display: block;
+	padding-left: ;
+	padding: 17px 0 13px 130px;
+	font-weight: 600;
+	font-size: 16px;
+	line-height: 18px;
+	vertical-align: top;
+	color:#fff;
+}
+.comicInfo-plot{
+	font-size: 14px;
+	line-height: 19px;
+}
+.comicInfo-Ulike{
+	float: left;
+	position: relative;
+	height: 50px;
+	margin-right: 10px;
+	margin-top: 30px;
+}
+.comicInfo-btn-choice{
+	width: 130px;
+	height: 50px;
+	padding: 8px;
+	font-size: 16px;
+	font-weight: 500;
+	text-align: center;
+	vertical-align: middle;
+	border: 1px solid rgb(75, 75, 75); 
+	border-radius: 24px;
+	background-color: transparent;
+}
+.comicInfo-btn-updown{
+	width: 48px;
+	height: 48px;
+	border-radius: 24px;
+	margin-left: 8px;
+	border: 1px solid rgb(75, 75, 75); 
+	background-color: transparent;
+	font-size: 20px;
 }

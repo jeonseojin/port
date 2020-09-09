@@ -20,11 +20,7 @@ public interface AdminService {
 
 	void insertToon(ToonVo toon);
 
-	ArrayList<ToonVo> weekList(Criteria cri);
-
-	ToonVo getToon(Integer num);
-
-	ToonVo getToon(HttpServletRequest r);
+	ToonVo getToonT(String Title);
 
 	void updateToon(ToonVo toon);
 
@@ -33,5 +29,9 @@ public interface AdminService {
 	GenreVo getGr(String t_code);
 
 	WeekVo getWeek(Integer t_week);
+
+	ToonVo getToon(Integer num);
+
+	ToonVo getToon(HttpServletRequest r);
 
 }

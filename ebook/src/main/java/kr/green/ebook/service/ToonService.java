@@ -1,11 +1,13 @@
 package kr.green.ebook.service;
 
+import java.util.ArrayList;
+
+import kr.green.ebook.pagination.Criteria;
 import kr.green.ebook.vo.ToonVo;
 
 public interface ToonService {
 
-	ToonVo view(Integer num);
+	ToonVo view(String Title);
 
-
-
+	ArrayList<ToonVo> weekList(Criteria cri);
 }

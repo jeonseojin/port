@@ -50,7 +50,7 @@
 			<beans:ref bean="loginInterceptor"/>
 		</interceptor>
 		<interceptor>
-	        <mapping path="/admin/uplod"/>
+	        <mapping path="/week"/>
 	        <beans:ref bean="authInterceptor"/>
 	    </interceptor>
 	</interceptors>

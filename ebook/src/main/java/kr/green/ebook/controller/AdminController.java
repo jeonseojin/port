@@ -109,24 +109,26 @@ public class AdminController {
 	
 	//작품상세페이지
 	@RequestMapping(value = "/admin/detail", method = RequestMethod.GET)
-	public ModelAndView toonEp(ModelAndView mv,Integer num) {
+	public ModelAndView toonEp(ModelAndView mv,String Title,Integer num, Criteria cri) {
 		mv.setViewName("/admin/detail");
-		ToonVo toon = toonService.view(num);
+		ToonVo toon = toonService.view(Title);
 		mv.addObject("toon", toon);
 		WeekVo week = adminService.getWeek(adminService.getToon(num).getT_week());
 		mv.addObject("week", week);
+		mv.addObject("cri", cri);
 //		GenreVo gr = adminService.getGr(adminService.getToon(num).getT_code());
 //		mv.addObject("gr", gr);
 		return mv;
 	}
 	//수정페이지
 	@RequestMapping(value = "/admin/modify", method = RequestMethod.GET)
-	public ModelAndView toonEpModify(ModelAndView mv,Integer num) {
+	public ModelAndView toonEpModify(ModelAndView mv,Integer num, Criteria cri) {
 		mv.setViewName("/admin/modify");
 		ToonVo toon = adminService.getToon(num);
 		mv.addObject("toon", toon);
 		WeekVo week = adminService.getWeek(adminService.getToon(num).getT_week());
 		mv.addObject("week", week);
+		mv.addObject("cri", cri);
 		return mv;
 	}
 	
