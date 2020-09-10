@@ -43,19 +43,19 @@
 				<thead>
 					<tr>
 						<th>장르</th>
-						<th><input type="text" class="toon-text-box ad-genre ad-tail-t" readonly="readonly" value="${toon.t_code}"></th>
-						<th><div class="check-box"><input type="checkbox" name="t_code" value="#2" class="checkbox">로맨스</div></th>
-						<th><div class="check-box"><input type="checkbox" name="t_code" value="#3" class="checkbox">드라마</div></th>
-						<th><div class="check-box"><input type="checkbox" name="t_code" value="#4" class="checkbox">판타지</div></th>
-						<th><div class="check-box"><input type="checkbox" name="t_code" value="#5" class="checkbox">개그</div></th>
-						<th><div class="check-box"><input type="checkbox" name="t_code" value="#6" class="checkbox">액션</div></th>
-						<th><div class="check-box"><input type="checkbox" name="t_code" value="#7" class="checkbox">학원</div></th>
-						<th><div class="check-box"><input type="checkbox" name="t_code" value="#8" class="checkbox">미스터리</div></th>
-						<th><div class="check-box"><input type="checkbox" name="t_code" value="#9" class="checkbox">일상</div></th>
+						<th><input type="text" class="toon-text-box ad-genre" readonly="readonly" value="${toon.t_type}"></th>
+						<th><div class="ad-mocheck-box"><input type="checkbox" name="t_type" value="로맨스" class="checkbox">로맨스</div></th>
+						<th><div class="ad-mocheck-box"><input type="checkbox" name="t_type" value="드라마" class="checkbox">드라마</div></th>
+						<th><div class="ad-mocheck-box"><input type="checkbox" name="t_type" value="판타지" class="checkbox">판타지</div></th>
+						<th><div class="ad-mocheck-box"><input type="checkbox" name="t_type" value="개그" class="checkbox">개그</div></th>
+						<th><div class="ad-mocheck-box"><input type="checkbox" name="t_type" value="액션" class="checkbox">액션</div></th>
+						<th><div class="ad-mocheck-box"><input type="checkbox" name="t_type" value="학원" class="checkbox">학원</div></th>
+						<th><div class="ad-mocheck-box"><input type="checkbox" name="t_type" value="미스터리" class="checkbox">미스터리</div></th>
+						<th><div class="ad-mocheck-box"><input type="checkbox" name="t_type" value="일상" class="checkbox">일상</div></th>
 					</tr>
 				</thead>
 			</table>
-			
+			<input type="checkbox" name="t_type" value="전체" checked="checked" class="checkbox display-none">
 			<div class="ad-img-box display-flex">
 				<div class="ad-img-box">
 					<h4 class="ad-img-h">대표(big) 이미지</h4>
@@ -99,12 +99,10 @@
 	function Selinput(input){
 	    document.getElementById("t_week").value =input;
 	}
-	$(function(){
-		console.log(123);
-		
+	$(function(){		
 		var genre=$('.ad-genre').val();
 		genre = genre.split(',');
-		$('input[name=t_code]').each(function(){
+		$('input[name=t_type]').each(function(){
 			if(genre.indexOf($(this).val())!= -1)
 				$(this).attr('checked','true');
 			console.log($(this).val())

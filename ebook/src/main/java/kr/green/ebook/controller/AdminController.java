@@ -91,6 +91,22 @@ public class AdminController {
 	}
 	
 	//연재등록 기능
+//	@RequestMapping(value = "/admin/ep", method = RequestMethod.POST)
+//	public ModelAndView adminEpPost(ModelAndView mv, EpisodeVo ep, MultipartHttpServletRequest mr) throws IOException, Exception {
+//		mv.setViewName("redirect:/admin/toon");
+//		String filename = "";
+//		byte[] fileby;
+//		List<MultipartFile> fileList = mr.getFiles("file2");
+//		for(MultipartFile filePart : fileList) {
+//			filename = filePart.getOriginalFilename();
+//			fileby = filePart.getBytes();
+//			String e_img = UploadFileUtils.uploadFile(uploadPath,"\\"+ ep.getE_t_title(),filename,fileby);
+//			ep.setE_img(e_img);
+//			adminService.insertEp(ep);
+//		}
+//		return mv;
+//	}
+	
 	@RequestMapping(value = "/admin/ep", method = RequestMethod.POST)
 	public ModelAndView adminEpPost(ModelAndView mv, EpisodeVo ep, MultipartHttpServletRequest mr) throws IOException, Exception {
 		mv.setViewName("redirect:/admin/toon");

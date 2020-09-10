@@ -11,7 +11,7 @@ public class EpisodeVo {
 	private Date e_date;
 	private int e_coin;
 	private String e_img;
-	private String e_edition;
+	private int e_edition;
 	
 	//get&set
 	public int getE_num() {
@@ -60,18 +60,19 @@ public class EpisodeVo {
 		this.e_img = e_img2;
 	}
 	
-	public String getE_edition() {
+	public int getE_edition() {
 		return e_edition;
 	}
-	public void setE_edition(String e_edition) {
+	public void setE_edition(int e_edition) {
 		this.e_edition = e_edition;
 	}
-	
-	// tostring (찍어보는역할)
 	@Override
 	public String toString() {
 		return "EpisodeVo [e_num=" + e_num + ", e_t_title=" + e_t_title + ", e_title=" + e_title + ", e_date=" + e_date
 				+ ", e_coin=" + e_coin + ", e_img=" + e_img + ", e_edition=" + e_edition + "]";
 	}
+	
+	// tostring (찍어보는역할)
+
 	
 }

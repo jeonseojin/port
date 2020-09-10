@@ -57,7 +57,7 @@
 	font-weight: 500;
 	text-align: center;
 	vertical-align: middle;
-	border: 1px solid rgb(75, 75, 75); 
+	border: 1px solid rgb(75,75,75); 
 	border-radius: 24px;
 	background-color: transparent;
 }
@@ -69,4 +69,52 @@
 	border: 1px solid rgb(75, 75, 75); 
 	background-color: transparent;
 	font-size: 20px;
+}
+.comic-Content{
+	width:100%;
+}
+.cont-update{
+	position: relative;
+	padding-top: 39px;
+}
+.cont-recommend{
+	overflow: hidden;
+	margin-top: 53px;
+	padding-bottom: 40px;
+}
+.comiclist-update{
+	width: 990px;
+	margin-bottom: 15px;
+}
+.comiclist-item{
+	display: flex;
+	float: left;
+	width: 380px;
+	margin-right: 20px;
+}
+.comic-itemlink{
+	margin-right: 20px;
+}
+.comic-items-box{
+	position: relative;
+	width:120px;
+	font-size: 15px;
+	font-weight: bold;
+	color: rgb(112,112,112);
+}
+.comic-items-eptitle{
+	position: absolute;
+	top: 28px;
+	font-size: 16px;
+	font-weight: bold;
+	color: black;
+}
+.comic-itemedtion{
+	position: absolute;
+	top: 0;
+}
+.comic-itemday{
+	position: absolute;
+	bottom: 10px;
+	width: 100%;
 }

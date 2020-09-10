@@ -42,14 +42,15 @@ public class AdminServiceImp implements AdminService {
 	@Override
 	public void insertToon(ToonVo toon) {
 		if(toon.getT_week()==0) toon.setT_week('1');
-		if(toon.getT_code() == null || toon.getT_code().length()==0) toon.setT_code("#1");
+		if(toon.getT_type() == null || toon.getT_type().length()==0) toon.setT_type("#1");
 		toon.setLastEpisode("N");
 		adminDao.insertToon(toon);
 	}
 //연재작품등록
 	@Override
-	public void insertEp(EpisodeVo ep) {		
-		if(ep.getE_coin()==0) ep.setE_coin('2');
+	public void insertEp(EpisodeVo ep) {
+		if(ep.getE_title()==null||ep.getE_title().length()==0)
+			ep.setE_title(null);
 		adminDao.insertEp(ep);
 	}
 
@@ -82,9 +83,9 @@ public class AdminServiceImp implements AdminService {
 	}
 //장르찾기
 	@Override
-	public GenreVo getGr(String t_code) {
-		if(t_code==null|| t_code.length()==0) return null;
-		return adminDao.getGr(t_code);
+	public GenreVo getGr(String t_type) {
+		if(t_type==null|| t_type.length()==0) return null;
+		return adminDao.getGr(t_type);
 	}
 
 

@@ -44,12 +44,15 @@
 	margin-top: 40px; 
 }
 .toon-list{
+	position:relative;
 	list-style: none;
 	overflow: hidden;
 	float: left;
+	width: 225px;
+	height: 190px;
 }
 .toon-item{
-    position: relative;
+   
     float: left;
     width: 200px;
     height: 170px;
@@ -60,15 +63,16 @@
     vertical-align: top;
 }
 .toon-link{
+	position: relative;
     height: 170px;
     display: block;
     text-decoration: none;
     color: #000;
 }
 .toon-title{
+	position:absolute;
+	bottom: 0;
     height: 17px;
-    padding-top: 11px;
-    margin-top: 10px;
     overflow: hidden;
     line-height: 17px;
     width: 100%;
@@ -78,6 +82,8 @@
     cursor: pointer;
 }
 .toon-artist{
+	position:absolute;
+	bottom: -15px;
     overflow: hidden;
     display: block;
     font-size: 12px;

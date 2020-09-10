@@ -36,4 +36,8 @@ public interface AdminDao {
 
 	ToonVo getToont(@Param("Title")String Title);
 
+	ArrayList<EpisodeVo> getEpcover(@Param("title")String title);
+
+	ArrayList<EpisodeVo> getEpList(@Param("title")String title);
+
 }

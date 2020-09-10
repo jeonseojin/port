@@ -13,6 +13,7 @@ import kr.green.ebook.pagination.PageMaker;
 import kr.green.ebook.service.AdminService;
 import kr.green.ebook.service.MemberService;
 import kr.green.ebook.service.ToonService;
+import kr.green.ebook.vo.EpisodeVo;
 import kr.green.ebook.vo.ToonVo;
 
 @Controller
@@ -35,11 +36,23 @@ public class ToonController {
 		return mv;
 	}
 	@RequestMapping(value = "/toon/ep", method = RequestMethod.GET)
-	public ModelAndView toonEp(ModelAndView mv,String Title, Criteria cri) {
+	public ModelAndView toonEp(ModelAndView mv,String Title,String title, Criteria cri) {
 		mv.setViewName("/toon/ep");
 		ToonVo toon = toonService.view(Title);
 		mv.addObject("toon", toon);
-		mv.addObject("cri", cri);
+		title = toon.getTitle();
+		ArrayList<EpisodeVo> epcov = toonService.getEpcover(title);
+		mv.addObject("epcov", epcov);
+		System.out.println(epcov);
+		return mv;
+	}
+	@RequestMapping(value = "/toon/comic", method = RequestMethod.GET)
+	public ModelAndView toonComic(ModelAndView mv,String title, String Title) {
+		mv.setViewName("/toon/comic");
+		ToonVo toon = adminService.getToonT(Title);
+		title = toon.getTitle();
+		ArrayList<EpisodeVo> eplist = toonService.getEpList(title);
+		mv.addObject("eplist", eplist);
 		return mv;
 	}
 }

@@ -14,110 +14,94 @@
     </div>
     <div class="toon-box">
     	<c:forEach var="toon" items="${wlist}">
-		<ul class="toon-list Mon">
-			<c:choose>
-				<c:when test="${toon.t_week==1}" >
-				    <li class="toon-item">
-				       	<a class="toon-link" href="<%=request.getContextPath()%>/toon/ep?Title=${toon.t_title}&page=${pm.cri.page}&type=${pm.cri.type}&search=${pm.cri.search}">
-				             <img src="/ebook/resources/img${toon.t_img}" height="140" class="img_thumb">
-				             <span class="toon-title">${toon.title}</span>
-				             <span class="toon-artist">${toon.artist}</span>
-			             </a>
-			        </li>
-		        </c:when>
-	        </c:choose>
-	    </ul>
-	    <ul class="toon-list Tue">
-			<c:choose>
-				<c:when test="${toon.t_week==2}" >
-				    <li class="toon-item">
-				       	<a class="toon-link" href="<%=request.getContextPath()%>/toon/ep?Title=${toon.t_title}&page=${pm.cri.page}&type=${pm.cri.type}&search=${pm.cri.search}">
-				             <img src="/ebook/resources/img${toon.t_img}" height="140" class="img_thumb">
-				             <span class="toon-title">${toon.title}</span>
-				             <span class="toon-artist">${toon.artist}</span>
-			             </a>
-			        </li>
-		        </c:when>
-	        </c:choose>
-	    </ul>
-	    <ul class="toon-list Wed">
-			<c:choose>
-				<c:when test="${toon.t_week==3}" >
-				    <li class="toon-item">
-				       	<a class="toon-link" href="<%=request.getContextPath()%>/toon/ep?Title=${toon.t_title}&page=${pm.cri.page}&type=${pm.cri.type}&search=${pm.cri.search}">
-				             <img src="/ebook/resources/img${toon.t_img}" height="140" class="img_thumb">
-				             <span class="toon-title">${toon.title}</span>
-				             <span class="toon-artist">${toon.artist}</span>
-			             </a>
-			        </li>
-		        </c:when>
-	        </c:choose>
-	    </ul>
-	    <ul class="toon-list Thur">
-			<c:choose>
-				<c:when test="${toon.t_week==4}" >
-				    <li class="toon-item">
-				       	<a class="toon-link" href="<%=request.getContextPath()%>/toon/ep?Title=${toon.t_title}&page=${pm.cri.page}&type=${pm.cri.type}&search=${pm.cri.search}">
-				             <img src="/ebook/resources/img${toon.t_img}" height="140" class="img_thumb">
-				             <span class="toon-title">${toon.title}</span>
-				             <span class="toon-artist">${toon.artist}</span>
-			             </a>
-			        </li>
-		        </c:when>
-	        </c:choose>
-	    </ul>
-	    <ul class="toon-list Fri">
-			<c:choose>
-				<c:when test="${toon.t_week==5}" >
-				    <li class="toon-item">
-				       	<a class="toon-link" href="<%=request.getContextPath()%>/toon/ep?Title=${toon.t_title}&page=${pm.cri.page}&type=${pm.cri.type}&search=${pm.cri.search}">
-				             <img src="/ebook/resources/img${toon.t_img}" height="140" class="img_thumb">
-				             <span class="toon-title">${toon.title}</span>
-				             <span class="toon-artist">${toon.artist}</span>
-			             </a>
-			        </li>
-		        </c:when>
-	        </c:choose>
-	    </ul>
-	    <ul class="toon-list Sat">
-			<c:choose>
-				<c:when test="${toon.t_week==6}" >
-				    <li class="toon-item">
-				       	<a class="toon-link" href="<%=request.getContextPath()%>/toon/ep?Title=${toon.t_title}&page=${pm.cri.page}&type=${pm.cri.type}&search=${pm.cri.search}">
-				             <img src="/ebook/resources/img${toon.t_img}" height="140" class="img_thumb">
-				             <span class="toon-title">${toon.title}</span>
-				             <span class="toon-artist">${toon.artist}</span>
-			             </a>
-			        </li>
-		        </c:when>
-	        </c:choose>
-	    </ul>
-	    <ul class="toon-list Sun">
-			<c:choose>
-				<c:when test="${toon.t_week==7}" >
-				    <li class="toon-item">
-				       	<a class="toon-link" href="<%=request.getContextPath()%>/toon/ep?Title=${toon.t_title}&page=${pm.cri.page}&type=${pm.cri.type}&search=${pm.cri.search}">
-				             <img src="/ebook/resources/img${toon.t_img}" height="140" class="img_thumb">
-				             <span class="toon-title">${toon.title}</span>
-				             <span class="toon-artist">${toon.artist}</span>
-			             </a>
-			        </li>
-		        </c:when>
-	        </c:choose>
-	    </ul>
-	    <ul class="toon-list Ten">
-			<c:choose>
-				<c:when test="${toon.t_week==8}" >
-				    <li class="toon-item">
-				       	<a class="toon-link" href="<%=request.getContextPath()%>/toon/ep?Title=${toon.t_title}&page=${pm.cri.page}&type=${pm.cri.type}&search=${pm.cri.search}">
-				             <img src="/ebook/resources/img${toon.t_img}" height="140" class="img_thumb">
-				             <span class="toon-title">${toon.title}</span>
-				             <span class="toon-artist">${toon.artist}</span>
-			             </a>
-			        </li>
-		        </c:when>
-	        </c:choose>
-	    </ul>
+	    	<c:if test="${toon.t_week==1}">
+			    <ul class="toon-list Mon">
+					 <li class="toon-item">
+						<a class="toon-link" href="<%=request.getContextPath()%>/toon/ep?Title=${toon.t_title}&page=${pm.cri.page}&type=${pm.cri.type}&search=${pm.cri.search}">
+						    <img src="/ebook/resources/img${toon.t_img}" height="140" class="img_thumb">
+						    <span class="toon-title">${toon.title}</span>
+							<span class="toon-artist">${toon.artist}</span>
+						</a>
+					</li>
+			    </ul>
+		    </c:if>
+	    	<c:if test="${toon.t_week==2}">
+			    <ul class="toon-list Tue">
+					 <li class="toon-item">
+						<a class="toon-link" href="<%=request.getContextPath()%>/toon/ep?Title=${toon.t_title}&page=${pm.cri.page}&type=${pm.cri.type}&search=${pm.cri.search}">
+						    <img src="/ebook/resources/img${toon.t_img}" height="140" class="img_thumb">
+						    <span class="toon-title">${toon.title}</span>
+							<span class="toon-artist">${toon.artist}</span>
+						</a>
+					</li>
+			    </ul>
+		    </c:if>
+		    <c:if test="${toon.t_week==3}">
+			    <ul class="toon-list Wed">
+					 <li class="toon-item">
+						<a class="toon-link" href="<%=request.getContextPath()%>/toon/ep?Title=${toon.t_title}&page=${pm.cri.page}&type=${pm.cri.type}&search=${pm.cri.search}">
+						    <img src="/ebook/resources/img${toon.t_img}" height="140" class="img_thumb">
+						    <span class="toon-title">${toon.title}</span>
+							<span class="toon-artist">${toon.artist}</span>
+						</a>
+					</li>
+			    </ul>
+		    </c:if>
+		    <c:if test="${toon.t_week==4}">
+			    <ul class="toon-list Thur">
+					 <li class="toon-item">
+						<a class="toon-link" href="<%=request.getContextPath()%>/toon/ep?Title=${toon.t_title}&page=${pm.cri.page}&type=${pm.cri.type}&search=${pm.cri.search}">
+						    <img src="/ebook/resources/img${toon.t_img}" height="140" class="img_thumb">
+						    <span class="toon-title">${toon.title}</span>
+							<span class="toon-artist">${toon.artist}</span>
+						</a>
+					</li>
+			    </ul>
+		    </c:if>
+		    <c:if test="${toon.t_week==5}">
+			    <ul class="toon-list Fri">
+					 <li class="toon-item">
+						<a class="toon-link" href="<%=request.getContextPath()%>/toon/ep?Title=${toon.t_title}&page=${pm.cri.page}&type=${pm.cri.type}&search=${pm.cri.search}">
+						    <img src="/ebook/resources/img${toon.t_img}" height="140" class="img_thumb">
+						    <span class="toon-title">${toon.title}</span>
+							<span class="toon-artist">${toon.artist}</span>
+						</a>
+					</li>
+			    </ul>
+		    </c:if>
+		    <c:if test="${toon.t_week==6}">
+			    <ul class="toon-list Sat">
+					 <li class="toon-item">
+						<a class="toon-link" href="<%=request.getContextPath()%>/toon/ep?Title=${toon.t_title}&page=${pm.cri.page}&type=${pm.cri.type}&search=${pm.cri.search}">
+						    <img src="/ebook/resources/img${toon.t_img}" height="140" class="img_thumb">
+						    <span class="toon-title">${toon.title}</span>
+							<span class="toon-artist">${toon.artist}</span>
+						</a>
+					</li>
+			    </ul>
+		    </c:if>
+		    <c:if test="${toon.t_week==7}">
+			    <ul class="toon-list Sun">
+					 <li class="toon-item">
+						<a class="toon-link" href="<%=request.getContextPath()%>/toon/ep?Title=${toon.t_title}&page=${pm.cri.page}&type=${pm.cri.type}&search=${pm.cri.search}">
+						    <img src="/ebook/resources/img${toon.t_img}" height="140" class="img_thumb">
+						    <span class="toon-title">${toon.title}</span>
+							<span class="toon-artist">${toon.artist}</span>
+						</a>
+					</li>
+			    </ul>
+		    </c:if>
+		    <c:if test="${toon.t_week==8}">
+			    <ul class="toon-list Ten">
+					 <li class="toon-item">
+						<a class="toon-link" href="<%=request.getContextPath()%>/toon/ep?Title=${toon.t_title}&page=${pm.cri.page}&type=${pm.cri.type}&search=${pm.cri.search}">
+						    <img src="/ebook/resources/img${toon.t_img}" height="140" class="img_thumb">
+						    <span class="toon-title">${toon.title}</span>
+							<span class="toon-artist">${toon.artist}</span>
+						</a>
+					</li>
+			    </ul>
+		    </c:if>
 	    </c:forEach>
     </div>	
 </form>

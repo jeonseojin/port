@@ -11,20 +11,18 @@
 						<th>${toon.t_title}</th>
 						<th>작가</th>
 						<th>${toon.artist}</th>
-						<th>등록관리자</th>
-						<th>${member.name}(${member.id})</th>
 					</tr>
 				</thead>
 			</table>
 			<h4 class="ad-plot-h">줄거리</h4>
-			<textarea name="plot" class="ad-plot">${toon.plot}</textarea>
+			<div name="plot" class="ad-plot">${toon.plot}</div>
 						<table class="table table-hover">
 				<thead>
 					<tr>
 						<th class="ad-tail-t">연재 요일 :</th>
 						<th>${week.week}</th>
 						<th class="ad-tail-t">장르 :</th>
-						<th>${toon.t_code}</th>
+						<th>${toon.t_type}</th>
 					</tr>
 				</thead>
 			</table>
@@ -49,8 +47,8 @@
 			</div>
 			<a href="<%=request.getContextPath() %>/admin/toon?page=${cri.page}&type=${cri.type}&search=${cri.search}" class="float-left"><button type="button" class="btn btn-outline-secondary">목록</button></a>
 			<div class="float-right">
-				<a href="<%=request.getContextPath()%>/admin/modify?title=${toon.t_title}&tweek=${toon.t_week}"><button type="button" class="btn btn-primary">수정</button></a>
-				<a href="<%=request.getContextPath()%>/admin/delete?title=${toon.t_title}"><button type="button" class="btn btn-danger">삭제</button></a>
+				<a href="<%=request.getContextPath()%>/admin/modify?num=${toon.t_num}&Title=${toon.t_title}&tweek=${toon.t_week}"><button type="button" class="btn btn-primary">수정</button></a>
+				<a href="<%=request.getContextPath()%>/admin/delete?Title=${toon.t_title}"><button type="button" class="btn btn-danger">삭제</button></a>
 			</div>
 			<input type="hidden" id="num" value="${toon.t_num}">
 		</form>

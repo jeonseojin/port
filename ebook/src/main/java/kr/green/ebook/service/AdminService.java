@@ -20,8 +20,6 @@ public interface AdminService {
 
 	void insertToon(ToonVo toon);
 
-	ToonVo getToonT(String Title);
-
 	void updateToon(ToonVo toon);
 
 	void insertEp(EpisodeVo ep);
@@ -29,6 +27,8 @@ public interface AdminService {
 	GenreVo getGr(String t_code);
 
 	WeekVo getWeek(Integer t_week);
+	
+	ToonVo getToonT(String Title);
 
 	ToonVo getToon(Integer num);
 

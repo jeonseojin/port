@@ -12,7 +12,7 @@ public class ToonVo {
 	private int choice;
 	private int up;
 	private String t_img;
-	private String t_code;
+	private String t_type;
 	private String lastEpisode;
 	private Date t_date;
 	private int t_week;
@@ -74,12 +74,7 @@ public class ToonVo {
 	public void setT_img(String t_img) {
 		this.t_img = t_img;
 	}
-	public String getT_code() {
-		return t_code;
-	}
-	public void setT_code(String t_code) {
-		this.t_code = t_code;
-	}
+
 	public String getLastEpisode() {
 		return lastEpisode;
 	}
@@ -113,10 +108,18 @@ public class ToonVo {
 	public void setT_typify(String t_typify) {
 		this.t_typify = t_typify;
 	}
+	
+	
+	public String getT_type() {
+		return t_type;
+	}
+	public void setT_type(String t_type) {
+		this.t_type = t_type;
+	}
 	@Override
 	public String toString() {
 		return "ToonVo [t_num=" + t_num + ", title=" + title + ", artist=" + artist + ", plot=" + plot + ", choice="
-				+ choice + ", up=" + up + ", t_img=" + t_img + ", t_code=" + t_code + ", lastEpisode=" + lastEpisode
+				+ choice + ", up=" + up + ", t_img=" + t_img + ", t_type=" + t_type + ", lastEpisode=" + lastEpisode
 				+ ", t_date=" + t_date + ", t_week=" + t_week + ", t_title=" + t_title + ", t_views=" + t_views
 				+ ", t_typify=" + t_typify + "]";
 	}

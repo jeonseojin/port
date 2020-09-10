@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import kr.green.ebook.dao.AdminDao;
 import kr.green.ebook.pagination.Criteria;
+import kr.green.ebook.vo.EpisodeVo;
 import kr.green.ebook.vo.ToonVo;
 
 @Service
@@ -28,6 +29,20 @@ public class ToonServiceImp implements ToonService {
 	@Override
 	public ArrayList<ToonVo> weekList(Criteria cri) {
 		return adminDao.weekList(cri);
+	}
+
+	//만화내용 전 보여지는내용
+	@Override
+	public ArrayList<EpisodeVo> getEpcover(String title) {
+		System.out.println("title:"+title);
+		return adminDao.getEpcover(title);
+	}
+
+	//만화내용
+	@Override
+	public ArrayList<EpisodeVo> getEpList(String title) {
+		System.out.println("title:"+title);
+		return adminDao.getEpList(title);
 	}
   
 }

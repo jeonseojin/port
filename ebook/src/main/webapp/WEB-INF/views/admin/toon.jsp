@@ -32,7 +32,7 @@
 					<c:forEach var="toon" items="${tlist}">
 						<tr class="textline-center">
 							<td>${toon.t_num}</td>
-							<td class="adt-thbox"><a  href="<%=request.getContextPath()%>/admin/detail?title=${toon.t_title}&page=${pm.cri.page}&type=${pm.cri.type}&search=${pm.cri.search}"><img class="adt-img-box" src="/ebook/resources/img${toon.t_img}"></a></td>
+							<td class="adt-thbox"><a  href="<%=request.getContextPath()%>/admin/detail?num=${toon.t_num}&Title=${toon.t_title}&page=${pm.cri.page}&type=${pm.cri.type}&search=${pm.cri.search}"><img class="adt-img-box" src="/ebook/resources/img${toon.t_img}"></a></td>
 							<td>${toon.title}</td>
 							<td class="adt-thplot">${toon.plot}</td>
 							<td>${toon.choice}</td>
@@ -110,19 +110,19 @@
 					<option value="7">일요일</option>
 					<option value="8">열흘</option>
 				</select>
-				<input type="hidden" id="t_week" name="t_week">
 				<h4 class="ad-plot-h">장르선택</h4>
-				<div class="check-box display-none"><input type="checkbox" name="t_code" value="#1" class="checkbox" checked="checked">전체</div>
-				<div class="check-box"><input type="checkbox" name="t_code" value="#2" class="checkbox">로맨스</div>
-				<div class="check-box"><input type="checkbox" name="t_code" value="#3" class="checkbox">드라마</div>
-				<div class="check-box"><input type="checkbox" name="t_code" value="#4" class="checkbox">판타지</div>
-				<div class="check-box"><input type="checkbox" name="t_code" value="#5" class="checkbox">개그</div>
-				<div class="check-box"><input type="checkbox" name="t_code" value="#6" class="checkbox">액션</div>
-				<div class="check-box"><input type="checkbox" name="t_code" value="#7" class="checkbox">학원</div>
-				<div class="check-box"><input type="checkbox" name="t_code" value="#8" class="checkbox">미스터리</div>
-				<div class="check-box"><input type="checkbox" name="t_code" value="#9" class="checkbox">일상</div>
+				<div class="check-box display-none"><input type="checkbox" name="t_type" value="전체" class="checkbox" checked="checked">전체</div>
+				<div class="check-box"><input type="checkbox" name="t_type" value="로맨스" class="checkbox">로맨스</div>
+				<div class="check-box"><input type="checkbox" name="t_type" value="드라마" class="checkbox">드라마</div>
+				<div class="check-box"><input type="checkbox" name="t_type" value="판타지" class="checkbox">판타지</div>
+				<div class="check-box"><input type="checkbox" name="t_type" value="개그" class="checkbox">개그</div>
+				<div class="check-box"><input type="checkbox" name="t_type" value="액션" class="checkbox">액션</div>
+				<div class="check-box"><input type="checkbox" name="t_type" value="학원" class="checkbox">학원</div>
+				<div class="check-box"><input type="checkbox" name="t_type" value="미스터리" class="checkbox">미스터리</div>
+				<div class="check-box"><input type="checkbox" name="t_type" value="일상" class="checkbox">일상</div>
 			</div>
 			<button class="btn btn-primary float-right">등록</button>
+			<input type="hidden" id="t_week" name="t_week">
 		</form>
 	</div>
 	
@@ -133,12 +133,19 @@
 				<thead>
 					<tr>
 						<th>웹툰 제목</th>
-						<th><input type="text" class="toon-text-box toon-text-title e_t_title" name="e_t_title" placeholder="웹툰제목을 입력하세요">
+						<th>
+							<input type="text" class="toon-text-box toon-text-title e_t_title" name="e_t_title" placeholder="웹툰제목을 입력하세요">
+						</th>
 						<th>제목</th>
 						<th><input type="text" class="toon-text-box toon-text-title" name="e_title" placeholder="부제목을 입력하세요"></th>
 						<th><input type="text" class="toon-text-box toon-text-edition " name="e_edition" placeholder="몇">회</th>
-						<th>등록관리자</th>
-						<th>${member.name}(${member.id})</th>
+						<th>금액</th>
+						<th>
+							<select class="ep-coin" onchange="Coinput(this.value)">
+								<option value="0">무료</option>
+								<option value="2">결제</option>
+							</select>
+						</th>
 					</tr>
 				</thead>
 			</table>
@@ -151,6 +158,7 @@
 				</div>
 
 			<button class="btn btn-primary float-right btn-mul-img" type="submit">등록</button>
+			<input type="hidden" id="e_coin" name="e_coin">
 		</form>
 	</div>
 	
@@ -160,6 +168,9 @@
     <script>
     function Selinput(input){
         document.getElementById("t_week").value =input;
+    }
+    function Coinput(input){
+        document.getElementById("e_coin").value =input;
     }
     var sel_files=[];
 	$(document).ready(function(){
