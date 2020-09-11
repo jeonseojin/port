@@ -113,4 +113,12 @@
 			on e_t_title = title
 			where e_img like '%cover%'
 	</select>
+	
+<!-- 연재댓글 가져오기 -->
+	<select id="getCmtList" resultType="kr.green.ebook.vo.EpcommentVo">
+		select * from epcomment
+			join (SELECT * FROM toon where t_title like #{title}) as st
+			on co_epTitle = title
+			where co_epEdition like #{edition}
+	</select>
 </mapper>

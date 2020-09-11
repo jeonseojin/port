@@ -125,10 +125,8 @@
 }
 .epcomment-box{
 	width: 980px;
-	height: 650px;
 	margin: 80px auto 0 auto;
 	position: relative;
-	
 }
 .eptit-cmt{
 	display: block;
@@ -155,16 +153,23 @@
 .box-comment{
 	position: relative;
 	margin-bottom: 12px;
-	padding: 30px 20px 20px 20px;
+	padding: 30px 20px 30px 20px;
 	border: 1px solid #e5e5e5;
 	height: 140px;
 }
 .epcomment-submit{
 	width:100%;
-	height: 94px;
+	height: 100%;
 	float: left;
 	position: relative;
 	border: none;
+}
+.epcomment-regist{
+	width: 100%;
+	height: 100%;
+}
+.notmem-reg{
+	color: #a1a1a1;
 }
 .epregist-name{
 	position: absolute;
@@ -195,4 +200,53 @@
 	border: none;
 	color: #e83d3d;
 	background-color: black;
+}
+.epcmt-box{
+	width: 100%;
+	margin-top: 30px;
+	min-height: 140px;
+}
+.epcmt-list{
+	display:block;
+	width: 93%;
+	position: relative;
+	height: 72px;
+	font-size: 12px;
+	margin: 0 auto;
+	border-bottom: 1px solid #e5e5e5;
+}
+.epcmt-up,.epcmt-down{
+	background-color: transparent;
+	border: 1px solid #e5e5e5;
+	font-size: 15px;
+	border-bottom: 0;
+}
+.epcmt-up{
+	color: red;
+	position: absolute;
+	right: 0;
+	bottom: 25px;
+}
+.epcmt-down{
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	
+}
+.epcmt-down>i,.epcmt-up>i{
+	margin-right: 15px;
+}
+.epcmt-date{
+	color: rgb(98,98,98);
+}
+.epcmt-name{
+	font-weight: bold;
+}
+.epcmt-end{
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+}
+.epcmt-text{
+	width: 720px;
 }

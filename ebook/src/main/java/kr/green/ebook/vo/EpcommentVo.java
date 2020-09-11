@@ -4,13 +4,16 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class CommentVo {
+public class EpcommentVo {
 	private int co_num;
 	private String co_member;
 	private String co_content;
 	private Date co_date;
 	private int co_up;
 	private int co_down;
+	private String co_epTitle;
+	private String co_epEdtion;
+	
 	public int getCo_num() {
 		return co_num;
 	}
@@ -56,10 +59,24 @@ public class CommentVo {
 	public void setCo_down(int co_down) {
 		this.co_down = co_down;
 	}
+	
+	public String getCo_epTitle() {
+		return co_epTitle;
+	}
+	public void setCo_epTitle(String co_epTitle) {
+		this.co_epTitle = co_epTitle;
+	}
+	public String getCo_epEdtion() {
+		return co_epEdtion;
+	}
+	public void setCo_epEdtion(String co_epEdtion) {
+		this.co_epEdtion = co_epEdtion;
+	}
 	@Override
 	public String toString() {
 		return "CommentVo [co_num=" + co_num + ", co_member=" + co_member + ", co_content=" + co_content + ", co_date="
-				+ co_date + ", co_up=" + co_up + ", co_down=" + co_down + "]";
+				+ co_date + ", co_up=" + co_up + ", co_down=" + co_down + ", co_epTitle=" + co_epTitle
+				+ ", co_epEdtion=" + co_epEdtion + "]";
 	}
 
 	

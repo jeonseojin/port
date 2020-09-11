@@ -8,11 +8,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import kr.green.ebook.dao.AdminDao;
 import kr.green.ebook.pagination.Criteria;
 import kr.green.ebook.pagination.PageMaker;
 import kr.green.ebook.service.AdminService;
 import kr.green.ebook.service.MemberService;
 import kr.green.ebook.service.ToonService;
+import kr.green.ebook.vo.EpcommentVo;
 import kr.green.ebook.vo.EpisodeVo;
 import kr.green.ebook.vo.ToonVo;
 
@@ -25,6 +27,8 @@ public class ToonController {
 	AdminService adminService;
 	@Autowired
 	ToonService toonService;
+	@Autowired
+	AdminDao adminDao;
 	
 	@RequestMapping(value = "/toon", method = RequestMethod.GET)
 	public ModelAndView toon(ModelAndView mv, Criteria cri) {
@@ -43,6 +47,8 @@ public class ToonController {
 		title = toon.getTitle();
 		ArrayList<EpisodeVo> epcov = toonService.getEpcover(title);
 		mv.addObject("epcov", epcov);
+		PageMaker pm = adminService.getPageMakerByToon(cri);
+		mv.addObject("pm", pm);
 		return mv;
 	}
 	@RequestMapping(value = "/toon/comic", method = RequestMethod.GET)
@@ -50,7 +56,9 @@ public class ToonController {
 		mv.setViewName("/toon/comic");
 		ArrayList<EpisodeVo> eplist = toonService.getEpList(Title,edition);
 		mv.addObject("eplist", eplist);
-		
+		ArrayList<EpcommentVo> cmtlist = toonService.getCmtList(Title,edition);
+		mv.addObject("cmtlist", cmtlist);
+		System.out.println(cmtlist);
 		return mv;
 	}
 }

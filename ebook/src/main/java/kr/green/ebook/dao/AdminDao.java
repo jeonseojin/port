@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Param;
 
 import kr.green.ebook.pagination.Criteria;
 import kr.green.ebook.pagination.PageMaker;
+import kr.green.ebook.vo.EpcommentVo;
 import kr.green.ebook.vo.EpisodeVo;
 import kr.green.ebook.vo.GenreVo;
 import kr.green.ebook.vo.ToonVo;
@@ -39,5 +40,7 @@ public interface AdminDao {
 	ArrayList<EpisodeVo> getEpcover(@Param("title")String title);
 
 	ArrayList<EpisodeVo> getEpList(@Param("title")String title,@Param("edition")String edition);
+
+	ArrayList<EpcommentVo> getCmtList(@Param("title")String title,@Param("edition")String edition);
 
 }

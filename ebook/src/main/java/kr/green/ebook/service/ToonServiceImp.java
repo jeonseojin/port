@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import kr.green.ebook.dao.AdminDao;
 import kr.green.ebook.pagination.Criteria;
+import kr.green.ebook.vo.EpcommentVo;
 import kr.green.ebook.vo.EpisodeVo;
 import kr.green.ebook.vo.ToonVo;
 
@@ -42,6 +43,17 @@ public class ToonServiceImp implements ToonService {
 	public ArrayList<EpisodeVo> getEpList(String title, String edition) {
 		ArrayList<EpisodeVo> eplist = adminDao.getEpList(title,edition);
 		return eplist;
+	}
+
+	@Override
+	public void insertCmt(String title, String edition) {
+				
+	}
+	//각화의 댓글
+	@Override
+	public ArrayList<EpcommentVo> getCmtList(String title, String edition) {
+		ArrayList<EpcommentVo> cmtlist = adminDao.getCmtList(title,edition);
+		return cmtlist;
 	}
   
 }
