@@ -101,7 +101,10 @@
 	
 	<!-- 연재불러오기 -->
 	<select id="getEpList" resultType="kr.green.ebook.vo.EpisodeVo"> 
-		select * from episode where e_t_title = #{title}
+		SELECT * FROM episode 
+			join (SELECT * FROM toon where t_title like #{title}) as at
+			on e_t_title = title
+			where e_img like concat('%',#{edition},'%');
 	</select>
 	<!-- 연재 대표이미지 -->
 	<select id="getEpcover" resultType="kr.green.ebook.vo.EpisodeVo">

@@ -34,15 +34,14 @@ public class ToonServiceImp implements ToonService {
 	//만화내용 전 보여지는내용
 	@Override
 	public ArrayList<EpisodeVo> getEpcover(String title) {
-		System.out.println("title:"+title);
 		return adminDao.getEpcover(title);
 	}
 
 	//만화내용
 	@Override
-	public ArrayList<EpisodeVo> getEpList(String title) {
-		System.out.println("title:"+title);
-		return adminDao.getEpList(title);
+	public ArrayList<EpisodeVo> getEpList(String title, String edition) {
+		ArrayList<EpisodeVo> eplist = adminDao.getEpList(title,edition);
+		return eplist;
 	}
   
 }

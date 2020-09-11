@@ -14,7 +14,7 @@ public interface ToonService {
 	
 	ArrayList<EpisodeVo> getEpcover(String title);
 
-	ArrayList<EpisodeVo> getEpList(String title);
+	ArrayList<EpisodeVo> getEpList(String title, String edition);
 
 
 }

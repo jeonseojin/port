@@ -43,16 +43,14 @@ public class ToonController {
 		title = toon.getTitle();
 		ArrayList<EpisodeVo> epcov = toonService.getEpcover(title);
 		mv.addObject("epcov", epcov);
-		System.out.println(epcov);
 		return mv;
 	}
 	@RequestMapping(value = "/toon/comic", method = RequestMethod.GET)
-	public ModelAndView toonComic(ModelAndView mv,String title, String Title) {
+	public ModelAndView toonComic(ModelAndView mv, String Title,String edition) {
 		mv.setViewName("/toon/comic");
-		ToonVo toon = adminService.getToonT(Title);
-		title = toon.getTitle();
-		ArrayList<EpisodeVo> eplist = toonService.getEpList(title);
+		ArrayList<EpisodeVo> eplist = toonService.getEpList(Title,edition);
 		mv.addObject("eplist", eplist);
+		
 		return mv;
 	}
 }

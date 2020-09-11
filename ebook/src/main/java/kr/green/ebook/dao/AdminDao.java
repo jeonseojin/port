@@ -38,6 +38,6 @@ public interface AdminDao {
 
 	ArrayList<EpisodeVo> getEpcover(@Param("title")String title);
 
-	ArrayList<EpisodeVo> getEpList(@Param("title")String title);
+	ArrayList<EpisodeVo> getEpList(@Param("title")String title,@Param("edition")String edition);
 
 }

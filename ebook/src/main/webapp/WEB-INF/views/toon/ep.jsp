@@ -21,7 +21,7 @@
 		<ul class="comiclist-update">
 			<c:forEach var="epcov" items="${epcov}">
 				<li class="comiclist-item">
-					<a class="comic-itemlink" href="<%=request.getContextPath()%>/toon/comic?Title=${toon.t_title}"><img src="/ebook/resources/img${epcov.e_img}"> </a>
+					<a class="comic-itemlink" href="<%=request.getContextPath()%>/toon/comic?Title=${toon.t_title}&edition=${epcov.e_edition}"><img src="/ebook/resources/img${epcov.e_img}"> </a>
 					<div class="comic-items-box">
 						<span class="comic-itemedtion">${epcov.e_edition}화</span>
 						<c:if test="${epcov.e_title!=null}">

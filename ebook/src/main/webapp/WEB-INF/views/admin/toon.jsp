@@ -138,7 +138,7 @@
 						</th>
 						<th>제목</th>
 						<th><input type="text" class="toon-text-box toon-text-title" name="e_title" placeholder="부제목을 입력하세요"></th>
-						<th><input type="text" class="toon-text-box toon-text-edition " name="e_edition" placeholder="몇">회</th>
+						<th><input type="text" class="toon-text-box toon-text-edition " id="ep-edition" placeholder="몇" onchange="Edinput(this.value)">회</th>
 						<th>금액</th>
 						<th>
 							<select class="ep-coin" onchange="Coinput(this.value)">
@@ -158,6 +158,7 @@
 				</div>
 
 			<button class="btn btn-primary float-right btn-mul-img" type="submit">등록</button>
+			<input type="hidden" id="e_edition" name="e_edition">
 			<input type="hidden" id="e_coin" name="e_coin">
 		</form>
 	</div>
@@ -167,11 +168,23 @@
 
     <script>
     function Selinput(input){
-        document.getElementById("t_week").value =input;
-    }
-    function Coinput(input){
-        document.getElementById("e_coin").value =input;
-    }
+		var value = $(".t_week-box").val(); 
+		$('#t_week').val(value); 
+	}
+	var value = $(".t_week-box").val(); 
+	$('#t_week').val(value);
+	function Selinput(input){
+		var value = $(".ep-coin").val(); 
+		$('#e_coin').val(value); 
+	}
+	var value = $(".ep-coin").val();
+	$('#e_coin').val(value);
+
+	function Edinput(input){
+		var value = $("#ep-edition").val(); 
+		$('#e_edition').val('00'+value); 
+	}
+	
     var sel_files=[];
 	$(document).ready(function(){
 		$('.input-b-img').on("change",handleBFilesSelect);
