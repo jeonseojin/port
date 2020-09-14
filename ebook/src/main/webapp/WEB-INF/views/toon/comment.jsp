@@ -41,12 +41,12 @@
 					<a href="<%=request.getContextPath()%>/toon/cmtmo?&Title=${toon.t_title}"><button type="button" class="cmtmo-btn">수정</button></a>
 					<a href="<%=request.getContextPath()%>/toon/cmtdel?Title=${toon.t_title}"><button type="button" class="cmtdel-btn">삭제</button></a>
 				</c:if>
-					<div class="epcmt-btnbox">
-						<button class="epcmt-up"><i class="far fa-hand-point-up"></i>${cmtlist.co_up}</button>
-						<button class="epcmt-down"><i class="far fa-hand-point-down "></i>${cmtlist.co_down}</button>
-					</div>
-					</div>
+				<div class="epcmt-btnbox">
+					<button class="epcmt-up"><i class="far fa-hand-point-up"></i>${cmtlist.co_up}</button>
+					<button class="epcmt-down"><i class="far fa-hand-point-down "></i>${cmtlist.co_down}</button>
+				</div>
 			</div>
+		</div>
 		</c:forEach>
 	</div>
 </div>
@@ -73,6 +73,23 @@
 				success:function(data){
 					$('textarea[name=co_content]').val('');
 					alert(data['res']);
+					var str='';
+					cmtlist = data.epcmtlist;
+					for(i=0;i<=cmtlist.length;i++){
+						str=
+							'<div class="epcmt-list">'+
+						'<span class="epcmt-name">'+ co_member +'</span>'+
+						'<div class="epcmt-text">'+co_content+'</div>'+
+						'<div class="epcmt-end">'+
+							'<span class="epcmt-date">'+co_date+'</span>'+
+								'<a href="<%=request.getContextPath()%>/toon/cmtmo?&Title=${toon.t_title}"><button type="button" class="cmtmo-btn">수정</button></a>'+
+								'<a href="<%=request.getContextPath()%>/toon/cmtdel?Title=${toon.t_title}"><button type="button" class="cmtdel-btn">삭제</button></a>'+
+									'<div class="epcmt-btnbox">'+
+								'<button class="epcmt-up"><i class="far fa-hand-point-up"></i>'+co_up+'</button>'+
+								'<button class="epcmt-down"><i class="far fa-hand-point-down "></i>'+co_down+'</button>'+
+							'</div></div></div>';
+					}
+					$('.epcmt-box').html(str);
 				}
 			});
 		})

@@ -4,37 +4,16 @@
 <body>
 	    <div class="main-banner">
            <div class="banner-swiper">
+           		<c:forEach var="evlist" items="${evlist}">
 	               <div class="banner-item">
 	                   <a href="#" class="banner-link">
-	                   		<div class="banner-img banner-img-small display-none">
-	                   			<img src="https://cdn.lezhin.com/v2/inventory_items/4648237082935296/media/upperBannerMobile.webp?updated=1596435070000&amp;width=688">
-	                   		</div>
 	                       	<div class="banner-img banner-img-big">
-	                           	<img src="https://cdn.lezhin.com/v2/inventory_items/4648237082935296/media/upperBanner.webp?updated=1596435070000&width=1180" alt="">
+	                           	<img src="/ebook/resources/img${evlist.ev_banner}" alt="">
 	                       	</div>
 	                   </a>
 	               </div>
-	               <div class="banner-item">
-	                   <a href="#" class="banner-link">
-	                   		<div class="banner-img banner-img-small display-none">
-	                   			<img class="banner-img-small display-none" src="https://cdn.lezhin.com/v2/inventory_items/4874818982313984/media/upperBannerMobile.webp?updated=1596373734000&amp;width=688">
-	                   		</div>
-	                       	<div class="banner-img banner-img-big">
-	                          	<img clas="banner-img-big" src="https://cdn.lezhin.com/v2/inventory_items/4874818982313984/media/upperBanner.webp?updated=1596373734000&width=1180" alt="">
-	                       	</div>
-	                   </a>
-	               </div>
-	               <div class="banner-item">
-	                   <a href="#" class="banner-link">
-	                   		<div class="banner-img banner-img-small display-none">
-	                   			<img class="banner-img-small display-none" src="https://cdn.lezhin.com/v2/inventory_items/5708691536412672/media/upperBannerMobile.webp?updated=1597138018000&amp;width=688">
-	                   		</div>
-	                       	<div class="banner-img banner-img-big">
-	                            <img clas="banner-img-big" src="https://cdn.lezhin.com/v2/inventory_items/5708691536412672/media/upperBanner.webp?updated=1597138018000&width=1180" alt="">
-	                        </div>
-	                   </a>    
-	               </div>
-	            </div>
+				</c:forEach>
+	        </div>
             <div class="banner-nav">
                 <button class="banner-btn banner-prev">
                     <i class="fas fa-caret-left"></i>

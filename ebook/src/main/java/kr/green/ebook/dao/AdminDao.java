@@ -9,7 +9,7 @@ import kr.green.ebook.pagination.PageMaker;
 import kr.green.ebook.vo.ChoiceVo;
 import kr.green.ebook.vo.EpcommentVo;
 import kr.green.ebook.vo.EpisodeVo;
-import kr.green.ebook.vo.EventVo;
+import kr.green.ebook.vo.BookeventVo;
 import kr.green.ebook.vo.GenreVo;
 import kr.green.ebook.vo.ToonVo;
 import kr.green.ebook.vo.WeekVo;
@@ -58,9 +58,9 @@ public interface AdminDao {
 
 	void deleteChoice(@Param("Title")String Title, @Param("id")String id);
 
-	ArrayList<EventVo> eventList(@Param("cri")Criteria cri);
+	ArrayList<BookeventVo> eventList(@Param("cri")Criteria cri);
 
-	void insertEvent(@Param("event")EventVo event);
+	void insertEvent(@Param("event")BookeventVo event);
 
 
 }

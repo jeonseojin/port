@@ -13,7 +13,7 @@ import kr.green.ebook.dao.MemberDao;
 import kr.green.ebook.pagination.Criteria;
 import kr.green.ebook.pagination.PageMaker;
 import kr.green.ebook.vo.EpisodeVo;
-import kr.green.ebook.vo.EventVo;
+import kr.green.ebook.vo.BookeventVo;
 import kr.green.ebook.vo.GenreVo;
 import kr.green.ebook.vo.ToonVo;
 import kr.green.ebook.vo.WeekVo;
@@ -90,12 +90,12 @@ public class AdminServiceImp implements AdminService {
 	}
 //이벤트 전체
 	@Override
-	public ArrayList<EventVo> eventList(Criteria cri) {
+	public ArrayList<BookeventVo> eventList(Criteria cri) {
 		return adminDao.eventList(cri);
 	}
 //이벤트 등록
 	@Override
-	public void insertEvent(EventVo event) {
+	public void insertEvent(BookeventVo event) {
 		adminDao.insertEvent(event);		
 	}
 

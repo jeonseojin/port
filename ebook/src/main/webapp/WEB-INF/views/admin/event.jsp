@@ -16,7 +16,7 @@
 				<tr class="textline-center">
 					<th>번호</th>
 					<th class="adt-plot">제목</th>
-					<th class="adt-plot">내용</th>
+					<th class="adt-plot">영어 제목</th>
 					<th class="adt-plot">이미지</th>
 					<th class="adt-plot">연관 작품</th>
 				</tr>
@@ -25,7 +25,11 @@
 				<c:if test="${evlist.size()!=0}">
 					<c:forEach var="evlist" items="${evlist}">
 						<tr>
-							<td></td>
+							<td>${evlist.ev_num}</td>
+							<td>${evlist.ev_title}</td>
+							<td>${evlist.ev_engtitle}</td>
+							<td><img src="/ebook/resources/img${evlist.ev_img}" style="height: 120px;"></td>
+							<td>${evlist.ev_t_title}</td>
 						</tr>
 					</c:forEach>
 				</c:if>
@@ -49,7 +53,6 @@
 					<select class="form-control " id="sell" name="type">
 						<option value="0" <c:if test="${pm.cri.event==1}">selected</c:if>>전체</option>
 						<option value="1" <c:if test="${pm.cri.event==2}">selected</c:if>>제목</option>
-						<option value="2" <c:if test="${pm.cri.event==3}">selected</c:if>>웹툰</option>
 					</select>
 					<input type="text" class="form-control adt-input" placeholder="작품 검색" name="search" value="${pm.cri.search}">
 					<div class="input-group-append">

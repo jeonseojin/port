@@ -10,5 +10,3 @@
 	</ul>	
 </div>
 <%@ include file="../toon/comment.jsp" %>
-<script>
-</script>

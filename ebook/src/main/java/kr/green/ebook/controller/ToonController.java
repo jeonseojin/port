@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.mysql.cj.x.protobuf.MysqlxDatatypes.Array;
+
 import kr.green.ebook.dao.AdminDao;
 import kr.green.ebook.pagination.Criteria;
 import kr.green.ebook.pagination.PageMaker;
@@ -87,6 +89,9 @@ public class ToonController {
 		Map<Object, Object> map = new HashMap<Object, Object>();
 		map.put("res","댓글이 등록되었습니다.");
 		toonService.insertEpcmt(epcmt);
+		ArrayList<EpcommentVo> epcmtlist = toonService.getCmtList(epcmt.getCo_epTitle(), epcmt.getCo_epEdition());
+		map.put("epcmtlist",epcmtlist);
+		System.out.println(epcmtlist);
 		return map;
 	}
 

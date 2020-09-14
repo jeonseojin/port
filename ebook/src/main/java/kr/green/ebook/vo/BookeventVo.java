@@ -4,7 +4,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class EventVo {
+public class BookeventVo {
 	private int ev_num;
 	private String ev_title;
 	private String ev_img;

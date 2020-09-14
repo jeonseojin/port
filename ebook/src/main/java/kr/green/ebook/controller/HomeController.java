@@ -20,6 +20,7 @@ import kr.green.ebook.pagination.Criteria;
 import kr.green.ebook.service.AdminService;
 import kr.green.ebook.service.MemberService;
 import kr.green.ebook.vo.ChoiceVo;
+import kr.green.ebook.vo.BookeventVo;
 import kr.green.ebook.vo.MemberVo;
 import kr.green.ebook.vo.ToonVo;
 
@@ -47,7 +48,8 @@ public class HomeController {
 			ArrayList<ChoiceVo> chlist = memberService.getChoiceList(member.getId());
 			mv.addObject("chlist", chlist);
 		}
-		
+		ArrayList<BookeventVo> evlist = adminService.eventList(cri);
+		mv.addObject("evlist", evlist);
 		return mv;
 	}
 

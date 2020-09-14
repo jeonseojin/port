@@ -158,13 +158,13 @@
 	</delete>
 
 <!-- 전체 이벤트 불러오기 -->
-	<select id="eventList" resultType="kr.green.ebook.vo.EventVo">
-		select * from event
+	<select id="eventList" resultType="kr.green.ebook.vo.BookeventVo">
+		select * from bookevent
 	</select>
 <!-- 이벤트 등록 -->
 	<insert id="insertEvent">
 		insert into
-			event(ev_title,ev_engtitle,ev_img,ev_t_title,ev_member,ev_banner)
+			bookevent(ev_title,ev_engtitle,ev_img,ev_t_title,ev_member,ev_banner)
 			values(#{event.ev_title},#{event.ev_engtitle},#{event.ev_img},#{event.ev_t_title},#{event.ev_member},#{event.ev_banner})
 	</insert>
 </mapper>
