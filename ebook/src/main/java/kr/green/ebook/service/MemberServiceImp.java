@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import kr.green.ebook.dao.MemberDao;
 import kr.green.ebook.pagination.Criteria;
 import kr.green.ebook.pagination.PageMaker;
+import kr.green.ebook.vo.ChoiceVo;
 import kr.green.ebook.vo.MemberVo;
 
 @Service
@@ -71,5 +72,10 @@ public class MemberServiceImp implements MemberService {
 		pm.setCri(cri);
 		pm.setTotalCount(memberDao.getTotalCountByMember(cri));
 		return pm;
+	}
+
+	@Override
+	public ArrayList<ChoiceVo> getChoiceList(String id) {
+		return memberDao.getChoiceList(id);
 	}
 }

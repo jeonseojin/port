@@ -41,7 +41,8 @@ $(function(){
             $('.logNav-list .'+target).removeClass('display-none');
         }
         logView();
-        	    $(function(){
+        
+        $(function(){
 	        $('.nav .nav-link').click(function(e){
 	            e.preventDefault();
 	            $('.nav .nav-link').attr('aria-selected','false');

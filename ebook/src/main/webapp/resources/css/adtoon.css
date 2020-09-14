@@ -94,7 +94,16 @@
 #img-holder{
 	height: 500px;
 }
-
+.adm-evTitle{
+	width: 80px;
+}
+.adm-ev-title{
+	width: 100%;
+	border: none;
+}
+.adm-ev-t_title{
+	max-width: 80px;
+}
 @media (min-width: 961px){
 	.toon-week-box{
 		padding:  8px 0;
@@ -126,6 +135,27 @@
 .ad-ep-preview>img{
 	width: 250px;
 	float: left;
+}
+.ad-tail-epgo{
+	line-height: 38px;
+	float: left;
+	font-size: 18px
+}
+.ad-tail-epgo-btn{
+	border: none;
+	background-color: transparent;
+	font-size: 18px;
+	line-height: 38px;
+}
+.adm-ev-imgbox{
+	width: 100%;
+}
+.adm-evimg-box{
+	width: 450px;
+}
+.adm-ev-content{
+	width: 100%;
+	min-height: 80px;
 }
 @media (max-width: 960px) and (min-width: 640px){
 	.toon-week-box{

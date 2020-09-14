@@ -3,6 +3,7 @@ package kr.green.ebook.service;
 import java.util.ArrayList;
 
 import kr.green.ebook.pagination.Criteria;
+import kr.green.ebook.vo.ChoiceVo;
 import kr.green.ebook.vo.EpcommentVo;
 import kr.green.ebook.vo.EpisodeVo;
 import kr.green.ebook.vo.ToonVo;
@@ -13,13 +14,20 @@ public interface ToonService {
 
 	ArrayList<ToonVo> weekList(Criteria cri);
 	
-	ArrayList<EpisodeVo> getEpcover(String title);
+	EpisodeVo getEp(String Title, String edition);
 
-	ArrayList<EpisodeVo> getEpList(String title, String edition);
+	ArrayList<EpisodeVo> getEpList(String Title, String edition);
 
-	void insertCmt(String title, String edition);
+	ArrayList<EpcommentVo> getCmtList(String Title, String edition);
 
-	ArrayList<EpcommentVo> getCmtList(String title, String edition);
+	void insertEpcmt(EpcommentVo epcmt);
 
+	ArrayList<EpisodeVo> getEpcoverlist(String Title);
+
+	int updateChoice(String Title, String id);
+	
+	ChoiceVo getChoice(String Title, String id);
+
+	int deleteChoice(String Title, String id);
 
 }

@@ -110,11 +110,10 @@
 				                		<span class="log-look-span">최근</span>
 				                    <div class="log-look-box">
 				                        <div class="log-look-item">
-				                        	
-				                        	<c:if test="${tlist.size()!=0}">
-				                        	<c:forEach var="toon" items="${tlist}">
+				                        	<c:if test="${chlist.size()!=0}">
+				                        	<c:forEach var="chlist" items="${chlist}">
 					                            <a class="log-look" href="#">
-					                                <img class="search-img" src="/ebook/resources/img${toon.t_img}" style="height: 53px;" alt="">
+					                                <img class="search-img" src="/ebook/resources/img${chlist.t_img}" style="height: 53px;" alt="">
 					                            </a>
 					                        </c:forEach>
 				                            </c:if> 
@@ -124,11 +123,13 @@
 				                    <span class="log-look-span">찜</span>
 				                    <div class="log-look-box">
 				                        <div class="log-look-item">
-				                            <c:forEach var="toon" items="${tlist}">
-					                            <a class="log-look" href="#">
-					                                <img class="search-img" src="/ebook/resources/img${toon.t_img}" style="height: 53px;" alt="">
-					                            </a>
-					                        </c:forEach>
+				                        	<c:if test="${chlist.size()!=0}">
+					                        	<c:forEach var="chlist" items="${chlist}">
+						                            <a class="log-look" href="#">
+						                                <img class="search-img" src="/ebook/resources/img${chlist.t_img}" style="height: 53px;" alt="">
+						                            </a>
+						                        </c:forEach>
+					                        </c:if>
 				                            <a href="#" class="log-look-the">더보기</a> 
 				                        </div>
 				                    </div>

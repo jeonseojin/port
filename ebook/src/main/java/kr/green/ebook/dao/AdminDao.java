@@ -6,8 +6,10 @@ import org.apache.ibatis.annotations.Param;
 
 import kr.green.ebook.pagination.Criteria;
 import kr.green.ebook.pagination.PageMaker;
+import kr.green.ebook.vo.ChoiceVo;
 import kr.green.ebook.vo.EpcommentVo;
 import kr.green.ebook.vo.EpisodeVo;
+import kr.green.ebook.vo.EventVo;
 import kr.green.ebook.vo.GenreVo;
 import kr.green.ebook.vo.ToonVo;
 import kr.green.ebook.vo.WeekVo;
@@ -24,7 +26,6 @@ public interface AdminDao {
 	void insertEp(@Param("ep")EpisodeVo ep);
 
 // 연재
-	
 	ToonVo getToon(@Param("num")Integer num);
 
 	void updateToon(@Param("toon")ToonVo toon);
@@ -32,15 +33,34 @@ public interface AdminDao {
 	WeekVo getWeek(@Param("t_week")int t_week);
 
 	GenreVo getGr(@Param("t_code")String t_code);
-	
-	ArrayList<ToonVo> weekList(@Param("cri")Criteria cri);
 
 	ToonVo getToont(@Param("Title")String Title);
 
-	ArrayList<EpisodeVo> getEpcover(@Param("title")String title);
+	ArrayList<ToonVo> weekList(@Param("cri")Criteria cri);
 
-	ArrayList<EpisodeVo> getEpList(@Param("title")String title,@Param("edition")String edition);
+	EpisodeVo getEp(@Param("Title")String Title, @Param("edition")String edition);
 
-	ArrayList<EpcommentVo> getCmtList(@Param("title")String title,@Param("edition")String edition);
+	ArrayList<EpisodeVo> getEpList(@Param("Title")String Title, @Param("edition")String edition);
+
+	ArrayList<EpcommentVo> getCmtList(@Param("Title")String Title, @Param("edition")String edition);
+
+	void insertEpcmt(@Param("epcmt")EpcommentVo epcmt);
+
+	ArrayList<EpisodeVo> getEpcoverlist(@Param("Title")String title);
+
+	int selectChoice(@Param("Title")String Title, @Param("id")String id);
+
+	void insertChoice(@Param("Title")String Title, @Param("id")String id);
+
+	void updateToonByChoice(@Param("Title")String Title);
+
+	ChoiceVo getChoice(@Param("Title")String Title, @Param("id")String id);
+
+	void deleteChoice(@Param("Title")String Title, @Param("id")String id);
+
+	ArrayList<EventVo> eventList(@Param("cri")Criteria cri);
+
+	void insertEvent(@Param("event")EventVo event);
+
 
 }

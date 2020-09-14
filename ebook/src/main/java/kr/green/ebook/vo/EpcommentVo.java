@@ -12,7 +12,7 @@ public class EpcommentVo {
 	private int co_up;
 	private int co_down;
 	private String co_epTitle;
-	private String co_epEdtion;
+	private String co_epEdition;
 	
 	public int getCo_num() {
 		return co_num;
@@ -33,11 +33,11 @@ public class EpcommentVo {
 		this.co_content = co_content;
 	}
 	public String getCo_date() {
-		SimpleDateFormat transFormat = new SimpleDateFormat("yyyy-MM-dd");
+		SimpleDateFormat transFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		return transFormat.format(co_date);
 	}
 	public void setCo_date(String co_date) {
-		SimpleDateFormat transFormat = new SimpleDateFormat("yyyy-MM-dd");
+		SimpleDateFormat transFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		try {
 			this.co_date =transFormat.parse(co_date);
 		} catch (ParseException e) {
@@ -66,17 +66,17 @@ public class EpcommentVo {
 	public void setCo_epTitle(String co_epTitle) {
 		this.co_epTitle = co_epTitle;
 	}
-	public String getCo_epEdtion() {
-		return co_epEdtion;
+	public String getCo_epEdition() {
+		return co_epEdition;
 	}
-	public void setCo_epEdtion(String co_epEdtion) {
-		this.co_epEdtion = co_epEdtion;
+	public void setCo_epEdition(String co_epEdition) {
+		this.co_epEdition = co_epEdition;
 	}
 	@Override
 	public String toString() {
-		return "CommentVo [co_num=" + co_num + ", co_member=" + co_member + ", co_content=" + co_content + ", co_date="
-				+ co_date + ", co_up=" + co_up + ", co_down=" + co_down + ", co_epTitle=" + co_epTitle
-				+ ", co_epEdtion=" + co_epEdtion + "]";
+		return "EpcommentVo [co_num=" + co_num + ", co_member=" + co_member + ", co_content=" + co_content
+				+ ", co_date=" + co_date + ", co_up=" + co_up + ", co_down=" + co_down + ", co_epTitle=" + co_epTitle
+				+ ", co_epEdition=" + co_epEdition + "]";
 	}
 
 	

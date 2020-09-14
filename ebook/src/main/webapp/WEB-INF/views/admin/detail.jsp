@@ -14,6 +14,10 @@
 					</tr>
 				</thead>
 			</table>
+			<div>
+				<span class="ad-tail-epgo">연재등록하기</span>
+				<a href="<%=request.getContextPath()%>/admin/ep?num=${toon.t_num}&Title=${toon.t_title}&tweek=${toon.t_week}"><button type="button" class="ad-tail-epgo-btn"> <i class="fas fa-long-arrow-alt-right"></i>이동</button></a>
+			</div>
 			<h4 class="ad-plot-h">줄거리</h4>
 			<div name="plot" class="ad-plot">${toon.plot}</div>
 						<table class="table table-hover">
@@ -52,4 +56,3 @@
 			</div>
 			<input type="hidden" id="num" value="${toon.t_num}">
 		</form>
-		

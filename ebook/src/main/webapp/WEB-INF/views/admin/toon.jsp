@@ -8,10 +8,7 @@
         <li class="nav-item ad-toon-l">
           <a class="nav-link" data-toggle="tab" href="#" data-target="ad-toon-record">작품등록</a>
         </li>
-        <li class="nav-item ad-toon-l">
-          <a class="nav-link" data-toggle="tab" href="#" data-target="ad-toon-episode">작품연재등록</a>
-        </li>
-      </ul>
+    </ul>
 <div class="ad-toon">
 	<div class="ad-toon-list ad-toon-all">
 		<table class="table table-borderless">
@@ -125,45 +122,6 @@
 			<input type="hidden" id="t_week" name="t_week">
 		</form>
 	</div>
-	
-	
-	<div class="ad-toon-list ad-toon-episode">
-		<form action="<%=request.getContextPath()%>/admin/ep" method="post" id="uploadForm" enctype="multipart/form-data">
-			<table class="table table-hover">
-				<thead>
-					<tr>
-						<th>웹툰 제목</th>
-						<th>
-							<input type="text" class="toon-text-box toon-text-title e_t_title" name="e_t_title" placeholder="웹툰제목을 입력하세요">
-						</th>
-						<th>제목</th>
-						<th><input type="text" class="toon-text-box toon-text-title" name="e_title" placeholder="부제목을 입력하세요"></th>
-						<th><input type="text" class="toon-text-box toon-text-edition " id="ep-edition" placeholder="몇" onchange="Edinput(this.value)">회</th>
-						<th>금액</th>
-						<th>
-							<select class="ep-coin" onchange="Coinput(this.value)">
-								<option value="0">무료</option>
-								<option value="2">결제</option>
-							</select>
-						</th>
-					</tr>
-				</thead>
-			</table>
-			
-				<div class="ad-plot-box">
-					<h4 class="ad-plot-h">연재이미지</h4>
-			            <input class="input-ep-img" type="file" name="file2" multiple />
-					<!-- 미리보기 영역 -->
-	            	<div class="ad-ep-preview"></div>
-				</div>
-
-			<button class="btn btn-primary float-right btn-mul-img" type="submit">등록</button>
-			<input type="hidden" id="e_edition" name="e_edition">
-			<input type="hidden" id="e_coin" name="e_coin">
-		</form>
-	</div>
-	
-	<div class="ad-toon-list ad-toon-mo_del"></div>
 </div>
 
     <script>
@@ -173,17 +131,6 @@
 	}
 	var value = $(".t_week-box").val(); 
 	$('#t_week').val(value);
-	function Selinput(input){
-		var value = $(".ep-coin").val(); 
-		$('#e_coin').val(value); 
-	}
-	var value = $(".ep-coin").val();
-	$('#e_coin').val(value);
-
-	function Edinput(input){
-		var value = $("#ep-edition").val(); 
-		$('#e_edition').val('00'+value); 
-	}
 	
     var sel_files=[];
 	$(document).ready(function(){
@@ -192,13 +139,9 @@
 	$(document).ready(function(){
 		$('.input-s-img').on("change",handleSFilesSelect);
 	})
-	$(document).ready(function(){
-		$('.input-ep-img').on("change",handleEpFilesSelect);
-	})
 	function handleBFilesSelect(e){
 		var files = e.target.files;
 		var filesArr = Array.prototype.slice.call(files);
-
 		filesArr.forEach(function(f){
 			$('.input-imgb-box').empty();
 			if(!f.type.match("image.*")){
@@ -206,7 +149,6 @@
 				return;
 			}
 			sel_files.push(f);
-
 			var reader = new FileReader();
 			reader.onload = function(e){
 				var img_html = "<img src=\"" + e.target.result + "\"/>";
@@ -218,7 +160,6 @@
 	function handleSFilesSelect(e){
 		var files = e.target.files;
 		var filesArr = Array.prototype.slice.call(files);
-
 		filesArr.forEach(function(f){
 			$('.input-imgs-box').empty();
 			if(!f.type.match("image.*")){
@@ -226,31 +167,10 @@
 				return;
 			}
 			sel_files.push(f);
-
 			var reader = new FileReader();
 			reader.onload = function(e){
 				var img_html = "<img src=\"" + e.target.result + "\"/>";
 				$('.input-imgs-box').append(img_html);
-			}
-			reader.readAsDataURL(f);
-		})
-    }    
-	function handleEpFilesSelect(e){
-		var files = e.target.files;
-		var filesArr = Array.prototype.slice.call(files);
-
-		filesArr.forEach(function(f){
-			$('.ad-ep-preview').empty();
-			if(!f.type.match("image.*")){
-				alert("확장자는 이미지 확장자만 가능")
-				return;
-			}
-			sel_files.push(f);
-
-			var reader = new FileReader();
-			reader.onload = function(e){
-				var img_html = "<img src=\"" + e.target.result + "\"/>";
-				$('.ad-ep-preview').append(img_html);
 			}
 			reader.readAsDataURL(f);
 		})
