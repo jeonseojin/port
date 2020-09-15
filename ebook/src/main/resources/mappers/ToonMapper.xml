@@ -126,6 +126,7 @@
 			join (SELECT * FROM toon where t_title like #{Title}) as st
 			on co_epTitle = t_title
 			where co_epEdition like #{edition}
+			order by co_num desc
 	</select>
 	
 <!-- 댓글 등록 -->
