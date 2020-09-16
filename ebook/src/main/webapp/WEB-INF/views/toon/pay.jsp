@@ -146,38 +146,35 @@
 
 </form>
 <script>
-	$(document).click(function(e){
-	    $('.payment-item').addClass('display-none');
-	    $('.payment-box').addClass('display-none');
-	    $('.payment-item').children('.toon-pay-btn').remove();
-	})
-	$('.payment-item').click(function(e){
-    	e.stopPropagation();
+
+$('.payment-item').click(function(e){
+	e.stopPropagation();
+})
+
+ $(function(){
+    $('.choice-payment').click(function(e){
+    	e.preventDefault();
+        $('.pay-choice-icon').toggleClass('display-none');
+        $('.pay-choice-icon .choice-icon-close').toggleClass('display-none');
+        adpayView();
     })
-    $(function(){
-        $('.choice-payment').click(function(e){
-        	e.preventDefault();
-            $('.pay-choice-icon').toggleClass('display-none');
-            $('.pay-choice-icon .choice-icon-close').toggleClass('display-none');
-            adpayView();
-        })
-        $(".payment-submit-btn").attr("disabled", true);
-        $('#check-essential').on('click',function(){
-            var click = $('#check-essential').is(":checked");
-            if(click==true){
-                $('.payment-submit-btn').removeAttr('disabled');
-                $('.payment-submit-btn-box').removeClass("on");
-                $('.payment-submit-nocheck').toggleClass();
-            }else{
-                $('.payment-submit-btn').attr("disabled",true);
-                $('.payment-submit-btn-box').addClass("on");
-            }
-        })
+    $(".payment-submit-btn").attr("disabled", true);
+    $('#check-essential').on('click',function(){
+        var click = $('#check-essential').is(":checked");
+        if(click==true){
+            $('.payment-submit-btn').removeAttr('disabled');
+            $('.payment-submit-btn-box').removeClass("on");
+            $('.payment-submit-nocheck').toggleClass();
+        }else{
+            $('.payment-submit-btn').attr("disabled",true);
+            $('.payment-submit-btn-box').addClass("on");
+        }
     })
-    function adpayView(){
-	    var target = $('.choice-payment option:selected').val();
-	    $('.paymentchoice-box > .paymentchoice-help').addClass('display-none');
-	    $('.paymentchoice-box .'+target).removeClass('display-none');
-	}
-	adpayView();
+})
+function adpayView(){
+    var target = $('.choice-payment option:selected').val();
+    $('.paymentchoice-box > .paymentchoice-help').addClass('display-none');
+    $('.paymentchoice-box .'+target).removeClass('display-none');
+}
+adpayView();
 </script>

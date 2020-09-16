@@ -1,4 +1,5 @@
 @charset "UTF-8";
+/*ep페이지css*/
 .comicInfo{
     position: relative;
     color: rgb(75, 75, 75);
@@ -106,8 +107,13 @@
 	bottom: 25px;
 	color: black;
 }
-.comic-itemlink{
+.comic-itemlink,.comic-itemlink-payment{
 	margin-right: 10px;
+	z-index: 1;
+}
+.comic-itemlink-payment{
+	border: none;
+	background-color: transparent;
 }
 .comic-items-box{
 	position: relative;
@@ -369,7 +375,7 @@
 	font-size: 16px;
 	color: rgb(255, 182, 45);
 }
-.payment-box{
+.payment-box,.comic-payment-box{
 	position: fixed;
 	z-index: 500;
 	top:0;
@@ -383,6 +389,42 @@
 	background-color: rgba(0,0,0,0.4);
 	overflow-y: scroll;
 	overflow-x:hidden;
+}
+.comic-item-payment{
+	position: fixed;
+	top:32%;
+	left: 40%;
+	margin: 0 auto;
+	width: 350px;
+	height: 400px;
+	background-color: #fff;
+	padding: 27px 22px 22px 22px;
+}
+.comic-item-payment>p{
+	font-size: 12px;
+}
+.comic-payment-btn{
+	text-align: right;
+}
+.comic-btn-pay{
+	background: #eb0026;
+	color: #fff;
+	border: none;
+}
+.comic-btn-cancel{
+	border: none;
+	background: transparent;
+}
+.comic-payment-content{
+	padding: 15px 0;
+}
+.comic-payment-content>img{
+	height: 70px;
+}
+.comic-payitem-coin{
+	display: table-cell;
+	text-align: right;
+	font-weight: bold;
 }
 .payment-item{
 	position: relative;
