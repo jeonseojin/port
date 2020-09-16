@@ -114,7 +114,9 @@ public class AdminController {
 	@RequestMapping(value = "/admin/detail", method = RequestMethod.GET)
 	public ModelAndView toonEp(ModelAndView mv,String Title,Integer num, Criteria cri) {
 		mv.setViewName("/admin/detail");
-		WeekVo week = adminService.getWeek(adminService.getToon(num).getT_week());
+		ToonVo toon = adminService.getToonT(Title);
+		mv.addObject("toon", toon);
+		WeekVo week = adminService.getWeek(toon.getT_week());
 		mv.addObject("week", week);
 		mv.addObject("cri", cri);
 		return mv;

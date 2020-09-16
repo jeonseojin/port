@@ -22,7 +22,7 @@
 .comicInfo-title{
 	padding-top: 43px;
 	padding-right: 120px;
-	text-align: center;
+	text-align: left;
     line-height: 47px;
     font-size: 38px;
     font-weight: bold;
@@ -31,14 +31,15 @@
 .comicInfo-genre{
 	display: block;
 	padding-left: ;
-	padding: 17px 0 13px 130px;
-	font-weight: 600;
+	padding: 17px 0;
+	font-weight: bold;
 	font-size: 16px;
 	line-height: 18px;
 	vertical-align: top;
 	color:#fff;
 }
 .comicInfo-plot{
+	color: #fff;
 	font-size: 14px;
 	line-height: 19px;
 }
@@ -57,8 +58,9 @@
 	font-weight: 500;
 	text-align: center;
 	vertical-align: middle;
-	border: 1px solid rgb(75,75,75); 
+	border: 1px solid #fff; 
 	border-radius: 24px;
+	color:#fff;
 	background-color: transparent;
 }
 .comicInfo-btn-nochoice>i{
@@ -70,9 +72,10 @@
 	height: 48px;
 	border-radius: 24px;
 	margin-left: 8px;
-	border: 1px solid rgb(75, 75, 75); 
+	border: 1px solid #fff; 
 	background-color: transparent;
 	font-size: 20px;
+	color:#fff;
 }
 .comic-Content{
 	width:100%;
@@ -87,24 +90,32 @@
 	padding-bottom: 40px;
 }
 .comiclist-update{
-	width: 990px;
+	width: 100%;
 	margin-bottom: 15px;
+	box-sizing: border-box;
 }
 .comiclist-item{
 	display: flex;
 	float: left;
-	width: 380px;
-	margin-right: 20px;
+	width: 383px;
+	margin-right: 10px;
+	margin-bottom: 15px;
+}
+.comic-items-epcoin{
+	position: absolute;
+	bottom: 25px;
+	color: black;
 }
 .comic-itemlink{
-	margin-right: 20px;
+	margin-right: 10px;
 }
 .comic-items-box{
 	position: relative;
-	width:120px;
+	width:110px;
 	font-size: 15px;
 	font-weight: bold;
 	color: rgb(112,112,112);
+	border-bottom: 1px solid #e5e5e5;
 }
 .comic-items-eptitle{
 	position: absolute;

@@ -35,12 +35,17 @@
 </form>
 <a href="<%=request.getContextPath() %>/admin/toon?page=${cri.page}&type=${cri.type}&search=${cri.search}" class="float-left"><button type="button" class="btn btn-outline-secondary">목록</button></a>
 <script>
+	
 	var value = $(".ep-coin").val();
-	$('#e_coin').val('00'+value);
+	$('#e_coin').val();
 	
 	function Edinput(input){
 		var value = $("#ep-edition").val(); 
 		$('#e_edition').val('00'+value); 
+	}
+	function Coinput(input){
+		var value = $(".ep-coin").val();
+		$('#e_coin').val(value); 
 	}
 	 var sel_files=[];
 	$(document).ready(function(){

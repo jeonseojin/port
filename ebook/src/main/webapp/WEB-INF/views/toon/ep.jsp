@@ -38,14 +38,18 @@
 						<c:if test="${epcov.e_title!=null}">
 							<span class="comic-items-eptitle">${epcov.e_title}</span>
 						</c:if>
+						<c:if test="${epcov.e_coin!=0}">
+							<span class="comic-items-epcoin">${epcov.e_coin}코인</span>
+						</c:if>
+						<c:if test="${epcov.e_coin==0}">
+							<span class="comic-items-epcoin">무료</span>
+						</c:if>
 						<span class="comic-itemday">${epcov.e_date}</span>
 					</div>
 				</li>
 			</c:forEach>
 		</ul>
 	</div>
-	
-	<div class="cont-recommend"></div>
 	
 </div>
 <script>
