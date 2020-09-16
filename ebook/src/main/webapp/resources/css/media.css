@@ -2,6 +2,11 @@
 @media(min-width:640px){
 
 }
+@media(min-width:961px){
+	.payment-box{
+		padding: 40px 0;	
+	}
+}
 @media(min-width:1281px){
 }
 @media(max-height: 960px) and (min-width:640px){

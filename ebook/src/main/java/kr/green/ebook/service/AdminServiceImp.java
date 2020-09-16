@@ -112,10 +112,6 @@ public class AdminServiceImp implements AdminService {
 //충전기능
 	@Override
 	public void insertPay(PayVo pay) {
-		if(pay.getP_coin()!=0) {
-			pay.setP_coin(pay.getP_coin()+pay.getP_charging());
-			adminDao.insertPay(pay);
-		}
 		adminDao.insertPay(pay);
 	}
 

@@ -12,16 +12,16 @@ public class PayVo {
 	private String p_epititle;//충전한 웹툰제목
 	private String p_epnum;//충전한 연재 번호
 	private int p_price;//충전 금액
-	private int p_charging;//충전한 코인갯수
+	private int p_charging;//충전한 코인
+	private int p_coin;//사용한 코인
+	private int p_point;//덤으로 주는 충전 포인트
+	
 	public int getP_charging() {
 		return p_charging;
 	}
 	public void setP_charging(int p_charging) {
 		this.p_charging = p_charging;
 	}
-
-	private int p_coin;//충전 후 코인
-	private int p_point;//덤으로 주는 충전 포인트
 	public int getP_num() {
 		return p_num;
 	}

@@ -65,7 +65,7 @@ public class ToonServiceImp implements ToonService {
 		
 	}
 		
-	//찜하기
+//작품을 찜한 수
 	@Override
 	public int updateChoice(String Title, String id) {
 		if(adminDao.selectChoice(Title,id)!=0) return -1;
@@ -75,11 +75,12 @@ public class ToonServiceImp implements ToonService {
 		ToonVo toon = adminDao.getToont(Title);
 		return toon.getChoice();
 	}
-
+//찜하기 기능
 	@Override
 	public ChoiceVo getChoice(String Title,String id) {
 		return adminDao.getChoice(Title,id);
 	}
+//찜하기 취소
 	@Override
 	public int deleteChoice(String Title, String id) {
 		ToonVo toon = adminDao.getToont(Title);

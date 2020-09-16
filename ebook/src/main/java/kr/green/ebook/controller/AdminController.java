@@ -202,8 +202,13 @@ public class AdminController {
 	public ModelAndView adminpayment(ModelAndView mv,PayVo pay,HttpServletRequest r) {
 		mv.setViewName("redirect:/");
 		MemberVo member = memberService.getMember(r);
-		pay.setP_member(member.getName());
-		adminService.insertPay(pay);
+		if(member!=null) {
+			pay.setP_member(member.getName());
+			member.setCoin(member.getCoin()+pay.getP_charging());
+			adminService.insertPay(pay);
+		}
+		
+
 		return mv;
 	}
 }

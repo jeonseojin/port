@@ -3,10 +3,10 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <ul class="nav nav-tabs ad-event-nav">
     <li class="nav-item ad-event-l">
-          <a class="nav-link ad-event-btn active" data-toggle="tab" data-target="ad-event-all">전체이벤트조회</a>
+          <a class="nav-link ad-event-btn active" data-toggle="tab" aria-selected="true" data-target="ad-event-all">전체이벤트조회</a>
     </li>
     <li class="nav-item ad-event-l">
-          <a class="nav-link ad-event-btn" data-toggle="tab" aria-selected="true" data-target="ad-event-record">이벤트등록</a>
+          <a class="nav-link ad-event-btn" data-toggle="tab" data-target="ad-event-record">이벤트등록</a>
     </li>
 </ul>
 <div class="ad-event">
