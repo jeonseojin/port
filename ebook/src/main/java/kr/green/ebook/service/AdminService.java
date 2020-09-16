@@ -10,6 +10,7 @@ import kr.green.ebook.pagination.PageMaker;
 import kr.green.ebook.vo.EpisodeVo;
 import kr.green.ebook.vo.BookeventVo;
 import kr.green.ebook.vo.GenreVo;
+import kr.green.ebook.vo.PayVo;
 import kr.green.ebook.vo.ToonVo;
 import kr.green.ebook.vo.WeekVo;
 
@@ -38,5 +39,12 @@ public interface AdminService {
 	ArrayList<BookeventVo> eventList(Criteria cri);
 
 	void insertEvent(BookeventVo event);
+
+	ArrayList<PayVo> payList(Criteria cri);
+
+	BookeventVo paybanner(Criteria cri);
+
+	void insertPay(PayVo pay);
+
 
 }

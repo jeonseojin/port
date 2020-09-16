@@ -92,7 +92,6 @@ public class ToonController {
 		ArrayList<EpcommentVo> cmtlist = toonService.getCmtList(epcmt.getCo_epTitle(), epcmt.getCo_epEdition());
 		map.put("cmtlist",cmtlist);
 		map.put("member",epcmt.getCo_member());
-		System.out.println(cmtlist);
 		return map;
 	}
 

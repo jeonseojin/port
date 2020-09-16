@@ -15,6 +15,7 @@ import kr.green.ebook.pagination.PageMaker;
 import kr.green.ebook.vo.EpisodeVo;
 import kr.green.ebook.vo.BookeventVo;
 import kr.green.ebook.vo.GenreVo;
+import kr.green.ebook.vo.PayVo;
 import kr.green.ebook.vo.ToonVo;
 import kr.green.ebook.vo.WeekVo;
 
@@ -97,6 +98,25 @@ public class AdminServiceImp implements AdminService {
 	@Override
 	public void insertEvent(BookeventVo event) {
 		adminDao.insertEvent(event);		
+	}
+//충전 전체 리스트
+	@Override
+	public ArrayList<PayVo> payList(Criteria cri) {
+		return adminDao.payList(cri);
+	}
+//충전화면배너
+	@Override
+	public BookeventVo paybanner(Criteria cri) {
+		return adminDao.paybanner(cri);
+	}
+//충전기능
+	@Override
+	public void insertPay(PayVo pay) {
+		if(pay.getP_coin()!=0) {
+			pay.setP_coin(pay.getP_coin()+pay.getP_charging());
+			adminDao.insertPay(pay);
+		}
+		adminDao.insertPay(pay);
 	}
 
 

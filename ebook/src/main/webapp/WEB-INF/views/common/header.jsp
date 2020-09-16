@@ -97,7 +97,7 @@
 				                        </h3>
 				                        <div class="log-coinList">
 				                            <span class="">${member.coin}</span>코인
-				                            <a href="#" class="log-coin">코인 충전</a>
+				                            <a href="<%=request.getContextPath()%>/toon/payment" class="log-coin">코인 충전</a>
 				                        </div>
 				                    </div>  
 				                    <a class="logNav-link" href="#">내서재</a>

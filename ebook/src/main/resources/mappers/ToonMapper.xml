@@ -168,4 +168,19 @@
 			bookevent(ev_title,ev_engtitle,ev_img,ev_t_title,ev_member,ev_banner)
 			values(#{event.ev_title},#{event.ev_engtitle},#{event.ev_img},#{event.ev_t_title},#{event.ev_member},#{event.ev_banner})
 	</insert>
+<!-- 전체 충전 리스트 -->
+	<select id="payList" resultType="kr.green.ebook.vo.PayVo">
+		select * from pay
+	</select>
+<!-- 충전용 배너 -->
+	<select id="paybanner" resultType="kr.green.ebook.vo.BookeventVo">
+		select * from bookevent where ev_engtitle = 'pay'
+	</select>
+<!-- 충전용 배너 -->
+	<insert id="insertPay">
+		insert into
+		pay(p_member,p_price,p_coin,p_point,p_epititle,p_epnum,p_usedate,p_charging)
+		values(#{pay.p_member},#{pay.p_price},#{pay.p_coin},#{pay.p_point},#{pay.p_epititle},#{pay.p_epnum},#{pay.p_usedate},#{pay.p_charging},)
+			
+	</insert>
 </mapper>

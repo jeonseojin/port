@@ -270,3 +270,149 @@
 	position: absolute;
 	right: 70px;
 }
+/*충전css*/
+.toon-pay-box{
+	position: relative;
+	margin-top: 30px;
+	width: 680px;
+}
+.toon-pay-tbox{
+	position: relative;
+	margin-bottom: 25px;
+}
+.toon-pay-t{
+	font-weight: bold;
+	font-size: 28px;
+}
+.toon-pay-free-t{
+	position: absolute;
+	top: 10px;
+	left: 130px;
+	color: #5A719A !important;
+}
+.toon-pay-free-t>i{
+	color: black !important;
+}
+.toon-pay-coinbox{
+	position: relative;
+	margin-bottom: 48px;
+}
+.toon-coin-icon{
+	margin-left: 7px;
+	color: #65717f;
+	font-size: 14px;
+	white-space: nowrap;
+}
+.toon-coin-icon>i{
+	font-size: 18px;
+	color:gray;
+}
+.coin-icon-p{
+	position: absolute;
+	left: 60px;
+	height: 18px;
+	border: 2px solid gray;
+	border-radius: 100%;
+	opacity: 0.87;
+	font-size: 12px;
+	padding: 0 2px 3px 3.5px;
+	font-weight: bold;
+	line-height: 17px;
+}
+.coin-icon-help{
+	position: absolute;
+	left: 130px;
+	opacity: .55;
+}
+.coin-icon-pt{
+	position: absolute;
+	left: 80px;
+	color: #65717f;
+	font-size: 14px;
+	white-space: nowrap;
+}
+.toon-pay-banner{
+	margin: 48px 0;
+	width: 100%;
+	box-sizing: border-box;
+}
+.toon-pay-blink{
+	width: 100%;
+	height: 100%;
+}
+.toon-pay-blink>img{
+	width: 100%;
+	height: 100%;
+}
+.toon-pay-btn{
+	width: 100%;
+	border: 1px solid #dbdee3;
+	background-color: transparent;
+	height: 80px;
+	font-weight: bold;
+	font-size: 20px;
+	padding: 0 20px;
+	margin-bottom: 15px;
+}
+.toon-paycoin-icon{
+	font-size: 16px;
+	color: rgb(255, 182, 45);
+}
+.payment-box{
+	position: absolute;
+	top:0;
+	width: 100%;
+	height: 100%;
+	background-color: gray;
+	opacity: .3;
+}
+.payment-item{
+	position: absolute;
+	top: 150px;
+	right:50%;
+	z-index: 3;
+	margin: 0 auto;
+	width: 600px;
+	height: 600px;
+	border: 1px solid #dbdee3;
+	background-color: #fff;
+	padding: 30px 60px;
+}
+.payment-item>.toon-pay-btn{
+	margin-top:10px;
+	border: 0;
+	border-bottom: 1px solid #acb4bf;
+	border-top: 1px solid #acb4bf;
+}
+.payment-tool{
+	position: relative;
+	width:478px;
+	height: 340px;
+}
+.payment-tool-choice{
+	border: 1px solid black;
+	background-color: transparent;
+	width: 100%;
+	margin: 15px 0;
+	font-size: 20px;
+}
+.pay-choice-icon{
+	float: right;
+	font-size: 10px;
+	color: red;
+	line-height: 35px;
+}
+.choice-payment{
+	width: 430px;
+	height: 38px;
+	appearance:none;
+	border: none;
+	text-align: center;
+}
+.paymentchoice-help{
+	font-size: 12px;
+	font-weight: bold;
+}
+.help-paymentchoice{
+	margin-top: 10px;
+}

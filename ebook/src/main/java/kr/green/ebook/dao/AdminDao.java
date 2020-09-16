@@ -11,6 +11,7 @@ import kr.green.ebook.vo.EpcommentVo;
 import kr.green.ebook.vo.EpisodeVo;
 import kr.green.ebook.vo.BookeventVo;
 import kr.green.ebook.vo.GenreVo;
+import kr.green.ebook.vo.PayVo;
 import kr.green.ebook.vo.ToonVo;
 import kr.green.ebook.vo.WeekVo;
 
@@ -61,6 +62,12 @@ public interface AdminDao {
 	ArrayList<BookeventVo> eventList(@Param("cri")Criteria cri);
 
 	void insertEvent(@Param("event")BookeventVo event);
+
+	ArrayList<PayVo> payList(@Param("cri")Criteria cri);
+
+	BookeventVo paybanner(@Param("cri")Criteria cri);
+
+	void insertPay(@Param("pay")PayVo pay);
 
 
 }

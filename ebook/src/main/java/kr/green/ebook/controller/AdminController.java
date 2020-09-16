@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +16,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
+import kr.green.ebook.dao.AdminDao;
 import kr.green.ebook.pagination.Criteria;
 import kr.green.ebook.pagination.PageMaker;
 import kr.green.ebook.service.AdminService;
@@ -23,6 +26,7 @@ import kr.green.ebook.utils.UploadFileUtils;
 import kr.green.ebook.vo.EpisodeVo;
 import kr.green.ebook.vo.BookeventVo;
 import kr.green.ebook.vo.MemberVo;
+import kr.green.ebook.vo.PayVo;
 import kr.green.ebook.vo.ToonVo;
 import kr.green.ebook.vo.WeekVo;
 
@@ -126,8 +130,7 @@ public class AdminController {
 		mv.addObject("cri", cri);
 		return mv;
 	}
-	
-	
+	//수정기능
 	@RequestMapping(value ="/admin/modify", method= RequestMethod.POST)
 	public ModelAndView ToonEpMPost(ModelAndView mv,ToonVo toon,Integer num,MultipartFile file1,MultipartFile file2) throws IOException, Exception  {
 		mv.setViewName("redirect:/admin/toon");
@@ -172,5 +175,35 @@ public class AdminController {
 		adminService.insertEvent(event);
 		return mv;
 	}
-	
+	//관리자 충전관리페이지
+	@RequestMapping(value = "/admin/pay", method = RequestMethod.GET)
+	public ModelAndView adminPay(ModelAndView mv, Criteria cri) {
+		mv.setViewName("/admin/pay");
+		ArrayList<ToonVo> tlist = adminService.toonList(cri);
+		mv.addObject("tlist", tlist);
+		ArrayList<PayVo> paylist = adminService.payList(cri);
+		mv.addObject("paylist", paylist);
+		ArrayList<MemberVo> memberlist = memberService.memberList(cri);
+		mv.addObject("memberlist", memberlist);
+		PageMaker pm = memberService.getPageMakerByMember(cri);
+		mv.addObject("pm", pm);
+		return mv;
+	}
+	//관리자 충전기능페이지
+	@RequestMapping(value = "/toon/payment", method = RequestMethod.GET)
+	public ModelAndView adminaddpay(ModelAndView mv, Criteria cri) {
+		mv.setViewName("/toon/payment");
+		BookeventVo ev = adminService.paybanner(cri);
+		mv.addObject("ev", ev);
+		return mv;
+	}
+	//관리자 충전기능페이지
+	@RequestMapping(value = "/toon/payment", method = RequestMethod.POST)
+	public ModelAndView adminpayment(ModelAndView mv,PayVo pay,HttpServletRequest r) {
+		mv.setViewName("redirect:/");
+		MemberVo member = memberService.getMember(r);
+		pay.setP_member(member.getName());
+		adminService.insertPay(pay);
+		return mv;
+	}
 }
