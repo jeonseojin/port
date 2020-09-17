@@ -69,5 +69,7 @@ public interface AdminDao {
 
 	void insertPay(@Param("pay")PayVo pay);
 
+	ArrayList<PayVo> getPayList(@Param("neme")String name);
+
 
 }

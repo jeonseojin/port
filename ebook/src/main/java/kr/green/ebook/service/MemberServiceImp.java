@@ -78,4 +78,10 @@ public class MemberServiceImp implements MemberService {
 	public ArrayList<ChoiceVo> getChoiceList(String id) {
 		return memberDao.getChoiceList(id);
 	}
+
+	@Override
+	public void updatecoin(MemberVo member) {
+		memberDao.updatecoin(member);
+		
+	}
 }

@@ -26,6 +26,7 @@ import kr.green.ebook.vo.ChoiceVo;
 import kr.green.ebook.vo.EpcommentVo;
 import kr.green.ebook.vo.EpisodeVo;
 import kr.green.ebook.vo.MemberVo;
+import kr.green.ebook.vo.PayVo;
 import kr.green.ebook.vo.ToonVo;
 
 @Controller
@@ -52,17 +53,26 @@ public class ToonController {
 	@RequestMapping(value = "/toon/ep", method = RequestMethod.GET)
 	public ModelAndView toonEp(ModelAndView mv,String Title, Criteria cri,HttpServletRequest r,ChoiceVo ch) {
 		mv.setViewName("/toon/ep");
+		//조회수 및 웹툰정보
 		ToonVo toon = toonService.view(Title);
 		mv.addObject("toon", toon);
+		//연재웹툰
 		ArrayList<EpisodeVo> epcov = toonService.getEpcoverlist(Title);
 		mv.addObject("epcov", epcov);
+		//페이지네이션
 		PageMaker pm = adminService.getPageMakerByToon(cri);
 		mv.addObject("pm", pm);
+		//찜
 		MemberVo member = memberService.getMember(r);
 		if(member!=null) {
 			ch = toonService.getChoice(Title,member.getId());
+			//충전
+			ArrayList<PayVo> plist = toonService.getPayList(member.getName());
+			mv.addObject("plist", plist);
+			System.out.println(plist);
 		}
 		mv.addObject("ch", ch);
+		
 		return mv;
 	}
 	@RequestMapping(value = "/toon/comic", method = RequestMethod.GET)

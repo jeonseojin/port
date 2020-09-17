@@ -179,7 +179,11 @@
 <!-- 충전하기 -->
 	<insert id="insertPay">
 		insert into
-		pay(p_member,p_price,p_coin,p_point,p_epititle,p_epnum,p_usedate,p_charging)
-		values(#{pay.p_member},#{pay.p_price},#{pay.p_coin},#{pay.p_point},#{pay.p_epititle},#{pay.p_epnum},#{pay.p_usedate},#{pay.p_charging})
+		pay(p_member,p_price,p_coin,p_point,p_title,p_edition,p_usedate,p_charging)
+		values(#{pay.p_member},#{pay.p_price},#{pay.p_coin},#{pay.p_point},#{pay.p_title},#{pay.p_edition},#{pay.p_usedate},#{pay.p_charging})
 	</insert>
+<!-- 결제내역 -->
+	<select id="getPayList">
+		select * from pay where p_member =#{name}
+	</select>
 </mapper>

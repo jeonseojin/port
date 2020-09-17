@@ -15,6 +15,7 @@ import kr.green.ebook.pagination.PageMaker;
 import kr.green.ebook.vo.EpisodeVo;
 import kr.green.ebook.vo.BookeventVo;
 import kr.green.ebook.vo.GenreVo;
+import kr.green.ebook.vo.MemberVo;
 import kr.green.ebook.vo.PayVo;
 import kr.green.ebook.vo.ToonVo;
 import kr.green.ebook.vo.WeekVo;
@@ -23,6 +24,8 @@ import kr.green.ebook.vo.WeekVo;
 public class AdminServiceImp implements AdminService {
 	@Autowired
     AdminDao adminDao;
+	@Autowired
+    MemberDao memberDao;
 	
 //작품 + 정렬
 	@Override

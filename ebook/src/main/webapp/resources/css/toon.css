@@ -396,7 +396,7 @@
 	left: 40%;
 	margin: 0 auto;
 	width: 350px;
-	height: 400px;
+	height: 270px;
 	background-color: #fff;
 	padding: 27px 22px 22px 22px;
 }
@@ -405,27 +405,46 @@
 }
 .comic-payment-btn{
 	text-align: right;
+	position: absolute;
+	bottom: 22px;
+	right: 22px;
+	height: 30px;
 }
 .comic-btn-pay{
 	background: #eb0026;
 	color: #fff;
 	border: none;
+	font-weight: bold;
+	height: 100%;
 }
 .comic-btn-cancel{
 	border: none;
 	background: transparent;
 }
 .comic-payment-content{
-	padding: 15px 0;
+	padding: 15px 15px 15px 0;
+	height: 100px;
+	box-sizing: border-box;
+	position: relative;
 }
 .comic-payment-content>img{
 	height: 70px;
+	float:left;
+}
+.comic-paycontent-span{
+	height: 100%;
+	line-height: 70px;
 }
 .comic-payitem-coin{
-	display: table-cell;
+	float:right;
 	text-align: right;
 	font-weight: bold;
+	font-size: 16px;
 }
+.comic-payitem-edtion{
+	margin-left: 10px;
+}
+
 .payment-item{
 	position: relative;
 	z-index: 3;

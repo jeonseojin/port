@@ -67,8 +67,8 @@
 	</div>
 </div>
 
-<div class="comic-payment-box">
-	<form action="">
+<div class="comic-payment-box display-none">
+	<form action="<%=request.getContextPath()%>/toon/comic?Title=${toon.t_title}&edition=${p_edition}">
 		<div class="comic-item-payment">
 			<h4>작품 구매</h4>
 			<div class="comic-payment-content">
@@ -76,7 +76,6 @@
 				<div class="comic-paycontent-span">
 				</div>
 			</div>
-			<p>열람하지 않은 에피소드에 대해서만 구매 후 7일 이내 청약 철회가 가능합니다.</p>
 			<p>열람하지 않은 에피소드에 대해서만 구매 후 7일 이내 청약 철회가 가능합니다.</p>
 			<div class="comic-payment-btn">
 			<button type="button" class="comic-btn-cancel">취소</button>
@@ -96,12 +95,12 @@ $(function(){
 	})
 	$('.comic-itemlink-payment').click(function(e){
     	e.stopPropagation();
-    	$('.comic-paycontent-span>span').after().remove();
+    	$('.comic-paycontent-span>span').append().remove();
     	var coin=$(this).next().children('input[name=coin]').val();
     	var edition=$(this).next().children('input[name=edition]').val();
     	var str = 	'<span class="comic-payitem-edtion">'+edition+'화</span>'+
     				'<span class="comic-payitem-coin">'+coin+'코인</span>'
-    	$('.comic-paycontent-span').after(str);
+    	$('.comic-paycontent-span').append(str);
     	$('.comic-payment-box').removeClass('display-none');
     	$('.comic-item-payment').removeClass('display-none');
 

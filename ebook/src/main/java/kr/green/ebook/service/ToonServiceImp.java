@@ -10,6 +10,7 @@ import kr.green.ebook.pagination.Criteria;
 import kr.green.ebook.vo.ChoiceVo;
 import kr.green.ebook.vo.EpcommentVo;
 import kr.green.ebook.vo.EpisodeVo;
+import kr.green.ebook.vo.PayVo;
 import kr.green.ebook.vo.ToonVo;
 
 @Service
@@ -90,6 +91,11 @@ public class ToonServiceImp implements ToonService {
 			return toon.getChoice();
 		}
 		return toon.getChoice();
+	}
+//해당 회원의 결제내역 불러오기
+	@Override
+	public ArrayList<PayVo> getPayList(String name) {
+		return adminDao.getPayList(name);
 	}
   
 }

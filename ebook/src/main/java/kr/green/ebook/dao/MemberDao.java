@@ -18,6 +18,10 @@ public interface MemberDao {
 	int getTotalCountByMember(@Param("cri")Criteria cri);
 
 	public ArrayList<ChoiceVo> getChoiceList(@Param("id")String id);
+
+	public void updateMember(@Param("member")MemberVo member);
+
+	public void updatecoin(@Param("member")MemberVo member);
     
 
 }

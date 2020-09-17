@@ -24,4 +24,6 @@ public interface MemberService {
 	PageMaker getPageMakerByMember(Criteria cri);
 
 	ArrayList<ChoiceVo> getChoiceList(String id);
+
+	void updatecoin(MemberVo member);
 }
