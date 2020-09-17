@@ -107,11 +107,11 @@
 	bottom: 25px;
 	color: black;
 }
-.comic-itemlink,.comic-itemlink-payment{
+.comic-itemlink,.comic-itemlink-payment,.nologin-payment{
 	margin-right: 10px;
 	z-index: 1;
 }
-.comic-itemlink-payment{
+.comic-itemlink-payment,.nologin-payment{
 	border: none;
 	background-color: transparent;
 }

@@ -64,15 +64,14 @@ public class ToonController {
 		mv.addObject("pm", pm);
 		//찜
 		MemberVo member = memberService.getMember(r);
+		ArrayList<PayVo> plist=null;
 		if(member!=null) {
 			ch = toonService.getChoice(Title,member.getId());
 			//충전
-			ArrayList<PayVo> plist = toonService.getPayList(member.getName());
-			mv.addObject("plist", plist);
-			System.out.println(plist);
+			plist = toonService.getPayList(member.getName());
 		}
 		mv.addObject("ch", ch);
-		
+		mv.addObject("plist", plist);
 		return mv;
 	}
 	@RequestMapping(value = "/toon/comic", method = RequestMethod.GET)
@@ -91,6 +90,18 @@ public class ToonController {
 		EpisodeVo epcov = toonService.getEp(Title,edition);
 		mv.addObject("epcov", epcov);
 		return mv;
+	}
+	//한개 구매
+	@RequestMapping(value = "/toon/comic", produces="application/json; charset=utf8")
+	@ResponseBody
+	public Map<Object, Object> toonComicPost(@RequestBody PayVo pay,HttpServletRequest r) {
+		Map<Object, Object> map = new HashMap<Object, Object>();
+		MemberVo member = memberService.getMember(r);
+		pay.setP_member(member.getName());
+		adminService.insertPay(pay);
+		member.setCoin(member.getCoin()-pay.getP_coin());
+		memberService.updatecoin(member);	
+		return map;
 	}
 
 	//웹툰 댓글 등록

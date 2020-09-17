@@ -46,45 +46,71 @@
 						</div>
 					</c:if>
 					<c:if test="${epcov.e_coin!=0}">
-						<button class="comic-itemlink-payment" type="button"><img src="/ebook/resources/img${epcov.e_img}"> </button>
-						<div class="comic-items-box">
-							<span class="comic-itemedtion">${epcov.e_edition}화</span>
-							<c:if test="${epcov.e_title!=null}">
-								<span class="comic-items-eptitle">${epcov.e_title}</span>
-							</c:if>
-							<c:if test="${epcov.e_coin!=0}">
-								<span class="comic-items-epcoin">${epcov.e_coin}코인</span>
-							</c:if>
-							<span class="comic-itemday">${epcov.e_date}</span>
-							<input value="${epcov.e_coin}" type="hidden" name="coin">
-							<input value="${epcov.e_edition}" type="hidden" name="edition">
-							<input value="${epcov.e_t_title}" type="hidden" name="p_ititle">
-						</div>
+						<c:if test="${member.id==null}">
+							<button class="nologin-payment" type="button"><img src="/ebook/resources/img${epcov.e_img}"> </button>
+							<div class="comic-items-box">
+								<span class="comic-itemedtion">${epcov.e_edition}화</span>
+								<c:if test="${epcov.e_title!=null}">
+									<span class="comic-items-eptitle">${epcov.e_title}</span>
+								</c:if>
+								<span class="comic-items-epcoin">${epcov.e_coin} 코인</span>
+								<span class="comic-itemday">${epcov.e_date}</span>
+							</div>
+						</c:if>
+						<c:if test="${member.id!=null && epcov.iscontain(plist)}">
+							<c:forEach var="plist" items="${plist}">
+								<c:choose>
+									<c:when test="${plist.p_title == epcov.e_t_title && plist.p_edition==epcov.e_edition}">
+										<a class="comic-itemlink" href="<%=request.getContextPath()%>/toon/comic?Title=${toon.t_title}&edition=${epcov.e_edition}"><img src="/ebook/resources/img${epcov.e_img}"> </a>
+										<div class="comic-items-box">
+											<span class="comic-itemedtion">${epcov.e_edition}화</span>
+											<c:if test="${epcov.e_title!=null}">
+												<span class="comic-items-eptitle">${epcov.e_title}</span>
+											</c:if>
+											<span class="comic-items-epcoin">소장</span>
+											<span class="comic-itemday">${epcov.e_date}</span>
+										</div>
+									</c:when>
+								</c:choose>
+							</c:forEach>
+						</c:if>
+						<c:if test="${member.id!=null && !epcov.iscontain(plist)}">
+							<button class="comic-itemlink-payment" type="button"><img src="/ebook/resources/img${epcov.e_img}"> </button>
+							<div class="comic-items-box">
+								<span class="comic-itemedtion">${epcov.e_edition}화</span>
+								<c:if test="${epcov.e_title!=null}">
+									<span class="comic-items-eptitle">${epcov.e_title}</span>
+								</c:if>
+								<span class="comic-items-epcoin">${epcov.e_coin} 코인</span>
+								<span class="comic-itemday">${epcov.e_date}</span>
+								<input value="${epcov.e_coin}" type="hidden" name="coin">
+								<input value="${epcov.e_edition}" type="hidden" name="edition">
+								<input value="${epcov.e_t_title}" type="hidden" name="title">
+							</div>
+						</c:if>
 					</c:if>
 				</li>
 			</c:forEach>
 		</ul>
 	</div>
 </div>
-
 <div class="comic-payment-box display-none">
-	<form action="<%=request.getContextPath()%>/toon/comic?Title=${toon.t_title}&edition=${p_edition}">
-		<div class="comic-item-payment">
-			<h4>작품 구매</h4>
-			<div class="comic-payment-content">
-				<img src="/ebook/resources/img${toon.t_img}">
-				<div class="comic-paycontent-span">
-				</div>
-			</div>
-			<p>열람하지 않은 에피소드에 대해서만 구매 후 7일 이내 청약 철회가 가능합니다.</p>
-			<div class="comic-payment-btn">
-			<button type="button" class="comic-btn-cancel">취소</button>
-			<button type="submit" class="comic-btn-pay">구매</button>
+	<div class="comic-item-payment">
+		<h4>작품 구매</h4>
+		<div class="comic-payment-content">
+			<img src="/ebook/resources/img${toon.t_img}">
+			<div class="comic-paycontent-span">
 			</div>
 		</div>
-		<input type="hidden" name="p_coin">
-		<input type="hidden" name="p_edition">
-	</form>
+		<p>열람하지 않은 에피소드에 대해서만 구매 후 7일 이내 청약 철회가 가능합니다.</p>
+		<div class="comic-payment-btn">
+		<button type="button" class="comic-btn-cancel">취소</button>
+		<button type="submit" class="comic-btn-pay">구매</button>
+		</div>
+	</div>
+	<input type="hidden" name="p_coin">
+	<input type="hidden" name="p_edition">
+	<input type="hidden" name="p_title">
 </div>
 
 <script>
@@ -98,16 +124,36 @@ $(function(){
     	$('.comic-paycontent-span>span').append().remove();
     	var coin=$(this).next().children('input[name=coin]').val();
     	var edition=$(this).next().children('input[name=edition]').val();
+    	var title=$(this).next().children('input[name=title]').val();
     	var str = 	'<span class="comic-payitem-edtion">'+edition+'화</span>'+
     				'<span class="comic-payitem-coin">'+coin+'코인</span>'
     	$('.comic-paycontent-span').append(str);
     	$('.comic-payment-box').removeClass('display-none');
     	$('.comic-item-payment').removeClass('display-none');
-
+    	$('input[name=p_coin]').val(coin);
+    	$('input[name=p_edition]').val(edition);
+    	$('input[name=p_title]').val(title);
 	})
 	
 	$('.comic-item-payment').click(function(e){
     	e.stopPropagation();    	
+    })
+    $('.comic-btn-pay').click(function(){
+    	var coin=$('input[name=p_coin]').val();
+    	var edition=$('input[name=p_edition]').val();
+    	var title=$('input[name=p_title]').val();
+    	$.ajax({
+			async:true,
+	        type:'POST',
+	        data:JSON.stringify({	"p_title":title,
+		        	"p_edition":edition,
+		        	"p_coin":coin	}),
+	        url:"<%=request.getContextPath()%>/toon/comic",
+	        dataType:"json",
+	        contentType:"application/json; charset=UTF-8",
+		        success : function(data){
+		        }
+		});
     })
     
     $('.comic-btn-cancel').click(function(){
@@ -115,6 +161,9 @@ $(function(){
     	$('.comic-payment-box').addClass('display-none');
     })
     
+    $('.nologin-payment').click(function(){
+        alert("로그인 후에 구매하실 수 있습니다.")
+    })
 	$('.comicInfo-btn-choice').click(function(){
 		var Title = $('input[name=engtitle]').val();
 		var id = $('input[name=id]').val();

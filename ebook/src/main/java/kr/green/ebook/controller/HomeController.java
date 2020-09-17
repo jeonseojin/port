@@ -68,7 +68,6 @@ public class HomeController {
 		}else {//실패
 			mv.setViewName("redirect:/signup");
 		}
-		System.out.println(member);
 		return mv;
 	}
 	@RequestMapping(value = "/common/signin", method = RequestMethod.POST)
