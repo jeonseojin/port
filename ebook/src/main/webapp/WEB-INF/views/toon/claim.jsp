@@ -19,6 +19,7 @@
 		Lunch PM 12:30 ~ PM 01:30<br>
 		* 법정 공휴일 제외
 		</div>
+		<div></div>
 	</div> 
  
 	<div class="help-box-right">

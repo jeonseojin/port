@@ -142,6 +142,12 @@ public class AdminServiceImp implements AdminService {
 			pm.setTotalCount(adminDao.getTotalCountByToon(cri));
 			return pm;
 		}
+//문의수정
+		@Override
+		public void updateClaim(ClaimVo cl) {
+			adminDao.updateClaim(cl);
+			
+		}
 
 
 

@@ -232,4 +232,15 @@
   				and cl_member like concat('%',#{cri.search},'%')
   			</if>
   </select>
+<!-- 문의 수정 -->
+	<update id="updateClaim">
+		update claim
+		set
+			cl_title = #{cl.cl_title}
+			cl_content=#{cl.cl_content}
+			cl_file=#{cl.cl_file}
+			cl_type=#{cl.cl_type}
+			
+		where cl_num = #{cl.cl_num}
+	</update>
 </mapper>

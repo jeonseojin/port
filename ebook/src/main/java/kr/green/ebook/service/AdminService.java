@@ -17,6 +17,10 @@ import kr.green.ebook.vo.WeekVo;
 
 public interface AdminService {
 
+	PageMaker getPageMakerByToon(Criteria cri);
+	
+	PageMaker getPageMakerByClaim(Criteria cri);
+	
 	ArrayList<ToonVo> toonList(Criteria cri);
 
 	void insertToon(ToonVo toon);
@@ -51,10 +55,9 @@ public interface AdminService {
 
 	ClaimVo getClaimT(Integer num);
 
-	
+	void updateClaim(ClaimVo cl);
 
-	PageMaker getPageMakerByToon(Criteria cri);
+
 	
-	PageMaker getPageMakerByClaim(Criteria cri);
 
 }

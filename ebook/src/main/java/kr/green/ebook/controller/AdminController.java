@@ -248,4 +248,20 @@ public class AdminController {
 		mv.addObject("cri", cri);
 		return mv;
 	}
+	//관리자 공지사항 등록페이지
+	@RequestMapping(value = "/admin/clmodify", method = RequestMethod.GET)
+	public ModelAndView adminclmodify(ModelAndView mv, Criteria cri,Integer num){
+		mv.setViewName("/admin/clmodify");
+		ClaimVo cl = adminService.getClaimT(num);
+		mv.addObject("cl", cl);
+		mv.addObject("cri", cri);
+		return mv;
+	}
+	@RequestMapping(value = "/admin/clmodify", method = RequestMethod.POST)
+	public ModelAndView adminclmodifyP(ModelAndView mv, Criteria cri,ClaimVo cl){
+		mv.setViewName("redirect:/admin/cldetail");
+		adminService.updateClaim(cl);
+		mv.addObject("cri", cri);
+		return mv;
+	}
 }
