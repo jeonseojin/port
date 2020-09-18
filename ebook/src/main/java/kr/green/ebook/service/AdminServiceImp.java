@@ -34,15 +34,6 @@ public class AdminServiceImp implements AdminService {
 		return adminDao.toonList(cri);
 
 	}
-	
-// 작품페이지네이션
-	@Override
-	public PageMaker getPageMakerByToon(Criteria cri) {
-		PageMaker pm = new PageMaker();
-		pm.setCri(cri);
-		pm.setTotalCount(adminDao.getTotalCountByToon(cri));
-		return pm;
-	}
 
 //작품등록
 	@Override
@@ -123,8 +114,34 @@ public class AdminServiceImp implements AdminService {
 	@Override 
 	public ArrayList<ClaimVo> getClaim(Criteria cri) { 
 		return adminDao.getClaim(cri); 
+	}
+//문의등록&공지사항 등록
+	@Override
+	public void insertclaim(ClaimVo cl) {
+		adminDao.insertclaim(cl);
+		
+	}
+//공지사항 자세히보기
+	@Override
+	public ClaimVo getClaimT(Integer num) {
+		return adminDao.getClaimT(num);
+	}
+// 문의페이지네이션
+	@Override
+	public PageMaker getPageMakerByClaim(Criteria cri) {
+			PageMaker pm = new PageMaker();
+			pm.setCri(cri);
+			pm.setTotalCount(adminDao.getTotalCountByClaim(cri));
+		return pm;
 	} 
-
+// 작품페이지네이션
+		@Override
+		public PageMaker getPageMakerByToon(Criteria cri) {
+			PageMaker pm = new PageMaker();
+			pm.setCri(cri);
+			pm.setTotalCount(adminDao.getTotalCountByToon(cri));
+			return pm;
+		}
 
 
 

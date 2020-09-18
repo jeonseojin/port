@@ -51,7 +51,7 @@ public class HomeController {
 		if(member!=null) {
 			ArrayList<ChoiceVo> chlist = memberService.getChoiceList(member.getId());
 			mv.addObject("chlist", chlist);
-			ArrayList<PayVo> plist = toonService.getPayList(member.getName());
+			ArrayList<PayVo> plist = toonService.getPayToon(member.getName());
 			mv.addObject("plist", plist);
 		}
 		ArrayList<BookeventVo> evlist = adminService.eventList(cri);

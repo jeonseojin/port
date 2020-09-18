@@ -219,6 +219,33 @@ public class AdminController {
 		mv.setViewName("/admin/claim");
 		ArrayList<ClaimVo> cl =adminService.getClaim(cri);
 		mv.addObject("cl", cl);
+		PageMaker pm = adminService.getPageMakerByClaim(cri);
+		mv.addObject("pm", pm);
+		return mv;
+	}
+	//관리자 공지사항 등록페이지
+	@RequestMapping(value = "/admin/notice", method = RequestMethod.GET)
+	public ModelAndView adminNotice(ModelAndView mv, Criteria cri,ClaimVo cl){
+		mv.setViewName("/admin/notice");
+		return mv;
+	}
+	
+	//관리자 공지사항 등록기능
+	@RequestMapping(value = "/admin/notice", method = RequestMethod.POST)
+	public ModelAndView adminNoticeP(ModelAndView mv, Criteria cri,ClaimVo cl){
+		ArrayList<ClaimVo> clist =adminService.getClaim(cri);
+		mv.setViewName("redirect:/admin/cldetail?num="+clist.get(clist.size()-1).getCl_num());
+		cl.setCl_content(cl.getCl_content().replaceAll("\n", "<br>"));
+		adminService.insertclaim(cl);
+		return mv;
+	}
+	//공지사항 자세히보기
+	@RequestMapping(value = "/admin/cldetail", method = RequestMethod.GET)
+	public ModelAndView admincldetail(ModelAndView mv, Criteria cri,Integer num){
+		mv.setViewName("/admin/cldetail");
+		ClaimVo cl = adminService.getClaimT(num);
+		mv.addObject("cl", cl);
+		mv.addObject("cri", cri);
 		return mv;
 	}
 }

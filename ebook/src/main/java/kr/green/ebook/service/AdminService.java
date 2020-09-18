@@ -19,8 +19,6 @@ public interface AdminService {
 
 	ArrayList<ToonVo> toonList(Criteria cri);
 
-	PageMaker getPageMakerByToon(Criteria cri);
-
 	void insertToon(ToonVo toon);
 
 	void updateToon(ToonVo toon);
@@ -49,5 +47,14 @@ public interface AdminService {
 
 	ArrayList<ClaimVo> getClaim(Criteria cri);
 
+	void insertclaim(ClaimVo cl);
+
+	ClaimVo getClaimT(Integer num);
+
+	
+
+	PageMaker getPageMakerByToon(Criteria cri);
+	
+	PageMaker getPageMakerByClaim(Criteria cri);
 
 }

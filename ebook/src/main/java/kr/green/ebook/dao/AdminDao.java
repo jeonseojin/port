@@ -21,8 +21,6 @@ public interface AdminDao {
 //	작품리스트 정렬
 	ArrayList<ToonVo> toonList(@Param("cri")Criteria cri);
 
-	public int getTotalCountByToon(@Param("cri")Criteria cri);
-
 	void insertToon(@Param("toon")ToonVo toon);
 
 	void insertEp(@Param("ep")EpisodeVo ep);
@@ -73,5 +71,16 @@ public interface AdminDao {
 	ArrayList<PayVo> getPayList(@Param("name")String name);
 
 	ArrayList<ClaimVo> getClaim(@Param("cri")Criteria cri);
+
+	ArrayList<PayVo> getPayToon(@Param("name")String name);
+
+	void insertclaim(@Param("cl")ClaimVo cl);
+
+	ClaimVo getClaimT(@Param("num")Integer num);
+
+//페이지네이션
+	public int getTotalCountByToon(@Param("cri")Criteria cri);
+	
+	int getTotalCountByClaim(@Param("cri")Criteria cri);
 
 }
