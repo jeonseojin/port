@@ -12,12 +12,9 @@ import kr.green.ebook.vo.MemberVo;
 
 public class LoginInterceptor extends HandlerInterceptorAdapter {
 	@Override
-	public void postHandle(
-	    HttpServletRequest request, 
-	    HttpServletResponse response, 
-	    Object handler, 
-	    ModelAndView modelAndView)
-	    throws Exception {
+	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, 
+	    ModelAndView modelAndView) throws Exception {
+		
 	    ModelMap modelMap = modelAndView.getModelMap();
 	    MemberVo member = (MemberVo)modelMap.get("member");
 

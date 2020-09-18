@@ -42,6 +42,8 @@
 		class="kr.green.ebook.interceptor.LoginInterceptor"></beans:bean>
 	<beans:bean id="authInterceptor" 
 	class="kr.green.ebook.interceptor.AuthInterceptor"></beans:bean>
+	<beans:bean id="ComicInterceptor" 
+	class="kr.green.ebook.interceptor.AuthInterceptor"></beans:bean>
 	
 	<interceptors>
 		<interceptor>

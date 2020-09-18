@@ -15,7 +15,15 @@ public class PayVo {
 	private int p_charging;//충전한 코인
 	private int p_coin;//사용한 코인
 	private int p_point;//덤으로 주는 충전 포인트
+	private String p_one;//첫구매작품
 	
+	
+	public String getP_one() {
+		return p_one;
+	}
+	public void setP_one(String p_one) {
+		this.p_one = p_one;
+	}
 	public int getP_charging() {
 		return p_charging;
 	}
@@ -89,7 +97,8 @@ public class PayVo {
 	public String toString() {
 		return "PayVo [p_num=" + p_num + ", p_member=" + p_member + ", p_date=" + p_date + ", p_usedate=" + p_usedate
 				+ ", p_title=" + p_title + ", p_edition=" + p_edition + ", p_price=" + p_price + ", p_charging="
-				+ p_charging + ", p_coin=" + p_coin + ", p_point=" + p_point + "]";
+				+ p_charging + ", p_coin=" + p_coin + ", p_point=" + p_point + ", p_one=" + p_one + "]";
 	}
+
 	
 }

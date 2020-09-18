@@ -25,6 +25,7 @@ import kr.green.ebook.service.ToonService;
 import kr.green.ebook.utils.UploadFileUtils;
 import kr.green.ebook.vo.EpisodeVo;
 import kr.green.ebook.vo.BookeventVo;
+import kr.green.ebook.vo.ClaimVo;
 import kr.green.ebook.vo.MemberVo;
 import kr.green.ebook.vo.PayVo;
 import kr.green.ebook.vo.ToonVo;
@@ -210,8 +211,14 @@ public class AdminController {
 			adminService.insertPay(pay);
 			memberService.updatecoin(member);
 		}
-		
-
+		return mv;
+	}
+	//관리자 문의페이지
+	@RequestMapping(value = "/admin/claim", method = RequestMethod.GET)
+	public ModelAndView adminclaim(ModelAndView mv, Criteria cri){
+		mv.setViewName("/admin/claim");
+		ArrayList<ClaimVo> cl =adminService.getClaim(cri);
+		mv.addObject("cl", cl);
 		return mv;
 	}
 }

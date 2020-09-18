@@ -9,6 +9,7 @@ import kr.green.ebook.pagination.Criteria;
 import kr.green.ebook.pagination.PageMaker;
 import kr.green.ebook.vo.EpisodeVo;
 import kr.green.ebook.vo.BookeventVo;
+import kr.green.ebook.vo.ClaimVo;
 import kr.green.ebook.vo.GenreVo;
 import kr.green.ebook.vo.PayVo;
 import kr.green.ebook.vo.ToonVo;
@@ -45,6 +46,8 @@ public interface AdminService {
 	BookeventVo paybanner(Criteria cri);
 
 	void insertPay(PayVo pay);
+
+	ArrayList<ClaimVo> getClaim(Criteria cri);
 
 
 }

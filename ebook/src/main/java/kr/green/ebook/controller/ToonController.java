@@ -6,6 +6,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.tiles.request.Request;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -98,9 +99,24 @@ public class ToonController {
 		Map<Object, Object> map = new HashMap<Object, Object>();
 		MemberVo member = memberService.getMember(r);
 		pay.setP_member(member.getName());
-		adminService.insertPay(pay);
-		member.setCoin(member.getCoin()-pay.getP_coin());
-		memberService.updatecoin(member);	
+		ArrayList<PayVo> plist = toonService.getPayList(member.getName());
+		String str="";
+		for(int i=0;i<plist.size();i++) {
+			if(plist.get(i).getP_title()==null&& plist.get(i).getP_title()!=pay.getP_title()) {
+				str="Y";
+			}else {
+				str="N";
+			}
+		}
+		pay.setP_one(str);
+		if(member.getCoin()==0||member.getCoin()==1) {
+			map.put("res","보유하고 계신 코인이 부족합니다.");
+		}else {
+			adminService.insertPay(pay);
+			member.setCoin(member.getCoin()-pay.getP_coin());
+			memberService.updatecoin(member);
+			map.put("url", r.getContextPath()+"/toon/comic?Title="+pay.getP_title()+"&edition="+pay.getP_edition());
+		}
 		return map;
 	}
 
