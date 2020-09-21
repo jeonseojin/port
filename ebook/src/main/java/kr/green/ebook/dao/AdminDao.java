@@ -98,4 +98,6 @@ public interface AdminDao {
 	
 	ArrayList<ToonVo> toonRankviews(@Param("cri")Criteria cri);
 
+	public ArrayList<ToonVo> genreRank(@Param("cri")Criteria cri);
+
 }

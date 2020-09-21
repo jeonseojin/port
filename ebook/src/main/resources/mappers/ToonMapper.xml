@@ -265,10 +265,24 @@
 	<select id="toonRanking" resultType="kr.green.ebook.vo.ToonVo">
 		select * from toon
 		order by up desc
+		limit #{cri.startPage},#{cri.perPageNum}
 	</select>
 <!-- 조회수/views -->
 	<select id="toonRankviews" resultType="kr.green.ebook.vo.ToonVo">
 		select * from toon
 		order by t_views desc
+		limit #{cri.startPage},#{cri.perPageNum}
+	</select>
+<!-- 장르 랭킹 -->
+	<select id="genreRank" resultType="kr.green.ebook.vo.ToonVo">
+		select * from toon
+		where 1=1
+		<if test="cri.genre!='전체'">
+			and t_type like concat('%',#{cri.genre},'%')
+		</if>
+	  	order by up desc
+	  	limit #{cri.startPage},#{cri.perPageNum}
+
+  		
 	</select>
 </mapper>

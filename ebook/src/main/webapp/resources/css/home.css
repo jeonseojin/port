@@ -100,11 +100,12 @@
         	border-bottom: 2px solid #333;
         }
         .main-rank-list{
-        	width: 100%;
+        	width: 90%;
         	height: 80px;
         	display: block;
         	background-color: #fff;
         	cursor: pointer;
+        	float: right;
         }
         .main-rank-list>img{
         	height: 80px;
@@ -124,6 +125,22 @@
         	font-size:11px;
         	color: #707070;
         }
+        .mainrank-rank{
+        	width: 10%;
+        	float: left;
+        	height: 80px;
+        	line-height: 80px;
+        	text-align: center;
+        	font-weight: bold;
+        }
+        
+        
+        
+        
+        
+        
+        
+        
         /* 브라우저 min 961 */
         @media (min-width: 961px){
             .com-home{
@@ -132,10 +149,10 @@
             .main-banner{
                 margin-bottom: 44px;
             }
-             .main-rank-list{
+             .main-rank-list,.mainrank-rank{
              	padding: 0 15px;
              }
-            .main-rank-list:nth-of-type(n+2){
+            .main-rank-list:nth-of-type(n+2),.mainrank-rank:nth-of-type(n+2){
             	margin-top: 10px;
             }
             .main-ranking{

@@ -55,7 +55,6 @@
 					</tr>
 				</thead>
 			</table>
-			<input type="checkbox" name="t_type" value="전체" checked="checked" class="checkbox display-none">
 			<div class="ad-img-box display-flex">
 				<div class="ad-img-box">
 					<h4 class="ad-img-h">대표(big) 이미지</h4>

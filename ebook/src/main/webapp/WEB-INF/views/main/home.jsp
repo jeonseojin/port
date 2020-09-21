@@ -31,7 +31,8 @@
         <div class="main-ranking">
             <div class="main-left">
             	<h4 class="main-rank-title">연재 랭킹</h4>
-            	<c:forEach var="uprank" items="${uprank}">
+            	<c:forEach var="uprank" items="${uprank}" varStatus="status">
+            		<span class="mainrank-rank">${status.count}</span>
 	            	<a class="main-rank-list" href="<%=request.getContextPath()%>/toon/ep?Title=${uprank.t_title}">
 	            		<img src="/ebook/resources/img${uprank.t_img}">
 	            		<span class="mainrank-title">${uprank.title}</span>
@@ -42,7 +43,8 @@
             </div>
             <div class="main-right">
             	<h4 class="main-rank-title">조회수 랭킹</h4>
-            	<c:forEach var="viewrank" items="${viewrank}">
+            	<c:forEach var="viewrank" items="${viewrank}" varStatus="status">
+	            	<span class="mainrank-rank">${status.count}</span>
 	            	<a class="main-rank-list" href="<%=request.getContextPath()%>/toon/ep?Title=${viewrank.t_title}">
 	            		<img alt="" src="/ebook/resources/img${viewrank.t_img}">
 	            		<span class="mainrank-title">${viewrank.title}</span>

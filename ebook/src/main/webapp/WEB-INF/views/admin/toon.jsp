@@ -108,7 +108,6 @@
 					<option value="8">열흘</option>
 				</select>
 				<h4 class="ad-plot-h">장르선택</h4>
-				<div class="check-box display-none"><input type="checkbox" name="t_type" value="전체" class="checkbox" checked="checked">전체</div>
 				<div class="check-box"><input type="checkbox" name="t_type" value="로맨스" class="checkbox">로맨스</div>
 				<div class="check-box"><input type="checkbox" name="t_type" value="드라마" class="checkbox">드라마</div>
 				<div class="check-box"><input type="checkbox" name="t_type" value="판타지" class="checkbox">판타지</div>

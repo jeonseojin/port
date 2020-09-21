@@ -33,6 +33,7 @@ import kr.green.ebook.vo.EpisodeVo;
 import kr.green.ebook.vo.MemberVo;
 import kr.green.ebook.vo.PayVo;
 import kr.green.ebook.vo.ToonVo;
+import kr.green.ebook.vo.UpVo;
 
 @Controller
 public class ToonController {
@@ -51,11 +52,23 @@ public class ToonController {
 	//랭킹 연결
 	@RequestMapping(value = "/ranking", method = RequestMethod.GET)
 	public ModelAndView ranking(ModelAndView mv, Criteria cri) {
-		mv.setViewName("/rank/home");
+		mv.setViewName("/ranking/home");
+		ArrayList<ToonVo> toon = toonService.genreRank(cri);
+		mv.addObject("toon", toon);
 		return mv;
 	}
+	//ajax을 통해서 랭킹 변경하기
+	@RequestMapping(value = "/ranking", produces="application/json; charset=utf8")
+	@ResponseBody
+	public Map<Object, Object> rankingajax(@RequestBody String genre, Criteria cri) {
+		Map<Object, Object> map = new HashMap<Object, Object>();
+		cri.setGenre(genre);
+		ArrayList<ToonVo> toon = toonService.genreRank(cri);
+		map.put("toon", toon);
+		return map;
+	}
 	//연재연결
-	@RequestMapping(value = "/toon1", method = RequestMethod.GET)
+	@RequestMapping(value = "/toon", method = RequestMethod.GET)
 	public ModelAndView toon(ModelAndView mv, Criteria cri) {
 		mv.setViewName("/toon/week");
 		ArrayList<ToonVo> wlist = toonService.weekList(cri);
@@ -64,31 +77,49 @@ public class ToonController {
 		mv.addObject("pm", pm);
 		return mv;
 	}
-	//작품상세연결
-	@RequestMapping(value = "/toon/ep", method = RequestMethod.GET)
-	public ModelAndView toonEp(ModelAndView mv,String Title, Criteria cri,HttpServletRequest r,ChoiceVo ch) {
-		mv.setViewName("/toon/ep");
-		//조회수 및 웹툰정보
-		ToonVo toon = toonService.view(Title);
-		mv.addObject("toon", toon);
-		//연재웹툰
-		ArrayList<EpisodeVo> epcov = toonService.getEpcoverlist(Title);
-		mv.addObject("epcov", epcov);
-		//페이지네이션
-		PageMaker pm = adminService.getPageMakerByToon(cri);
-		mv.addObject("pm", pm);
-		//찜
-		MemberVo member = memberService.getMember(r);
-		ArrayList<PayVo> plist=null;
-		if(member!=null) {
-			ch = toonService.getChoice(Title,member.getId());
-			//충전
-			plist = toonService.getPayList(member.getName());
+	//작품 상세페이지
+		@RequestMapping(value = "/toon/ep", method = RequestMethod.GET)
+		public ModelAndView toonEp(ModelAndView mv,String Title, Criteria cri,HttpServletRequest r,ChoiceVo ch,UpVo up) {
+			mv.setViewName("/toon/ep");
+			//조회수 및 웹툰정보
+			ToonVo toon = toonService.view(Title);
+			mv.addObject("toon", toon);
+			//연재웹툰
+			ArrayList<EpisodeVo> epcov = toonService.getEpcoverlist(Title);
+			mv.addObject("epcov", epcov);
+			//페이지네이션
+			PageMaker pm = adminService.getPageMakerByToon(cri);
+			mv.addObject("pm", pm);
+			//찜
+			MemberVo member = memberService.getMember(r);
+			ArrayList<PayVo> plist=null;
+			if(member!=null) {
+				ch = toonService.getChoice(Title,member.getId());
+				up = toonService.getUp(Title,member.getId());
+				//충전
+				plist = toonService.getPayList(member.getName());
+			}
+			mv.addObject("ch", ch);
+			mv.addObject("up", up);
+			mv.addObject("plist", plist);
+			return mv;
 		}
-		mv.addObject("ch", ch);
-		mv.addObject("plist", plist);
-		return mv;
-	}
+	//좋아요 증가
+		@RequestMapping(value ="/toon/up", method=RequestMethod.POST)
+		@ResponseBody
+		public Map<Object, Object> ToonUp(@RequestBody String Title, HttpServletRequest r){
+		    Map<Object, Object> map = new HashMap<Object, Object>();
+		    //현재 로그인 중인 유저 정보
+		    MemberVo member = memberService.getMember(r);
+		    if(member == null) {
+		    	map.put("isMember",false);
+		    }else {
+		    	map.put("isMember",true);
+		    	int up = toonService.updateUp(Title, member.getId());
+		    	map.put("up",up);
+		    }
+		    return map;
+		}
 	//만화연결
 	@RequestMapping(value = "/toon/comic", method = RequestMethod.GET)
 	public ModelAndView toonComic(ModelAndView mv, String Title, String edition) {
