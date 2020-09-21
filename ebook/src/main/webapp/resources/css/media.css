@@ -157,12 +157,18 @@
 		width: 40px;
 		padding: 4px 4px 0;
 	}
+	.comicInfo-Epdetail{
+		margin-left: -350px;
+	}
+	.comic-info>img{
+		height: 330px;
+	}
 }
 @media(max-height: 960px) and (min-width:640px){
-    .comicInfo{
-    }
+	.comicInfo-Epdetail{
+		margin-left: -430px;
+	}
 }
 @media(max-height: 767px) and (min-width:640px){
-    .comicInfo{
-    }
+
 }
