@@ -64,7 +64,7 @@
 		</div>
 	</div>
 	<form action="<%=request.getContextPath()%>/admin/event" method="post" enctype="multipart/form-data">
-	<div class="ad-event-list ad-event-record">
+	<div class="ad-event-list ad-event-record display-none">
 		<table class="table">
 			<thead>
 				<tr class="textline-center">

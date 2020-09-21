@@ -24,8 +24,16 @@
             </div>
         </div>
         <div class="main-ranking">
-            <div class="main-left"></div>
-            <div class="main-right"></div>
+            <div class="main-left">
+            	<c:forEach var="uprank" items="${uprank}">
+            		<img alt="" src="/ebook/resources/img${uprank.t_img}">
+            	</c:forEach>
+            </div>
+            <div class="main-right">
+            <c:forEach var="viewrank" items="${viewrank}">
+            		<img alt="" src="/ebook/resources/img${viewrank.t_img}">
+            	</c:forEach>
+            </div>
         </div>
         <div class="main-box">
             <div class="main-new"></div>

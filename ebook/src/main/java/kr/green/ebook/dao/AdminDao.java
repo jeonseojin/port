@@ -14,9 +14,15 @@ import kr.green.ebook.vo.BookeventVo;
 import kr.green.ebook.vo.GenreVo;
 import kr.green.ebook.vo.PayVo;
 import kr.green.ebook.vo.ToonVo;
+import kr.green.ebook.vo.UpVo;
 import kr.green.ebook.vo.WeekVo;
 
 public interface AdminDao {
+//페이지네이션
+	public int getTotalCountByToon(@Param("cri")Criteria cri);
+	
+	int getTotalCountByClaim(@Param("cri")Criteria cri);
+
 
 //	작품리스트 정렬
 	ArrayList<ToonVo> toonList(@Param("cri")Criteria cri);
@@ -72,17 +78,24 @@ public interface AdminDao {
 
 	ArrayList<ClaimVo> getClaim(@Param("cri")Criteria cri);
 
-	ArrayList<PayVo> getPayToon(@Param("name")String name);
+	ArrayList<ToonVo> getPayToon(@Param("name")String name);
 
 	void insertclaim(@Param("cl")ClaimVo cl);
 
 	ClaimVo getClaimT(@Param("num")Integer num);
-
-//페이지네이션
-	public int getTotalCountByToon(@Param("cri")Criteria cri);
 	
-	int getTotalCountByClaim(@Param("cri")Criteria cri);
+	void updateClaim(@Param("cl")ClaimVo cl);
 
-	void updateClaim(@Param("cri")ClaimVo cl);
+	int selectUp(@Param("Title")String Title, @Param("id")String id);
+
+	void insertUp(@Param("Title")String Title, @Param("id")String id);
+
+	void updateToonByUp(@Param("Title")String Title);
+
+	UpVo getUp(@Param("Title")String Title, @Param("id")String id);
+
+	ArrayList<ToonVo> toonRanking(@Param("cri")Criteria cri);
+	
+	ArrayList<ToonVo> toonRankviews(@Param("cri")Criteria cri);
 
 }
