@@ -160,6 +160,11 @@ public class AdminServiceImp implements AdminService {
 		public ArrayList<ToonVo> toonRankviews(Criteria cri) {
 			return adminDao.toonRankviews(cri);
 		}
+//연재 삭제
+		@Override
+		public void deleteEpToon(Integer num) {
+			
+		}
 
 
 }

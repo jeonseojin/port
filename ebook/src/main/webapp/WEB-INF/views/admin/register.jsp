@@ -31,7 +31,7 @@
 	    <div class="ad-ep-preview"></div>
 	</div>
 	<input type="hidden" id="e_edition" name="e_edition">
-	<input type="hidden" id="e_coin" name="e_coin">
+	<input type="hidden" id="e_coin" name="e_coin" value="0">
 </form>
 <a href="<%=request.getContextPath() %>/admin/toon?page=${cri.page}&type=${cri.type}&search=${cri.search}" class="float-left"><button type="button" class="btn btn-outline-secondary">목록</button></a>
 <script>

@@ -20,7 +20,6 @@
 <div class="float-right">
 	<c:if test="${cl.cl_auth=='ADMIN'}">
 		<a href="<%=request.getContextPath()%>/admin/clmodify?num=${cl.cl_num}"><button type="button" class="btn btn-primary">수정</button></a>
-		<a href="<%=request.getContextPath()%>/admin/cldelete?Title=${cl.cl_title}"><button type="button" class="btn btn-danger">삭제</button></a>
 	</c:if>
 	<c:if test="${cl.cl_auth=='USER'}">
 		<a href="<%=request.getContextPath()%>/admin/answer?num=${cl.cl_num}"><button type="button" class="btn btn-link">답변등록</button></a>

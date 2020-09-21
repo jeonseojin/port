@@ -8,6 +8,7 @@ public class Criteria {
 	private String search;
 	private int event;
 	private String notice;//고객센터의 조건
+	private String genre;//작품 장르
 	
 	//Criteria 디폴트 생성자 : 현재 페이지를 1페이지로, 한 페이지에 10개의 컨텐츠
 	public Criteria() {
@@ -17,11 +18,21 @@ public class Criteria {
 		type=1;
 		cweek=1;
 		notice="service";
+		genre ="로맨스";
 	}
 	//getter and setter
+	
 	public int getPage() {
 		return page;
 	}
+	public String getGenre() {
+		return genre;
+	}
+
+	public void setGenre(String genre) {
+		this.genre = genre;
+	}
+
 	public void setPage(int page) {//현재 페이지 번호를 음수로 설정하려 할 때
 		if(page <= 0) {
 			this.page = 1;
@@ -72,11 +83,13 @@ public class Criteria {
 	public void setNotice(String notice) {
 		this.notice = notice;
 	}
+
 	@Override
 	public String toString() {
 		return "Criteria [page=" + page + ", perPageNum=" + perPageNum + ", type=" + type + ", cweek=" + cweek
-				+ ", search=" + search + ", event=" + event + "]";
+				+ ", search=" + search + ", event=" + event + ", notice=" + notice + ", genre=" + genre + "]";
 	}
+
 	/* 쿼리문에서 limit에 사용되는 인덱스를 계산하는 getter */
 	public int getStartPage() {
 		return (page -1) * perPageNum;

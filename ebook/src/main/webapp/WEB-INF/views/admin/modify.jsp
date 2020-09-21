@@ -97,7 +97,8 @@
 		
 <script>
 	function Selinput(input){
-	    document.getElementById("t_week").value =input;
+		var value = $(".t_week-box").val(); 
+		$('input[name=t_week]').val(value); 
 	}
 	$(function(){		
 		var genre=$('.ad-genre').val();

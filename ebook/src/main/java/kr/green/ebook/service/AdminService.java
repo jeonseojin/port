@@ -61,6 +61,8 @@ PageMaker getPageMakerByToon(Criteria cri);
 
 	ArrayList<ToonVo> toonRankviews(Criteria cri);
 
+	void deleteEpToon(Integer num);
+
 
 	
 

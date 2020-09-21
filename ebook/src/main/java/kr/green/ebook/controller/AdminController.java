@@ -138,13 +138,13 @@ public class AdminController {
 	public ModelAndView ToonEpMPost(ModelAndView mv,ToonVo toon,Integer num,MultipartFile file1,MultipartFile file2) throws IOException, Exception  {
 		mv.setViewName("redirect:/admin/toon");
 		if(!file1.getOriginalFilename().equals("")) {
-			String fileName = UploadFileUtils.uploadFile(uploadPath,"\\"+toon.getTitle(), file1.getOriginalFilename(), file1.getBytes());
+			String fileName = UploadFileUtils.uploadFile(uploadPath,"\\"+toon.getT_title(), file1.getOriginalFilename(), file1.getBytes());
 			toon.setT_typify(fileName);
 		}else if(toon.getT_typify()==null || toon.getT_typify().equals("")) {
 			toon.setT_typify(null);
 		}
 		if(!file2.getOriginalFilename().equals("")) {
-			String fileName = UploadFileUtils.uploadFile(uploadPath,"\\"+toon.getTitle(), file2.getOriginalFilename(), file2.getBytes());
+			String fileName = UploadFileUtils.uploadFile(uploadPath,"\\"+toon.getT_title(), file2.getOriginalFilename(), file2.getBytes());
 			toon.setT_img(fileName);
 		}else if(toon.getT_img()==null || toon.getT_img().equals("")) {
 			toon.setT_img(null);
@@ -169,12 +169,18 @@ public class AdminController {
 	@RequestMapping(value = "/admin/event", method = RequestMethod.POST)
 	public ModelAndView adminEventPost(ModelAndView mv,BookeventVo event,MultipartFile file1,MultipartFile file2,MultipartFile file3) throws IOException, Exception {
 		mv.setViewName("redirect:/admin/event");
-		String ev_img = UploadFileUtils.uploadFile(uploadPath,"\\"+event.getEv_engtitle(), file1.getOriginalFilename(), file1.getBytes());
-		event.setEv_img(ev_img);
-		String ev_banner = UploadFileUtils.uploadFile(uploadPath,"\\"+event.getEv_engtitle(), file2.getOriginalFilename(), file2.getBytes());
-		event.setEv_banner(ev_banner);
-		String ev_page = UploadFileUtils.uploadFile(uploadPath,"\\"+event.getEv_engtitle(), file3.getOriginalFilename(), file3.getBytes());
-		event.setEv_page(ev_page);
+		if(file1.getSize() !=0) {
+			String ev_img = UploadFileUtils.uploadFile(uploadPath,"\\"+event.getEv_engtitle(), file1.getOriginalFilename(), file1.getBytes());
+			event.setEv_img(ev_img);
+		}
+		if(file2.getSize() !=0) {
+			String ev_banner = UploadFileUtils.uploadFile(uploadPath,"\\"+event.getEv_engtitle(), file2.getOriginalFilename(), file2.getBytes());
+			event.setEv_banner(ev_banner);
+		}
+		if(file3.getSize() !=0) {
+			String ev_page = UploadFileUtils.uploadFile(uploadPath,"\\"+event.getEv_engtitle(), file3.getOriginalFilename(), file3.getBytes());
+			event.setEv_page(ev_page);
+		}
 		adminService.insertEvent(event);
 		return mv;
 	}

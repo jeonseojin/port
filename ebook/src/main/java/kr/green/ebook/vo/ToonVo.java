@@ -19,7 +19,16 @@ public class ToonVo {
 	private String t_title;
 	private int t_views;
 	private String t_typify;
+	private char t_isDel;
 	
+	
+	
+	public char getT_isDel() {
+		return t_isDel;
+	}
+	public void setT_isDel(char t_isDel) {
+		this.t_isDel = t_isDel;
+	}
 	public String getT_title() {
 		return t_title;
 	}
@@ -116,14 +125,15 @@ public class ToonVo {
 	public void setT_type(String t_type) {
 		this.t_type = t_type;
 	}
+	
+
 	@Override
 	public String toString() {
 		return "ToonVo [t_num=" + t_num + ", title=" + title + ", artist=" + artist + ", plot=" + plot + ", choice="
 				+ choice + ", up=" + up + ", t_img=" + t_img + ", t_type=" + t_type + ", lastEpisode=" + lastEpisode
 				+ ", t_date=" + t_date + ", t_week=" + t_week + ", t_title=" + t_title + ", t_views=" + t_views
-				+ ", t_typify=" + t_typify + "]";
+				+ ", t_typify=" + t_typify + ", t_isDel=" + t_isDel + "]";
 	}
-
 	public String getOriFilesmall() {
 		int index = t_img.indexOf("_");
 		return t_img.substring(index+1);

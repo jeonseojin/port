@@ -28,7 +28,12 @@
 							<td>${evlist.ev_num}</td>
 							<td>${evlist.ev_title}</td>
 							<td>${evlist.ev_engtitle}</td>
-							<td><img src="/ebook/resources/img${evlist.ev_img}" style="height: 120px;"></td>
+							<c:if test="${evlist.ev_img!=null}">
+								<td><img src="/ebook/resources/img${evlist.ev_img}" style="height: 120px;"></td>
+							</c:if>
+							<c:if test="${evlist.ev_img==null}">
+								<td>대표이미지가 없습니다.</td>
+							</c:if>
 							<td>${evlist.ev_t_title}</td>
 						</tr>
 					</c:forEach>
@@ -64,50 +69,50 @@
 		</div>
 	</div>
 	<form action="<%=request.getContextPath()%>/admin/event" method="post" enctype="multipart/form-data">
-	<div class="ad-event-list ad-event-record display-none">
-		<table class="table">
-			<thead>
-				<tr class="textline-center">
-					<th class="adm-evTitle">제목</th>
-					<th><input type="text" class="adm-ev-title" name="ev_title"></th>
-					<th>영어 제목</th>
-					<th><input type="text" class="adm-ev-title" name="ev_engtitle"></th>
-					<th class="adm-evTitle">등록자</th>
-					<c:if test="${member.auth!=ADMIN}">
-						<th class="adm-evTitle">${member.name}<input type="hidden" name="ev_member" value="${member.name}"></th>
-					</c:if>
-				</tr>
-			</thead>
-		</table>
-		<table class="table">
-			<thead>
-				<tr>
-					<th>이벤트 작품</th>
+		<div class="ad-event-list ad-event-record display-none">
+			<table class="table">
+				<thead>
+					<tr class="textline-center">
+						<th class="adm-evTitle">제목</th>
+						<th><input type="text" class="adm-ev-title" name="ev_title"></th>
+						<th>영어 제목</th>
+						<th><input type="text" class="adm-ev-title" name="ev_engtitle"></th>
+						<th class="adm-evTitle">등록자</th>
+						<c:if test="${member.auth!=ADMIN}">
+							<th class="adm-evTitle">${member.name}<input type="hidden" name="ev_member" value="${member.name}"></th>
+						</c:if>
 					</tr>
-			</thead>
-		</table>
-		<table class="table">
-			<thead>
-				<tr>
-					<c:forEach var="toon" items="${tlist}">
-						<th class="adm-ev-t_title"><input type="checkbox" name="ev_t_title" value="${toon.t_title}">${toon.title}</th>
-					</c:forEach>
-				</tr>
-			</thead>
-		</table>
-			<h4 class="ad-plot-h">페이지연결 이미지</h4>
-			<div class="adm-p-evimg-box"></div>
-			<input type="file" class="adm-p-evimg" name="file1">
-			
-			<h4 class="ad-plot-h">배너등록 이미지</h4>
-			<div class="adm-b-evimg-box"></div>
-			<input type="file" class="adm-b-evimg" name="file2">
-			
-			<h4 class="ad-plot-h">페이지 이미지</h4>
-			<div class="adm-bp-evimg-box"></div>
-			<input type="file" class="adm-bp-evimg" name="file3">
-		<button class="btn btn-primary float-right">등록</button>
-	</div>
+				</thead>
+			</table>
+			<table class="table">
+				<thead>
+					<tr>
+						<th>이벤트 작품</th>
+						</tr>
+				</thead>
+			</table>
+			<table class="table">
+				<thead>
+					<tr>
+						<c:forEach var="toon" items="${tlist}">
+							<th class="adm-ev-t_title"><input type="checkbox" name="ev_t_title" value="${toon.t_title}">${toon.title}</th>
+						</c:forEach>
+					</tr>
+				</thead>
+			</table>
+				<h4 class="ad-plot-h">페이지연결 이미지</h4>
+				<div class="adm-p-evimg-box"></div>
+				<input type="file" class="adm-p-evimg" name="file1">
+				
+				<h4 class="ad-plot-h">배너등록 이미지</h4>
+				<div class="adm-b-evimg-box"></div>
+				<input type="file" class="adm-b-evimg" name="file2">
+				
+				<h4 class="ad-plot-h">페이지 이미지</h4>
+				<div class="adm-bp-evimg-box"></div>
+				<input type="file" class="adm-bp-evimg" name="file3">
+			<button class="btn btn-primary float-right">등록</button>
+		</div>
 	</form>
 </div>
 

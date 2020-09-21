@@ -48,8 +48,14 @@ public class ToonController {
 	
 	private String uploadPath = "D:\\전서진\\포트폴리오\\port\\ebook\\src\\main\\webapp\\resources\\img";
 	
-	
-	@RequestMapping(value = "/toon", method = RequestMethod.GET)
+	//랭킹 연결
+	@RequestMapping(value = "/ranking", method = RequestMethod.GET)
+	public ModelAndView ranking(ModelAndView mv, Criteria cri) {
+		mv.setViewName("/rank/home");
+		return mv;
+	}
+	//연재연결
+	@RequestMapping(value = "/toon1", method = RequestMethod.GET)
 	public ModelAndView toon(ModelAndView mv, Criteria cri) {
 		mv.setViewName("/toon/week");
 		ArrayList<ToonVo> wlist = toonService.weekList(cri);
@@ -58,6 +64,7 @@ public class ToonController {
 		mv.addObject("pm", pm);
 		return mv;
 	}
+	//작품상세연결
 	@RequestMapping(value = "/toon/ep", method = RequestMethod.GET)
 	public ModelAndView toonEp(ModelAndView mv,String Title, Criteria cri,HttpServletRequest r,ChoiceVo ch) {
 		mv.setViewName("/toon/ep");
@@ -82,6 +89,7 @@ public class ToonController {
 		mv.addObject("plist", plist);
 		return mv;
 	}
+	//만화연결
 	@RequestMapping(value = "/toon/comic", method = RequestMethod.GET)
 	public ModelAndView toonComic(ModelAndView mv, String Title, String edition) {
 		mv.setViewName("/toon/comic");
@@ -192,4 +200,5 @@ public class ToonController {
 		adminService.insertclaim(cl);
 		return mv;
 	}
+
 }

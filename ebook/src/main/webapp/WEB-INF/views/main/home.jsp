@@ -5,13 +5,18 @@
 	    <div class="main-banner">
            <div class="banner-swiper">
            		<c:forEach var="evlist" items="${evlist}">
-	               <div class="banner-item">
-	                   <a href="#" class="banner-link">
-	                       	<div class="banner-img banner-img-big">
-	                           	<img src="/ebook/resources/img${evlist.ev_banner}" alt="">
-	                       	</div>
-	                   </a>
-	               </div>
+           			<c:if test="${evlist.ev_engtitle!='pay'}">
+		               <div class="banner-item">
+		                   <a href="#" class="banner-link">
+		                       	<div class="banner-img banner-img-big">
+		                           	<img src="/ebook/resources/img${evlist.ev_banner}" alt="">
+		                       	</div>
+		                       	<div class="banner-img banner-img-small display-none">
+		                           	<img class="banner-img-small display-none" src="/ebook/resources/img${evlist.ev_img}">
+		                       	</div>
+		                   </a>
+		               </div>
+	               </c:if>
 				</c:forEach>
 	        </div>
             <div class="banner-nav">
@@ -25,19 +30,29 @@
         </div>
         <div class="main-ranking">
             <div class="main-left">
+            	<h4 class="main-rank-title">연재 랭킹</h4>
             	<c:forEach var="uprank" items="${uprank}">
-            		<img alt="" src="/ebook/resources/img${uprank.t_img}">
+	            	<a class="main-rank-list" href="<%=request.getContextPath()%>/toon/ep?Title=${uprank.t_title}">
+	            		<img src="/ebook/resources/img${uprank.t_img}">
+	            		<span class="mainrank-title">${uprank.title}</span>
+	            		<span class="mainrank-artist">${uprank.artist}</span>
+	            		<span class="mainrank-t_type">${uprank.t_type}</span>
+	            	</a>
             	</c:forEach>
             </div>
             <div class="main-right">
-            <c:forEach var="viewrank" items="${viewrank}">
-            		<img alt="" src="/ebook/resources/img${viewrank.t_img}">
+            	<h4 class="main-rank-title">조회수 랭킹</h4>
+            	<c:forEach var="viewrank" items="${viewrank}">
+	            	<a class="main-rank-list" href="<%=request.getContextPath()%>/toon/ep?Title=${viewrank.t_title}">
+	            		<img alt="" src="/ebook/resources/img${viewrank.t_img}">
+	            		<span class="mainrank-title">${viewrank.title}</span>
+	            		<span class="mainrank-artist">${viewrank.artist}</span>
+	            		<span class="mainrank-t_type">${viewrank.t_type}</span>
+	            	</a>
             	</c:forEach>
             </div>
         </div>
         <div class="main-box">
-            <div class="main-new"></div>
-            <div class="main-update"></div>
         </div>
 	<script>
         function bannerRolling(){

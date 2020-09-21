@@ -102,5 +102,6 @@ public class ToonServiceImp implements ToonService {
 	public ArrayList<ToonVo> getPayToon(String name) {
 		return adminDao.getPayToon(name);
 	}
+
   
 }

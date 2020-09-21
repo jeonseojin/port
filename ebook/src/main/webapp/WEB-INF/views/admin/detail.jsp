@@ -52,7 +52,6 @@
 			<a href="<%=request.getContextPath() %>/admin/toon?page=${cri.page}&type=${cri.type}&search=${cri.search}" class="float-left"><button type="button" class="btn btn-outline-secondary">목록</button></a>
 			<div class="float-right">
 				<a href="<%=request.getContextPath()%>/admin/modify?num=${toon.t_num}&Title=${toon.t_title}&tweek=${toon.t_week}"><button type="button" class="btn btn-primary">수정</button></a>
-				<a href="<%=request.getContextPath()%>/admin/delete?Title=${toon.t_title}"><button type="button" class="btn btn-danger">삭제</button></a>
 			</div>
 			<input type="hidden" id="num" value="${toon.t_num}">
 		</form>
