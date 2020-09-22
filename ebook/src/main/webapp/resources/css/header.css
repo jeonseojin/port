@@ -558,13 +558,10 @@
             text-align: center;
             white-space: nowrap;
             font-size: 14px;
-            color: #8f949c;
+            color: #000;
             font-weight: bold;
             line-height: 50px;
-        }
-        .rating-link:hover{
-            color: #8f949c;
-            text-decoration: underline;
+            cursor: default;
         }
         .rating-link::after{
             content: '';
@@ -573,17 +570,10 @@
             height: 6px;
             margin: 0 0 0 8px;
             vertical-align: middle;
-            border-left: 2px solid #dbdee3;
-            border-bottom: 2px solid #dbdee3;
+            border-left: 2px solid #ff0000;
+            border-bottom: 2px solid #ff0000;
             -webkit-transform: rotate(-45deg) translateY(-4px);
             transform: rotate(-45deg) translateY(-4px);
-        }
-        .rating .rating-link[aria-selected=true]{
-            color: #000;
-        }
-        .rating .rating-link[aria-selected=true]::after{
-            border-left: 2px solid #ed1c24;
-            border-bottom: 2px solid #ed1c24;
         }
         .logNav-link{
             display: block;

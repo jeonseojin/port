@@ -3,17 +3,23 @@ package kr.green.ebook.controller;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -27,9 +33,7 @@ import kr.green.ebook.vo.MemberVo;
 import kr.green.ebook.vo.PayVo;
 import kr.green.ebook.vo.ToonVo;
 
-/**
- * Handles requests for the application home page.
- */
+
 @Controller
 public class HomeController {
 	
@@ -54,10 +58,6 @@ public class HomeController {
 		mv.addObject("viewrank", viewrank);
 		MemberVo member = memberService.getMember(r);
 		if(member!=null) {
-			ArrayList<ChoiceVo> chlist = memberService.getChoiceList(member.getId());
-			mv.addObject("chlist", chlist);
-			ArrayList<ToonVo> payToon = toonService.getPayToon(member.getName());
-			mv.addObject("payToon", payToon);
 			SimpleDateFormat nowTime = new SimpleDateFormat ( "yyyy-MM-dd");
 			String now = nowTime.format (System.currentTimeMillis());
 			PayVo pay = adminService.getPay(now, member.getName());
@@ -143,5 +143,22 @@ public class HomeController {
 	    map.put("res",memberService.getMember(name)==null);
 	    return map;
 	}
-	
+	//내서재 화면
+	@RequestMapping(value = "/mybook", method = RequestMethod.GET)
+	public ModelAndView mybook(ModelAndView mv, HttpServletRequest r) {
+		mv.setViewName("/main/mybook");
+		MemberVo member = memberService.getMember(r);
+		ArrayList<ChoiceVo> chlist = memberService.getChoiceList(member.getId());
+		mv.addObject("chlist", chlist);
+		ArrayList<ToonVo> payToon = toonService.getPayToon(member.getName());
+		mv.addObject("payToon", payToon);
+		return mv;
+	}
+	//내정보 화면
+	@RequestMapping(value = "/myhome", method = RequestMethod.GET)
+	public ModelAndView myhome(ModelAndView mv) {
+		mv.setViewName("/main/myhome");
+		return mv;
+	}
+
 }
