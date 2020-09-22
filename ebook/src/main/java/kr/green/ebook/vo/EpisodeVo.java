@@ -68,13 +68,13 @@ public class EpisodeVo {
 	public void setE_edition(String e_edition) {
 		this.e_edition = e_edition;
 	}
+	// tostring (찍어보는역할)
 	@Override
 	public String toString() {
 		return "EpisodeVo [e_num=" + e_num + ", e_t_title=" + e_t_title + ", e_title=" + e_title + ", e_date=" + e_date
 				+ ", e_coin=" + e_coin + ", e_img=" + e_img + ", e_edition=" + e_edition + "]";
 	}
 	
-	// tostring (찍어보는역할)
 
 	public boolean iscontain(ArrayList<PayVo> list) {
 		if(list == null || list.size() == 0)

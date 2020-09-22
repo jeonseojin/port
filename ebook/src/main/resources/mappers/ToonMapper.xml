@@ -303,7 +303,15 @@
 		</if>
 	  	order by up desc
 	  	limit #{cri.startPage},#{cri.perPageNum}
-
-  		
+	</select>
+<!-- 출석이벤트 확인-->
+	<select id="payattend" resultType="kr.green.ebook.vo.PayVo" >
+		select * from pay
+		where p_usedate = #{pay.p_usedate} and p_member = #{pay.p_member}
+	</select>
+<!-- 출석포인트 확인 -->
+	<select id="getPay" resultType="kr.green.ebook.vo.PayVo" >
+		select * from pay
+		where p_usedate = #{now} and p_member = #{name}
 	</select>
 </mapper>

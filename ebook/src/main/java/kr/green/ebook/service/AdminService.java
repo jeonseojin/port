@@ -1,5 +1,6 @@
 package kr.green.ebook.service;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -65,7 +66,8 @@ PageMaker getPageMakerByToon(Criteria cri);
 
 	void updateEvent(BookeventVo event);
 
+	PayVo payattend(PayVo pay);
 
-	
+	PayVo getPay(String now, String name);	
 
 }

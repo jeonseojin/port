@@ -234,7 +234,7 @@ public class ToonController {
 		map.put("toon", toon);
 		return map;
 	}
-	//랭킹 연결
+	//이벤트 연결
 	@RequestMapping(value = "/event", method = RequestMethod.GET)
 	public ModelAndView event(ModelAndView mv, Criteria cri) {
 		mv.setViewName("/event/home");
@@ -242,12 +242,36 @@ public class ToonController {
 		mv.addObject("evlist", evlist);
 		return mv;
 	}
-	//랭킹 상세
-	@RequestMapping(value = "/event/page", method = RequestMethod.GET)
+	//출석이벤트
+	@RequestMapping(value = "/event/attend", method = RequestMethod.GET)
 	public ModelAndView eventdetail(ModelAndView mv,String title, Criteria cri) {
-		mv.setViewName("/event/page");
+		mv.setViewName("/event/attend");
 		BookeventVo event = adminService.getEvent(title);
 		mv.addObject("event", event);
 		return mv;
+	}
+	//ajax을 통해서 출석
+	@RequestMapping(value = "/event/attend", produces="application/json; charset=utf8")
+	@ResponseBody
+	public Map<Object, Object> attendajax(@RequestBody PayVo pay, Criteria cri, HttpServletRequest r) {
+		Map<Object, Object> map = new HashMap<Object, Object>();
+		//현재 로그인 중인 유저 정보
+		MemberVo member =memberService.getMember(r);
+		if(member==null) {
+			map.put("isMember",false);
+		}
+		else {
+			map.put("isMember",true);
+			pay.setP_member(member.getName());
+			PayVo p =adminService.payattend(pay);
+			if(p==null) {
+				member.setCoin(member.getCoin()+pay.getP_point());
+				adminService.insertPay(pay);
+				memberService.updatecoin(member);
+			}else {
+				map.put("res", "이미 출석체크를 완료하였습니다.");
+			}
+		}
+		return map;
 	}
 }

@@ -1,5 +1,6 @@
 package kr.green.ebook.dao;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 import org.apache.ibatis.annotations.Param;
@@ -103,5 +104,11 @@ public interface AdminDao {
 	public BookeventVo getEvent(@Param("title")String title);
 
 	public void updateEvent(@Param("event")BookeventVo event);
+
+	public ArrayList<PayVo> payattend(@Param("usedate")String usedate);
+
+	public PayVo payattend(@Param("pay")PayVo pay);
+
+	public PayVo getPay(@Param("now")String now, @Param("name")String name);
 
 }

@@ -7,7 +7,7 @@
            		<c:forEach var="evlist" items="${evlist}">
            			<c:if test="${evlist.ev_engtitle!='pay'}">
 		               <div class="banner-item">
-		                   <a href="#" class="banner-link">
+		                   <a href="<%=request.getContextPath()%>/event${evlist.ev_url}/?title=${evlist.ev_engtitle}" class="banner-link">
 		                       	<div class="banner-img banner-img-big">
 		                           	<img src="/ebook/resources/img${evlist.ev_banner}" alt="">
 		                       	</div>

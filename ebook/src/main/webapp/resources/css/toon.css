@@ -960,3 +960,13 @@
 .eventpage-box>img{
 	width: 100%;
 }
+.attend-btn{
+	width: 200px;
+	height: 80px;
+	font-size: 25px;
+	border: 2px solid black;
+	background-color: #ffff6a;
+	border-radius: 55px;
+	text-align: center;
+	color:#008000;
+}

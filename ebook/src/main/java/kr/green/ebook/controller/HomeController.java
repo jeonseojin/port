@@ -1,5 +1,6 @@
 package kr.green.ebook.controller;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -57,6 +58,14 @@ public class HomeController {
 			mv.addObject("chlist", chlist);
 			ArrayList<ToonVo> payToon = toonService.getPayToon(member.getName());
 			mv.addObject("payToon", payToon);
+			SimpleDateFormat nowTime = new SimpleDateFormat ( "yyyy-MM-dd");
+			String now = nowTime.format (System.currentTimeMillis());
+			PayVo pay = adminService.getPay(now, member.getName());
+			if(pay!=null) {
+				member.setCoin(member.getCoin()-pay.getP_point());
+				adminService.insertPay(pay);
+				memberService.updatecoin(member);
+			}
 		}
 		ArrayList<BookeventVo> evlist = adminService.eventList(cri);
 		mv.addObject("evlist", evlist);

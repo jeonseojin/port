@@ -6,7 +6,7 @@
 	<ul class="event-list">
 		<c:forEach var="evlist" items="${evlist}">
 			<c:if test="${evlist.ev_engtitle!='pay'}">
-				<li class="event-item"><a class="event-link" href="<%=request.getContextPath()%>/event/page?title=${evlist.ev_engtitle}">
+				<li class="event-item"><a class="event-link" href="<%=request.getContextPath()%>/event${evlist.ev_url}?title=${evlist.ev_engtitle}">
 					<img src="/ebook/resources/img${evlist.ev_img}"></a></li>
 			</c:if>
 		</c:forEach>

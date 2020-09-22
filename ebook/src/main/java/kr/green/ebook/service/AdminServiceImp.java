@@ -1,5 +1,6 @@
 package kr.green.ebook.service;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -170,6 +171,25 @@ public class AdminServiceImp implements AdminService {
 		public ArrayList<ToonVo> toonRankviews(Criteria cri) {
 			return adminDao.toonRankviews(cri);
 		}
+//해당유저의출석여부
+
+		@Override
+		public PayVo payattend(PayVo pay) {
+			return adminDao.payattend(pay);
+		}
+//출석포인트 차감
+		@Override
+		public PayVo getPay(String now,String name) {
+			PayVo pay= adminDao.getPay(now,name);
+			if(pay!=null) {
+				pay.setP_point(1);
+				pay.setP_title("출석 포인트 유효기간 만료");
+				pay.setP_member(pay.getP_member());
+				pay.setP_usedate(null);
+			}
+			return pay;
+		}
+		
 
 
 

@@ -156,7 +156,11 @@ $(function(){
 	        dataType:"json",
 	        contentType:"application/json; charset=UTF-8",
 		        success : function(data){
+					if(data["res"]!=null){
+						alert(data["res"]);
+					}
 		        }
+        
 		});
     })
     
