@@ -936,3 +936,27 @@
 	position: absolute;
 	bottom: 10px;
 }
+.event-list{
+	display: flex;
+	flex-wrap: wrap;
+	align-content: flex-start;
+}
+.event-item{
+	padding: 0 16px 16px 0;
+}
+.event-link{
+	display: block;
+	background-color: #e9e9e9;
+}
+.event-link>img{
+	display: block;
+	width: 100%;
+	height: auto;
+}
+.eventpage-box{
+	position: relative;
+	width: 100%;
+}
+.eventpage-box>img{
+	width: 100%;
+}

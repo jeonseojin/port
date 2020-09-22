@@ -61,7 +61,9 @@ PageMaker getPageMakerByToon(Criteria cri);
 
 	ArrayList<ToonVo> toonRankviews(Criteria cri);
 
-	void deleteEpToon(Integer num);
+	BookeventVo getEvent(String title);
+
+	void updateEvent(BookeventVo event);
 
 
 	

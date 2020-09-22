@@ -100,4 +100,8 @@ public interface AdminDao {
 
 	public ArrayList<ToonVo> genreRank(@Param("cri")Criteria cri);
 
+	public BookeventVo getEvent(@Param("title")String title);
+
+	public void updateEvent(@Param("event")BookeventVo event);
+
 }

@@ -26,6 +26,7 @@ import kr.green.ebook.service.AdminService;
 import kr.green.ebook.service.MemberService;
 import kr.green.ebook.service.ToonService;
 import kr.green.ebook.utils.UploadFileUtils;
+import kr.green.ebook.vo.BookeventVo;
 import kr.green.ebook.vo.ChoiceVo;
 import kr.green.ebook.vo.ClaimVo;
 import kr.green.ebook.vo.EpcommentVo;
@@ -49,24 +50,7 @@ public class ToonController {
 	
 	private String uploadPath = "D:\\전서진\\포트폴리오\\port\\ebook\\src\\main\\webapp\\resources\\img";
 	
-	//랭킹 연결
-	@RequestMapping(value = "/ranking", method = RequestMethod.GET)
-	public ModelAndView ranking(ModelAndView mv, Criteria cri) {
-		mv.setViewName("/ranking/home");
-		ArrayList<ToonVo> toon = toonService.genreRank(cri);
-		mv.addObject("toon", toon);
-		return mv;
-	}
-	//ajax을 통해서 랭킹 변경하기
-	@RequestMapping(value = "/ranking", produces="application/json; charset=utf8")
-	@ResponseBody
-	public Map<Object, Object> rankingajax(@RequestBody String genre, Criteria cri) {
-		Map<Object, Object> map = new HashMap<Object, Object>();
-		cri.setGenre(genre);
-		ArrayList<ToonVo> toon = toonService.genreRank(cri);
-		map.put("toon", toon);
-		return map;
-	}
+	
 	//연재연결
 	@RequestMapping(value = "/toon", method = RequestMethod.GET)
 	public ModelAndView toon(ModelAndView mv, Criteria cri) {
@@ -231,5 +215,39 @@ public class ToonController {
 		adminService.insertclaim(cl);
 		return mv;
 	}
-
+	
+	//랭킹 연결
+	@RequestMapping(value = "/ranking", method = RequestMethod.GET)
+	public ModelAndView ranking(ModelAndView mv, Criteria cri) {
+		mv.setViewName("/ranking/home");
+		ArrayList<ToonVo> toon = toonService.genreRank(cri);
+		mv.addObject("toon", toon);
+		return mv;
+	}
+	//ajax을 통해서 랭킹 변경하기
+	@RequestMapping(value = "/ranking", produces="application/json; charset=utf8")
+	@ResponseBody
+	public Map<Object, Object> rankingajax(@RequestBody String genre, Criteria cri) {
+		Map<Object, Object> map = new HashMap<Object, Object>();
+		cri.setGenre(genre);
+		ArrayList<ToonVo> toon = toonService.genreRank(cri);
+		map.put("toon", toon);
+		return map;
+	}
+	//랭킹 연결
+	@RequestMapping(value = "/event", method = RequestMethod.GET)
+	public ModelAndView event(ModelAndView mv, Criteria cri) {
+		mv.setViewName("/event/home");
+		ArrayList<BookeventVo> evlist = adminService.eventList(cri);
+		mv.addObject("evlist", evlist);
+		return mv;
+	}
+	//랭킹 상세
+	@RequestMapping(value = "/event/page", method = RequestMethod.GET)
+	public ModelAndView eventdetail(ModelAndView mv,String title, Criteria cri) {
+		mv.setViewName("/event/page");
+		BookeventVo event = adminService.getEvent(title);
+		mv.addObject("event", event);
+		return mv;
+	}
 }

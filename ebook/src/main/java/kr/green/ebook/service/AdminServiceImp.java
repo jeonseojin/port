@@ -94,6 +94,16 @@ public class AdminServiceImp implements AdminService {
 	public void insertEvent(BookeventVo event) {
 		adminDao.insertEvent(event);		
 	}
+//이벤트 불러오기
+	@Override
+	public BookeventVo getEvent(String title) {
+		return adminDao.getEvent(title);
+	}
+//이벤트 수정
+	@Override
+	public void updateEvent(BookeventVo event) {
+		adminDao.updateEvent(event);
+	}
 //충전 전체 리스트
 	@Override
 	public ArrayList<PayVo> payList(Criteria cri) {
@@ -160,11 +170,9 @@ public class AdminServiceImp implements AdminService {
 		public ArrayList<ToonVo> toonRankviews(Criteria cri) {
 			return adminDao.toonRankviews(cri);
 		}
-//연재 삭제
-		@Override
-		public void deleteEpToon(Integer num) {
-			
-		}
+
+
+
 
 
 }

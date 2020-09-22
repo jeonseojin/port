@@ -48,6 +48,21 @@
 	height: 300px; 
 	overflow-y: scroll; 
 	width: 100%; 
+}
+.adm-evtoon{
+	display: flex;
+	flex-wrap: wrap;
+	align-content: flex-start;
+}
+.adm-evtoon>li{
+	margin-right: 15px;
+	width: 16%;
+}
+.adm-evtooncheck{
+	margin-right: 15px;
+}
+.adev-imgtable>img{
+	height: 150px;
 } 
 
 

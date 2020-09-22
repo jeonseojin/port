@@ -177,13 +177,33 @@
 <!-- 전체 이벤트 불러오기 -->
 	<select id="eventList" resultType="kr.green.ebook.vo.BookeventVo">
 		select * from bookevent
+		order by ev_num desc
 	</select>
 <!-- 이벤트 등록 -->
 	<insert id="insertEvent">
 		insert into
-			bookevent(ev_title,ev_engtitle,ev_img,ev_t_title,ev_member,ev_banner,ev_page)
-			values(#{event.ev_title},#{event.ev_engtitle},#{event.ev_img},#{event.ev_t_title},#{event.ev_member},#{event.ev_banner},#{event.ev_page})
+			bookevent(ev_title,ev_engtitle,ev_img,ev_t_title,ev_member,ev_banner,ev_page,ev_url)
+			values(#{event.ev_title},#{event.ev_engtitle},#{event.ev_img},#{event.ev_t_title},#{event.ev_member},#{event.ev_banner},#{event.ev_page},#{event.ev_url})
 	</insert>
+<!-- 이벤트 불러오기 -->
+	<select id="getEvent" resultType="kr.green.ebook.vo.BookeventVo">
+		select * from bookevent where ev_engtitle = #{title}
+	</select>
+<!-- 이벤트 수정 -->
+	<update id="updateEvent">
+		update bookevent
+		set
+			ev_title = #{event.ev_title},
+			ev_engtitle = #{event.ev_engtitle},
+			ev_t_title = #{event.ev_t_title},
+			ev_Deldate = #{event.ev_Deldate},
+			ev_img = #{event.ev_img},
+			ev_banner = #{event.ev_banner},
+			ev_page = #{event.ev_page},
+			ev_url = #{event.ev_url}
+			
+		where ev_num = #{event.ev_num}
+	</update>
 <!-- 전체 충전 리스트 -->
 	<select id="payList" resultType="kr.green.ebook.vo.PayVo">
 		select * from pay
@@ -201,6 +221,7 @@
 <!-- 결제내역 -->
 	<select id="getPayList" resultType="kr.green.ebook.vo.PayVo">
 		select * from pay where p_member =#{name}
+		order by p_num desc
 	</select>
 <!-- 소장웹툰 -->
 	<select id="getPayToon" resultType="kr.green.ebook.vo.ToonVo">

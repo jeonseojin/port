@@ -184,6 +184,56 @@ public class AdminController {
 		adminService.insertEvent(event);
 		return mv;
 	}
+	//이벤트상세
+	@RequestMapping(value = "/admin/evdetail", method = RequestMethod.GET)
+	public ModelAndView adminEventdetail(ModelAndView mv,String title, Criteria cri) {
+		mv.setViewName("/admin/evdetail");
+		BookeventVo event = adminService.getEvent(title);
+		mv.addObject("event", event);
+		mv.addObject("cri", cri);
+		return mv;
+	}
+	
+	//이벤트수정
+	@RequestMapping(value = "/admin/evmodify", method = RequestMethod.GET)
+	public ModelAndView adminEventModify(ModelAndView mv,String title, Criteria cri) {
+		mv.setViewName("/admin/evmodify");
+		ArrayList<ToonVo> tlist = adminService.toonList(cri);
+		mv.addObject("tlist", tlist);
+		BookeventVo event = adminService.getEvent(title);
+		mv.addObject("event", event);
+		mv.addObject("cri", cri);
+		return mv;
+	}
+	//이벤트업데이트
+		@RequestMapping(value = "/admin/evmodify", method = RequestMethod.POST)
+		public ModelAndView adminevmodifytPost(ModelAndView mv,BookeventVo event,MultipartFile file1,MultipartFile file2,MultipartFile file3) throws IOException, Exception {
+			mv.setViewName("redirect:/admin/event");
+			if(!file1.getOriginalFilename().equals("")) {
+				String ev_img = UploadFileUtils.uploadFile(uploadPath,"\\"+event.getEv_engtitle(), file1.getOriginalFilename(), file1.getBytes());
+				event.setEv_img(ev_img);
+			}else if(event.getEv_img()==null || event.getEv_img().equals("")) {
+				event.setEv_img(null);
+			}
+			if(!file2.getOriginalFilename().equals("")) {
+				String ev_banner = UploadFileUtils.uploadFile(uploadPath,"\\"+event.getEv_engtitle(), file2.getOriginalFilename(), file2.getBytes());
+				event.setEv_banner(ev_banner);
+			}else if(event.getEv_banner()==null || event.getEv_banner().equals("")) {
+				event.setEv_banner(null);
+			}
+			if(!file3.getOriginalFilename().equals("")) {
+				String ev_page = UploadFileUtils.uploadFile(uploadPath,"\\"+event.getEv_engtitle(), file3.getOriginalFilename(), file3.getBytes());
+				event.setEv_page(ev_page);
+			}else if(event.getEv_page()==null || event.getEv_page().equals("")) {
+				event.setEv_page(null);
+			}
+			event.setEv_url(event.getEv_url());
+			adminService.updateEvent(event);
+			return mv;
+		}
+	
+	
+	
 	//관리자 충전관리페이지
 	@RequestMapping(value = "/admin/pay", method = RequestMethod.GET)
 	public ModelAndView adminPay(ModelAndView mv, Criteria cri) {
