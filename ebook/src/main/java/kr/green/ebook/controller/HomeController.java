@@ -67,6 +67,7 @@ public class HomeController {
 				memberService.updatecoin(member);
 			}
 		}
+		
 		ArrayList<BookeventVo> evlist = adminService.eventList(cri);
 		mv.addObject("evlist", evlist);
 		return mv;
@@ -145,13 +146,29 @@ public class HomeController {
 	}
 	//내서재 화면
 	@RequestMapping(value = "/mybook", method = RequestMethod.GET)
-	public ModelAndView mybook(ModelAndView mv, HttpServletRequest r) {
+	public ModelAndView mybook(ModelAndView mv, HttpServletRequest r,HttpServletResponse rs) {
 		mv.setViewName("/main/mybook");
 		MemberVo member = memberService.getMember(r);
-		ArrayList<ChoiceVo> chlist = memberService.getChoiceList(member.getId());
-		mv.addObject("chlist", chlist);
-		ArrayList<ToonVo> payToon = toonService.getPayToon(member.getName());
-		mv.addObject("payToon", payToon);
+		if(member!=null) {
+			ArrayList<ChoiceVo> chlist = memberService.getChoiceList(member.getId());
+			mv.addObject("chlist", chlist);
+			ArrayList<ToonVo> payToon = toonService.getPayToon(member.getName());
+			mv.addObject("payToon", payToon);
+			
+			Cookie[] cook = r.getCookies();
+			if(cook!=null){
+				for(int i=0;i<cook.length;i++){
+					//쿠키이름 가져오기
+					String cookieName=cook[i].getName();
+					String cookieValue = cook[i].getValue();
+					cook[i].setMaxAge(0);
+					rs.addCookie(cook[i]);
+					System.out.println("쿠키이름:"+cookieName+"쿠키값:"+cookieValue);
+				}
+			}
+		}
+		
+		
 		return mv;
 	}
 	//내정보 화면
@@ -160,5 +177,5 @@ public class HomeController {
 		mv.setViewName("/main/myhome");
 		return mv;
 	}
-
+	
 }

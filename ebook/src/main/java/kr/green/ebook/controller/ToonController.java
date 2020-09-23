@@ -1,11 +1,14 @@
 package kr.green.ebook.controller;
 
 import java.io.IOException;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.apache.tiles.request.Request;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -63,7 +66,7 @@ public class ToonController {
 	}
 	//작품 상세페이지
 		@RequestMapping(value = "/toon/ep", method = RequestMethod.GET)
-		public ModelAndView toonEp(ModelAndView mv,String Title, Criteria cri,HttpServletRequest r,ChoiceVo ch,UpVo up) {
+		public ModelAndView toonEp(ModelAndView mv,String Title, Criteria cri,HttpServletRequest r,ChoiceVo ch,UpVo up,HttpServletResponse rs) {
 			mv.setViewName("/toon/ep");
 			//조회수 및 웹툰정보
 			ToonVo toon = toonService.view(Title);
@@ -82,7 +85,12 @@ public class ToonController {
 				up = toonService.getUp(Title,member.getId());
 				//충전
 				plist = toonService.getPayList(member.getName());
-			}
+				Cookie[] cook = r.getCookies();
+				Cookie cookie = new Cookie("Title"+(cook.length+1),Title);
+				cookie.setMaxAge(60*60*24*7);
+				cookie.setPath("/");
+				rs.addCookie(cookie);
+			}			
 			mv.addObject("ch", ch);
 			mv.addObject("up", up);
 			mv.addObject("plist", plist);

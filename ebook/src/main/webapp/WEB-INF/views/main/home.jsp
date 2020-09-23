@@ -1,7 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<body>
 	    <div class="main-banner">
            <div class="banner-swiper">
            		<c:forEach var="evlist" items="${evlist}">
@@ -57,13 +56,34 @@
         <div class="main-box">
         </div>
 	<script>
+		$('.banner-prev').click(function(e){
+			e.preventDefault();
+			if(!$('.banner-item').is(':animated')){
+				$('.banner-item').first().animate({'margin-left':'-1180px'},3000,function(){
+                    $(this).detach().appendTo('.banner-swiper').removeAttr('style');
+                })
+			}
+		})
+		$('.banner-next').click(function(e){
+			e.preventDefault();
+			if(!$('.banner-item').is(':animated')){
+				$('.banner-item').last().detach().prependTo('.banner-swiper');
+				$('.banner-item').first().css('margin-left','-1180px');
+				$('.banner-item').first().animate({'margin-left':'0'},3000)
+			}
+		})
+		var clear = bannerRolling();
+		$('.banner-swiper').hover(function(){
+			clearInterval(clear)
+		},function(){
+			clear = bannerRolling();
+		})
         function bannerRolling(){
            return setInterval(function(){
-                $('.banner-item').first().animate({'margin-left':'-1180px'},300,function(){
+                $('.banner-item').first().animate({'margin-left':'-1180px'},3000,function(){
                     $(this).detach().appendTo('.banner-swiper').removeAttr('style');
                 })
             },3000)
         }
         
 	</script>
-</body>
