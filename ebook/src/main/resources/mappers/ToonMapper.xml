@@ -314,4 +314,9 @@
 		select * from pay
 		where p_usedate = #{now} and p_member = #{name}
 	</select>
+<!-- 쿠키가져오기 -->
+	<select id="getRecent" resultType="kr.green.ebook.vo.ToonVo">
+		select * from toon
+		where t_title = #{value}
+	</select>
 </mapper>

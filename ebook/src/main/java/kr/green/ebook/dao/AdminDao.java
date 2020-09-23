@@ -3,6 +3,8 @@ package kr.green.ebook.dao;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
+import javax.servlet.http.Cookie;
+
 import org.apache.ibatis.annotations.Param;
 
 import kr.green.ebook.pagination.Criteria;

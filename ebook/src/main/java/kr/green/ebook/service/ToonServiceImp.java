@@ -2,6 +2,8 @@ package kr.green.ebook.service;
 
 import java.util.ArrayList;
 
+import javax.servlet.http.Cookie;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -124,6 +126,8 @@ public class ToonServiceImp implements ToonService {
 	public ArrayList<ToonVo> genreRank(Criteria cri) {
 		return adminDao.genreRank(cri);
 	}
+
+
 
 	
 

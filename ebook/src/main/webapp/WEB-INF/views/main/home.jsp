@@ -80,10 +80,10 @@
 		})
         function bannerRolling(){
            return setInterval(function(){
-                $('.banner-item').first().animate({'margin-left':'-1180px'},3000,function(){
+                $('.banner-item').first().animate({'margin-left':'-1180px'},5000,function(){
                     $(this).detach().appendTo('.banner-swiper').removeAttr('style');
                 })
-            },3000)
+            },7000)
         }
         
 	</script>

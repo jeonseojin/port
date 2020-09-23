@@ -68,6 +68,6 @@ PageMaker getPageMakerByToon(Criteria cri);
 
 	PayVo payattend(PayVo pay);
 
-	PayVo getPay(String now, String name);	
+	PayVo getPay(String now, String name);
 
 }

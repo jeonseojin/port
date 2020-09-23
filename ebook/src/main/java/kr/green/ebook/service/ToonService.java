@@ -2,6 +2,8 @@ package kr.green.ebook.service;
 
 import java.util.ArrayList;
 
+import javax.servlet.http.Cookie;
+
 import kr.green.ebook.pagination.Criteria;
 import kr.green.ebook.vo.ChoiceVo;
 import kr.green.ebook.vo.EpcommentVo;

@@ -3,49 +3,54 @@
     pageEncoding="UTF-8"%>
 <div class="log-list look">
     <div class="look-box">
-		<span class="log-look-span">최근</span>
-			<div class="log-look-box">
-				<div class="log-look-item">
-					<%
-						Cookie[] cook = request.getCookies();
-					
-						if(cook!=null){
-							for(int i=0;i<cook.length;i++){
-								//쿠키이름 가져오기
-								String cookieName=cook[i].getName();
-								String cookieValue = cook[i].getValue();
-								cook[i].setMaxAge(0);
-								response.addCookie(cook[i]);
-								out.println("쿠키이름:"+cookieName+"쿠키값:"+cookieValue +"<br/>");
-							}
-						}
-					%>
-				    <a href="#" class="log-look-the">더보기</a> 
-				</div>
-			</div>
-			<span class="log-look-span">찜</span>
-			<div class="log-look-box">
-				<div class="log-look-item">
-					<c:if test="${chlist.size()!=0}">
-						<c:forEach var="chlist" items="${chlist}">
-							<a class="log-look" href="#">
-						    	<img class="search-img" src="/ebook/resources/img${chlist.t_img}" style="height: 53px;" alt="">
-						    </a>
-						</c:forEach>
-					</c:if>
-				    <a href="#" class="log-look-the">더보기</a> 
-				</div>
-			</div>
-			<span class="log-look-span">소장</span>
-			<div class="log-look-box">
-				<div class="log-look-item">
-					<c:forEach var="payToon" items="${payToon}"> 
-						<a class="log-look" href="#">
-							<img class="search-img" src="/ebook/resources/img${payToon.t_img}" style="height: 53px;" alt=""> 
-						</a>
+    	<c:if test="${toon.size()!=null}">
+			<span class="ranking-heading">최근</span>
+				<div class="mybook-box">
+					<c:forEach var="toon" items="${toon}">
+						<div class="mybook-box-list">
+							<a class="ranking-link" href="<%=request.getContextPath()%>/toon/ep?Title=${toon.t_title}">
+								<img class="mybook-img" alt="" src="/ebook/resources/img${toon.t_img}">
+								<div class="ranking-info mybook-info">
+									<span class="ranking-info-title">${toon.title}</span>
+									<span class="ranking-info-artist">${toon.artist}</span>
+									<span class="ranking-info-genre">${toon.t_type}</span>
+								</div>
+							</a>
+						</div>
 					</c:forEach>
-				<a href="#" class="log-look-the">더보기</a> 
 			</div>
+		</c:if>
+		<span class="ranking-heading">찜</span>
+		<div class="mybook-box">
+			<c:if test="${chlist.size()!=0}">
+				<c:forEach var="chlist" items="${chlist}">
+					<div class="mybook-box-list">
+						<a class="ranking-link" href="<%=request.getContextPath()%>/toon/ep?Title=${chlist.t_title}">
+							<img class="mybook-img" alt="" src="/ebook/resources/img${chlist.t_img}">
+							<div class="ranking-info  mybook-info">
+								<span class="ranking-info-title">${chlist.title}</span>
+								<span class="ranking-info-artist">${chlist.artist}</span>
+								<span class="ranking-info-genre">${chlist.t_type}</span>
+							</div>
+						</a>
+					</div>
+				</c:forEach>
+			</c:if>
+		</div>
+		<span class="ranking-heading">소장</span>
+		<div class="mybook-box">
+			<c:forEach var="plist" items="${payToon}">
+				<div class="mybook-box-list">
+					<a class="ranking-link" href="<%=request.getContextPath()%>/toon/ep?Title=${plist.t_title}">
+						<img class="mybook-img" alt="" src="/ebook/resources/img${plist.t_img}">
+						<div class="ranking-info mybook-info">
+							<span class="ranking-info-title">${plist.title}</span>
+							<span class="ranking-info-artist">${plist.artist}</span>
+							<span class="ranking-info-genre">${plist.t_type}</span>
+						</div>
+					</a>
+				</div>
+			</c:forEach>
 		</div>
 	</div>
 </div>

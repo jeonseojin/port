@@ -146,7 +146,7 @@ public class HomeController {
 	}
 	//내서재 화면
 	@RequestMapping(value = "/mybook", method = RequestMethod.GET)
-	public ModelAndView mybook(ModelAndView mv, HttpServletRequest r,HttpServletResponse rs) {
+	public ModelAndView mybook(ModelAndView mv, HttpServletRequest r,Criteria cri,HttpServletResponse rs) {
 		mv.setViewName("/main/mybook");
 		MemberVo member = memberService.getMember(r);
 		if(member!=null) {
@@ -154,18 +154,16 @@ public class HomeController {
 			mv.addObject("chlist", chlist);
 			ArrayList<ToonVo> payToon = toonService.getPayToon(member.getName());
 			mv.addObject("payToon", payToon);
+			Cookie cook[] = r.getCookies();
+			ArrayList<ToonVo> toon = new ArrayList<ToonVo>();
 			
-			Cookie[] cook = r.getCookies();
-			if(cook!=null){
-				for(int i=0;i<cook.length;i++){
-					//쿠키이름 가져오기
-					String cookieName=cook[i].getName();
-					String cookieValue = cook[i].getValue();
-					cook[i].setMaxAge(0);
-					rs.addCookie(cook[i]);
-					System.out.println("쿠키이름:"+cookieName+"쿠키값:"+cookieValue);
+			for (int i = 0; i < cook.length; i++) {
+				if(!cook[i].getName().equals("JSESSIONID")) {
+					ToonVo t = adminService.getToonT(cook[i].getValue());
+					toon.add(t);
 				}
 			}
+			mv.addObject("toon",toon);
 		}
 		
 		
