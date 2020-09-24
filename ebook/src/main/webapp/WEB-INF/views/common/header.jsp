@@ -5,7 +5,7 @@
 
     <!-- 상단 header -->
     <header id="main-header" class="com com-menu">
-        <a class="gnb-logo" href="<%=request.getContextPath()%>/"></a>
+        <a class="gnb-logo" href="<%=request.getContextPath()%>/"><i class="fas fa-child"></i></a>
         <!-- 공통메뉴 -->
         <nav id="gnb" class="gnb">
             <ul class="gnb-list">

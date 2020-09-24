@@ -221,13 +221,13 @@
 	</insert>
 <!-- 결제내역 -->
 	<select id="getPayList" resultType="kr.green.ebook.vo.PayVo">
-		select * from pay where p_member =#{name}
+		select * from pay where p_member =#{id}
 		order by p_num desc
 	</select>
 <!-- 소장웹툰 -->
 	<select id="getPayToon" resultType="kr.green.ebook.vo.ToonVo">
 		select * from toon
-			join (SELECT * FROM pay where p_member like #{name} and p_one = 'Y' ) as st
+			join (SELECT * FROM pay where p_member like #{id} and p_one = 'Y' ) as st
 			on p_title = t_title
 	</select>
 <!-- 전체문의내역 --> 
@@ -313,7 +313,7 @@
 <!-- 출석포인트 확인 -->
 	<select id="getPay" resultType="kr.green.ebook.vo.PayVo" >
 		select * from pay
-		where p_usedate = #{now} and p_member = #{name}
+		where p_usedate = #{now} and p_member = #{id}
 	</select>
 <!-- 완결 웹툰 기간 -->
 	<select id="toonEnd" resultType="kr.green.ebook.vo.ToonVo">

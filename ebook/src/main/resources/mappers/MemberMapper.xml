@@ -64,7 +64,7 @@
 		update  member
 			set
 				coin=#{member.coin}
-			where name=#{member.name}
+			where id=#{member.id}
 				
 	</update>
 </mapper>

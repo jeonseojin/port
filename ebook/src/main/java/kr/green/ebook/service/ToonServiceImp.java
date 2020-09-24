@@ -114,13 +114,13 @@ public class ToonServiceImp implements ToonService {
 	}
 //해당 회원의 결제내역 불러오기
 	@Override
-	public ArrayList<PayVo> getPayList(String name) {
-		return adminDao.getPayList(name);
+	public ArrayList<PayVo> getPayList(String id) {
+		return adminDao.getPayList(id);
 	}
 //해당 회원의 소장웹툰
 	@Override
-	public ArrayList<ToonVo> getPayToon(String name) {
-		return adminDao.getPayToon(name);
+	public ArrayList<ToonVo> getPayToon(String id) {
+		return adminDao.getPayToon(id);
 	}
 //장르랭킹
 	@Override

@@ -35,9 +35,9 @@ public interface ToonService {
 
 	int deleteChoice(String Title, String id);
 
-	ArrayList<PayVo> getPayList(String name);
+	ArrayList<PayVo> getPayList(String id);
 
-	ArrayList<ToonVo> getPayToon(String name);
+	ArrayList<ToonVo> getPayToon(String id);
 
 	ArrayList<ToonVo> genreRank(Criteria cri);
 

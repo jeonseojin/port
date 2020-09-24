@@ -268,7 +268,7 @@ public class AdminController {
 		mv.setViewName("redirect:/");
 		MemberVo member = memberService.getMember(r);
 		if(member!=null) {
-			pay.setP_member(member.getName());
+			pay.setP_member(member.getId());
 			member.setCoin(member.getCoin()+pay.getP_charging());
 			adminService.insertPay(pay);
 			memberService.updatecoin(member);

@@ -40,7 +40,6 @@ public class AdminServiceImp implements AdminService {
 			if(toon.get(i).getT_lastEpdate().equals(now)) {
 				toon.get(i).setLastEpisode("Y");
 				adminDao.updateToon(toon.get(i));
-				System.out.println(toon.get(i).getT_lastEpdate());
 			}
 		}
 		return adminDao.toonList(cri);
@@ -183,8 +182,8 @@ public class AdminServiceImp implements AdminService {
 		}
 //출석포인트 차감
 		@Override
-		public PayVo getPay(String now,String name) {
-			PayVo pay= adminDao.getPay(now,name);
+		public PayVo getPay(String now,String id) {
+			PayVo pay= adminDao.getPay(now,id);
 			if(pay!=null) {
 				pay.setP_point(1);
 				pay.setP_title("출석 포인트 유효기간 만료");

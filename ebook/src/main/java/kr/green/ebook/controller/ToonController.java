@@ -85,7 +85,7 @@ public class ToonController {
 				ch = toonService.getChoice(Title,member.getId());
 				up = toonService.getUp(Title,member.getId());
 				//충전한 경우/안한경우
-				plist = toonService.getPayList(member.getName());
+				plist = toonService.getPayList(member.getId());
 				Cookie[] cook = r.getCookies();
 				Cookie cookie = new Cookie(Title,Title);
 				cookie.setMaxAge(60*5);
@@ -137,8 +137,8 @@ public class ToonController {
 	public Map<Object, Object> toonComicPost(@RequestBody PayVo pay,HttpServletRequest r) {
 		Map<Object, Object> map = new HashMap<Object, Object>();
 		MemberVo member = memberService.getMember(r);
-		pay.setP_member(member.getName());
-		ArrayList<PayVo> plist = toonService.getPayList(member.getName());
+		pay.setP_member(member.getId());
+		ArrayList<PayVo> plist = toonService.getPayList(member.getId());
 		String str="Y";
 		for(int i=0;i<plist.size();i++) {
 			if(pay.getP_title().equals(plist.get(i).getP_title())) {
@@ -269,7 +269,7 @@ public class ToonController {
 		}
 		else {
 			map.put("isMember",true);
-			pay.setP_member(member.getName());
+			pay.setP_member(member.getId());
 			PayVo p =adminService.payattend(pay);
 			if(p==null) {
 				member.setCoin(member.getCoin()+pay.getP_point());

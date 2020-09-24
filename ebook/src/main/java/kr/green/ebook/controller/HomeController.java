@@ -60,7 +60,7 @@ public class HomeController {
 		SimpleDateFormat nowTime = new SimpleDateFormat ( "yyyy-MM-dd");
 		String now = nowTime.format (System.currentTimeMillis());
 		if(member!=null) {
-			PayVo pay = adminService.getPay(now, member.getName());
+			PayVo pay = adminService.getPay(now, member.getId());
 			if(pay!=null) {
 				member.setCoin(member.getCoin()-pay.getP_point());
 				pay.setP_title("출석이벤트 유효기간 만료");
@@ -152,7 +152,7 @@ public class HomeController {
 		if(member!=null) {
 			ArrayList<ChoiceVo> chlist = memberService.getChoiceList(member.getId());
 			mv.addObject("chlist", chlist);
-			ArrayList<ToonVo> payToon = toonService.getPayToon(member.getName());
+			ArrayList<ToonVo> payToon = toonService.getPayToon(member.getId());
 			mv.addObject("payToon", payToon);
 			Cookie cook[] = r.getCookies();
 			ArrayList<ToonVo> toon = new ArrayList<ToonVo>();
@@ -171,8 +171,11 @@ public class HomeController {
 	}
 	//내정보 화면
 	@RequestMapping(value = "/myhome", method = RequestMethod.GET)
-	public ModelAndView myhome(ModelAndView mv) {
+	public ModelAndView myhome(ModelAndView mv,HttpServletRequest r) {
 		mv.setViewName("/main/myhome");
+		MemberVo member=memberService.getMember(r);
+		ArrayList<PayVo> pay = toonService.getPayList(member.getId());
+		mv.addObject("pay", pay);
 		return mv;
 	}
 	

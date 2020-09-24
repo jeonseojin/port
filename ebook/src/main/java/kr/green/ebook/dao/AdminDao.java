@@ -75,11 +75,11 @@ public interface AdminDao {
 
 	void insertPay(@Param("pay")PayVo pay);
 
-	ArrayList<PayVo> getPayList(@Param("name")String name);
+	ArrayList<PayVo> getPayList(@Param("id")String id);
 
 	ArrayList<ClaimVo> getClaim(@Param("cri")Criteria cri);
 
-	ArrayList<ToonVo> getPayToon(@Param("name")String name);
+	ArrayList<ToonVo> getPayToon(@Param("id")String id);
 
 	void insertclaim(@Param("cl")ClaimVo cl);
 
@@ -109,7 +109,7 @@ public interface AdminDao {
 
 	public PayVo payattend(@Param("pay")PayVo pay);
 
-	public PayVo getPay(@Param("now")String now, @Param("name")String name);
+	public PayVo getPay(@Param("now")String now, @Param("id")String id);
 
 	public ArrayList<ToonVo> toonEnd(@Param("cri")Criteria cri, @Param("now")String now);
 

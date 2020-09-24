@@ -6,6 +6,9 @@
 	}
 }
 @media(min-width:961px){
+	.com-home{
+		min-height: 1500px;
+	}
 	.payment-box{
 		padding: 40px 0;	
 	}
@@ -214,5 +217,11 @@
 	.comicInfo-Epdetail{
 		margin-left: -50%;
 	}
-	
+	.myhome-coin-date{
+		padding: 0 35px;
+		width: 180px;
+	}
+	.myhome-coin-item>span{
+		font-size: 15px;
+	}
 }

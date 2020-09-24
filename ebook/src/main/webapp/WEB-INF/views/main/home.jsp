@@ -56,7 +56,7 @@
         <div class="main-box">
         </div>
 	<script>
-		$('.banner-prev').click(function(e){
+		$('.banner-next').click(function(e){
 			e.preventDefault();
 			if(!$('.banner-item').is(':animated')){
 				$('.banner-item').first().animate({'margin-left':'-1180px'},3000,function(){
@@ -64,7 +64,7 @@
                 })
 			}
 		})
-		$('.banner-next').click(function(e){
+		$('.banner-prev').click(function(e){
 			e.preventDefault();
 			if(!$('.banner-item').is(':animated')){
 				$('.banner-item').last().detach().prependTo('.banner-swiper');
