@@ -14,7 +14,7 @@
 			<button type="button" class="attend-btn">출석하기</button>
 		</div>
 		<input type="hidden" name="p_point" value="1">
-		<input type="text" name="p_usedate" value="<%=sf.format(nowTime)%>">
+		<input type="hidden" name="lastdate" value="<%=sf.format(nowTime)%>">
 		<input type="hidden" name="p_title" value="충전이벤트">
 	</form>
 <script type="text/javascript">

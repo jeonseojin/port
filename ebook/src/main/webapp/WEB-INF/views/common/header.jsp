@@ -16,13 +16,10 @@
                     <a class="gnb-link" href="<%=request.getContextPath()%>/ranking">랭킹</a>
                 </li>
                 <li class="gnb-item">
-                    <a class="gnb-link" href="<%=request.getContextPath()%>/free">무료</a>
-                </li>
-                <li class="gnb-item">
                     <a class="gnb-link" href="<%=request.getContextPath()%>/event">이벤트</a>
                 </li>
                 <li class="gnb-item">
-                    <a class="gnb-link" href="<%=request.getContextPath()%>/theend">완결</a>
+                    <a class="gnb-link" href="<%=request.getContextPath()%>/end">완결</a>
                 </li>
             </ul>
         </nav>

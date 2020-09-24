@@ -30,8 +30,6 @@ PageMaker getPageMakerByToon(Criteria cri);
 
 	void insertEp(EpisodeVo ep);
 
-	GenreVo getGr(String t_code);
-
 	WeekVo getWeek(Integer t_week);
 	
 	ToonVo getToonT(String Title);

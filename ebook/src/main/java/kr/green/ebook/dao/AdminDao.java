@@ -41,8 +41,6 @@ public interface AdminDao {
 
 	WeekVo getWeek(@Param("t_week")int t_week);
 
-	GenreVo getGr(@Param("t_code")String t_code);
-
 	ToonVo getToont(@Param("Title")String Title);
 
 	ArrayList<ToonVo> weekList(@Param("cri")Criteria cri);
@@ -112,5 +110,11 @@ public interface AdminDao {
 	public PayVo payattend(@Param("pay")PayVo pay);
 
 	public PayVo getPay(@Param("now")String now, @Param("name")String name);
+
+	public ArrayList<ToonVo> toonEnd(@Param("cri")Criteria cri, @Param("now")String now);
+
+	public ArrayList<GenreVo> getGenrelist(@Param("cri")Criteria cri);
+
+	public ArrayList<ToonVo> TheendGenre(@Param("cri")Criteria cri);
 
 }

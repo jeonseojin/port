@@ -34,6 +34,7 @@ import kr.green.ebook.vo.ChoiceVo;
 import kr.green.ebook.vo.ClaimVo;
 import kr.green.ebook.vo.EpcommentVo;
 import kr.green.ebook.vo.EpisodeVo;
+import kr.green.ebook.vo.GenreVo;
 import kr.green.ebook.vo.MemberVo;
 import kr.green.ebook.vo.PayVo;
 import kr.green.ebook.vo.ToonVo;
@@ -83,10 +84,10 @@ public class ToonController {
 			if(member!=null) {
 				ch = toonService.getChoice(Title,member.getId());
 				up = toonService.getUp(Title,member.getId());
-				//충전
+				//충전한 경우/안한경우
 				plist = toonService.getPayList(member.getName());
 				Cookie[] cook = r.getCookies();
-				Cookie cookie = new Cookie("eng"+(cook.length+1),Title);
+				Cookie cookie = new Cookie(Title,Title);
 				cookie.setMaxAge(60*5);
 				cookie.setPath("/");
 				rs.addCookie(cookie);
@@ -138,12 +139,11 @@ public class ToonController {
 		MemberVo member = memberService.getMember(r);
 		pay.setP_member(member.getName());
 		ArrayList<PayVo> plist = toonService.getPayList(member.getName());
-		String str="";
+		String str="Y";
 		for(int i=0;i<plist.size();i++) {
-			if(plist.get(i).getP_title()==null&& plist.get(i).getP_title()!=pay.getP_title()) {
-				str="Y";
-			}else {
+			if(pay.getP_title().equals(plist.get(i).getP_title())) {
 				str="N";
+				break;
 			}
 		}
 		pay.setP_one(str);
@@ -153,7 +153,6 @@ public class ToonController {
 			adminService.insertPay(pay);
 			member.setCoin(member.getCoin()-pay.getP_coin());
 			memberService.updatecoin(member);
-			map.put("url", r.getContextPath()+"/toon/comic?Title="+pay.getP_title()+"&edition="+pay.getP_edition());
 		}
 		return map;
 	}
@@ -227,7 +226,7 @@ public class ToonController {
 	//랭킹 연결
 	@RequestMapping(value = "/ranking", method = RequestMethod.GET)
 	public ModelAndView ranking(ModelAndView mv, Criteria cri) {
-		mv.setViewName("/ranking/home");
+		mv.setViewName("/type/rank");
 		ArrayList<ToonVo> toon = toonService.genreRank(cri);
 		mv.addObject("toon", toon);
 		return mv;
@@ -274,6 +273,7 @@ public class ToonController {
 			PayVo p =adminService.payattend(pay);
 			if(p==null) {
 				member.setCoin(member.getCoin()+pay.getP_point());
+				pay.setP_title("출석이벤트");
 				adminService.insertPay(pay);
 				memberService.updatecoin(member);
 			}else {
@@ -282,4 +282,25 @@ public class ToonController {
 		}
 		return map;
 	}
+	
+	//완결
+	@RequestMapping(value = "/end", method = RequestMethod.GET)
+	public ModelAndView theend(ModelAndView mv,Criteria cri) {
+		mv.setViewName("/type/theend");
+		ArrayList<GenreVo> genre = toonService.getGenrelist(cri);
+		mv.addObject("genre", genre);
+		ArrayList<ToonVo> toon = toonService.TheendGenre(cri);
+		mv.addObject("toon", toon);
+		return mv;
+	}
+	//ajax을 통해서 랭킹 변경하기
+		@RequestMapping(value = "/end", produces="application/json; charset=utf8")
+		@ResponseBody
+		public Map<Object, Object> theendajax(@RequestBody String genre, Criteria cri) {
+			Map<Object, Object> map = new HashMap<Object, Object>();
+			cri.setGenre(genre);
+			ArrayList<ToonVo> toon = toonService.TheendGenre(cri);
+			map.put("toon", toon);
+			return map;
+		}
 }

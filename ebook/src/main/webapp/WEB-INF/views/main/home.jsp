@@ -72,18 +72,5 @@
 				$('.banner-item').first().animate({'margin-left':'0'},3000)
 			}
 		})
-		var clear = bannerRolling();
-		$('.banner-swiper').hover(function(){
-			clearInterval(clear)
-		},function(){
-			clear = bannerRolling();
-		})
-        function bannerRolling(){
-           return setInterval(function(){
-                $('.banner-item').first().animate({'margin-left':'-1180px'},5000,function(){
-                    $(this).detach().appendTo('.banner-swiper').removeAttr('style');
-                })
-            },7000)
-        }
         
 	</script>

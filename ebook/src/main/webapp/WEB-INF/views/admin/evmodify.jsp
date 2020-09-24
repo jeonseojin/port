@@ -1,7 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<!DOCTYPE html>
+<c:if test="${member.name==null}">
+	<h1>접근할 수 없는 경로 입니다.</h1>
+</c:if>
+<c:if test="${member.name!=null&&member.auth=='ADMIN'}">
 	<form action="<%=request.getContextPath()%>/admin/evmodify" method="post" enctype="multipart/form-data">
 		<div class="ad-event-list ad-event-record">
 			<table class="table">
@@ -50,6 +53,7 @@
 		<input type="hidden" name="ev_banner" value="${event.ev_banner}">
 		<input type="hidden" name="ev_page" value="${event.ev_page}">
 	</form>
+</c:if>	
 <script>
 	var title=$('.adm-toontitle').val();
 	genre = title.split(',');

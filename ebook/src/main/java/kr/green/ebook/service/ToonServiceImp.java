@@ -12,6 +12,7 @@ import kr.green.ebook.pagination.Criteria;
 import kr.green.ebook.vo.ChoiceVo;
 import kr.green.ebook.vo.EpcommentVo;
 import kr.green.ebook.vo.EpisodeVo;
+import kr.green.ebook.vo.GenreVo;
 import kr.green.ebook.vo.PayVo;
 import kr.green.ebook.vo.ToonVo;
 import kr.green.ebook.vo.UpVo;
@@ -125,6 +126,16 @@ public class ToonServiceImp implements ToonService {
 	@Override
 	public ArrayList<ToonVo> genreRank(Criteria cri) {
 		return adminDao.genreRank(cri);
+	}
+//전체 장르
+	@Override
+	public ArrayList<GenreVo> getGenrelist(Criteria cri) {
+		return adminDao.getGenrelist(cri);
+	}
+//완결 장르 찾기
+	@Override
+	public ArrayList<ToonVo> TheendGenre(Criteria cri) {
+		return adminDao.TheendGenre(cri);
 	}
 
 

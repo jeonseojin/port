@@ -33,6 +33,10 @@
 	border: none;
 	overflow-y: scroll;
 }
+.adm-ep-h{
+	margin-top: 80px;
+	text-align: center;
+}
 .ad-cl-not{
 	padding: 8px 16px;
 	font-weight: bold;
@@ -64,6 +68,16 @@
 .adev-imgtable>img{
 	height: 150px;
 } 
+.adm-ev-url{
+	width: 250px;
+	text-align: center;
+}
+.paylisy-box>td{
+	text-align: center;
+}
+
+
+
 
 
 

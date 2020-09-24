@@ -1,6 +1,7 @@
 package kr.green.ebook.controller;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -94,13 +95,18 @@ public class AdminController {
 		return mv;
 	}
 	
-	//연재등록
+	//연재등록기능
 	@RequestMapping(value = "/admin/ep", method = RequestMethod.POST)
-	public ModelAndView adminEpPost(ModelAndView mv, EpisodeVo ep, MultipartHttpServletRequest mr) throws IOException, Exception {
+	public ModelAndView adminEpPost(ModelAndView mv, EpisodeVo ep,String title,String last, String lastdate, MultipartHttpServletRequest mr) throws IOException, Exception {
 		mv.setViewName("redirect:/admin/toon");
 		String filename = "";
 		byte[] fileby;
 		List<MultipartFile> fileList = mr.getFiles("file2");
+		if(last.equals("Y")) {
+			ToonVo toon = adminService.getToonT(title);
+			toon.setT_lastEpdate(lastdate);
+			adminService.updateToon(toon);
+		}
 		for(MultipartFile filePart : fileList) {
 			filename = filePart.getOriginalFilename();
 			fileby = filePart.getBytes();

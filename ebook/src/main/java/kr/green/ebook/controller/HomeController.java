@@ -57,17 +57,17 @@ public class HomeController {
 		ArrayList<ToonVo> viewrank = adminService.toonRankviews(cri);
 		mv.addObject("viewrank", viewrank);
 		MemberVo member = memberService.getMember(r);
+		SimpleDateFormat nowTime = new SimpleDateFormat ( "yyyy-MM-dd");
+		String now = nowTime.format (System.currentTimeMillis());
 		if(member!=null) {
-			SimpleDateFormat nowTime = new SimpleDateFormat ( "yyyy-MM-dd");
-			String now = nowTime.format (System.currentTimeMillis());
 			PayVo pay = adminService.getPay(now, member.getName());
 			if(pay!=null) {
 				member.setCoin(member.getCoin()-pay.getP_point());
+				pay.setP_title("출석이벤트 유효기간 만료");
 				adminService.insertPay(pay);
 				memberService.updatecoin(member);
 			}
 		}
-		
 		ArrayList<BookeventVo> evlist = adminService.eventList(cri);
 		mv.addObject("evlist", evlist);
 		return mv;

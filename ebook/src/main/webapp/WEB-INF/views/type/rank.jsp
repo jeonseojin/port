@@ -3,8 +3,8 @@
     pageEncoding="UTF-8"%>
 
     <div class="toon-genre-box">
-        <button class="toon-genre" type="button" value="전체">전체</button>
-        <button class="toon-genre" type="button" value="로맨스" aria-selected="true">로맨스</button>
+        <button class="toon-genre" type="button" value="전체장르" aria-selected="true">전체</button>
+        <button class="toon-genre" type="button" value="로맨스">로맨스</button>
         <button class="toon-genre" type="button" value="드라마">드라마</button>
         <button class="toon-genre" type="button" value="판타지">판타지</button>
         <button class="toon-genre" type="button" value="개그">개그</button>

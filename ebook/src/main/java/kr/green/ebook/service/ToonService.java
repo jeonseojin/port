@@ -8,6 +8,7 @@ import kr.green.ebook.pagination.Criteria;
 import kr.green.ebook.vo.ChoiceVo;
 import kr.green.ebook.vo.EpcommentVo;
 import kr.green.ebook.vo.EpisodeVo;
+import kr.green.ebook.vo.GenreVo;
 import kr.green.ebook.vo.PayVo;
 import kr.green.ebook.vo.ToonVo;
 import kr.green.ebook.vo.UpVo;
@@ -43,6 +44,10 @@ public interface ToonService {
 	UpVo getUp(String Title, String id);
 
 	int updateUp(String Title, String id);
+
+	ArrayList<GenreVo> getGenrelist(Criteria cri);
+
+	ArrayList<ToonVo> TheendGenre(Criteria cri);
 
 
 }

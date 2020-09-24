@@ -13,13 +13,14 @@ public class ToonVo {
 	private int up;
 	private String t_img;
 	private String t_type;
-	private String lastEpisode;
 	private Date t_date;
 	private int t_week;
 	private String t_title;
 	private int t_views;
 	private String t_typify;
 	private char t_isDel;
+	private String lastEpisode;//완결여부
+	private String t_lastEpdate;//완결 후 연재에서 -> 완결로 넘어가는 기간
 	
 	
 	
@@ -90,6 +91,13 @@ public class ToonVo {
 	public void setLastEpisode(String lastEpisode) {
 		this.lastEpisode = lastEpisode;
 	}
+	public String getT_lastEpdate() {
+		return t_lastEpdate;
+	}
+	public void setT_lastEpdate(String t_lastEpdate) {
+		this.t_lastEpdate = t_lastEpdate;
+	}
+	
 	public String getT_date() {
 		SimpleDateFormat transFormat = new SimpleDateFormat("yyyy-MM-dd");
 		return transFormat.format(t_date);
@@ -130,9 +138,9 @@ public class ToonVo {
 	@Override
 	public String toString() {
 		return "ToonVo [t_num=" + t_num + ", title=" + title + ", artist=" + artist + ", plot=" + plot + ", choice="
-				+ choice + ", up=" + up + ", t_img=" + t_img + ", t_type=" + t_type + ", lastEpisode=" + lastEpisode
-				+ ", t_date=" + t_date + ", t_week=" + t_week + ", t_title=" + t_title + ", t_views=" + t_views
-				+ ", t_typify=" + t_typify + ", t_isDel=" + t_isDel + "]";
+				+ choice + ", up=" + up + ", t_img=" + t_img + ", t_type=" + t_type + ", t_date=" + t_date + ", t_week="
+				+ t_week + ", t_title=" + t_title + ", t_views=" + t_views + ", t_typify=" + t_typify + ", t_isDel="
+				+ t_isDel + ", lastEpisode=" + lastEpisode + ", t_lastEpdate=" + t_lastEpdate + "]";
 	}
 	public String getOriFilesmall() {
 		int index = t_img.indexOf("_");

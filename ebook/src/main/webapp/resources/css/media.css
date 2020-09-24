@@ -94,6 +94,15 @@
 		bottom:15px;
 		right: 0;
 	}
+	.comicInfo-img{
+		position: absolute;
+	    z-index: 1;
+	    top: 0;
+	    right: 0;
+	}
+	.comicInfo-Epdetail{
+		margin-left: -45%;
+	}
 }
 @media(min-width:1281px){
 	.hbox-right-tap-a{
@@ -134,6 +143,9 @@
 		position: absolute;
 		bottom:0;
 		right: 0;
+	}
+	.comicInfo-plot{
+		width: 230px;
 	}
 }
 @media(max-width:960px){
@@ -190,18 +202,17 @@
 		width: 40px;
 		padding: 4px 4px 0;
 	}
-	.comicInfo-Epdetail{
-		margin-left: -350px;
-	}
 	.comic-info>img{
 		height: 330px;
 	}
-}
-@media(max-height: 960px) and (min-width:640px){
-	.comicInfo-Epdetail{
-		margin-left: -430px;
+	.comicInfo-img{
+		position:absolute;
+		bottom: 0;
+		right: 0;
+		width: 450px;
 	}
-}
-@media(max-height: 767px) and (min-width:640px){
-
+	.comicInfo-Epdetail{
+		margin-left: -50%;
+	}
+	
 }

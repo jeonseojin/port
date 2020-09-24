@@ -164,6 +164,7 @@
 			</div>
 		</form>
 </c:if>
+
 <script>
 $(function(){
     $('.nav .nav-link').click(function(e){

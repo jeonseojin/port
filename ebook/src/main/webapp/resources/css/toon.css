@@ -95,7 +95,6 @@
 .comicInfo{
     position: relative;
     color: rgb(75, 75, 75);
-    background: rgb(255, 193, 164);
     transform: translateZ(0);
     width: 100%;
     height: 390px;
@@ -103,14 +102,6 @@
 .comicInfo-Epdetail{
 	position: absolute;
 	left: 50%;
-	width: 700px;
-	margin-left: -489px;
-}
-.comicInfo-img{
-	position: absolute;
-    z-index: 1;
-    top: 0;
-    right: 0;
 }
 .comicInfo-title{
 	padding-top: 43px;
@@ -119,7 +110,6 @@
     line-height: 47px;
     font-size: 38px;
     font-weight: bold;
-    color: #fff;
 }
 .comicInfo-genre{
 	display: block;
@@ -129,10 +119,8 @@
 	font-size: 16px;
 	line-height: 18px;
 	vertical-align: top;
-	color:#fff;
 }
 .comicInfo-plot{
-	color: #fff;
 	font-size: 14px;
 	line-height: 19px;
 }
@@ -151,9 +139,7 @@
 	font-weight: 500;
 	text-align: center;
 	vertical-align: middle;
-	border: 1px solid #fff; 
 	border-radius: 24px;
-	color:#fff;
 	background-color: transparent;
 }
 .comicInfo-btn-nochoice>i{
@@ -165,10 +151,8 @@
 	height: 48px;
 	border-radius: 24px;
 	margin-left: 8px;
-	border: 1px solid #fff; 
 	background-color: transparent;
 	font-size: 20px;
-	color:#fff;
 }
 .comic-Content{
 	width:100%;
@@ -202,6 +186,7 @@
 .comic-itemlink,.comic-itemlink-payment,.nologin-payment{
 	margin-right: 10px;
 	z-index: 1;
+	padding: 0;
 }
 .comic-itemlink-payment,.nologin-payment{
 	border: none;
@@ -868,7 +853,7 @@
 	font-weight: 500;
 	color:#000;
 }
-.ranking-list{
+.ranking-list,.genre-list{
 	display: flex;
 	flex-wrap: wrap;
 	align-content: flex-start;
@@ -880,6 +865,7 @@
 	line-height: 0;
 	vertical-align: top;
 }
+
 .ranking-item{
 	width: 100%;
 	margin-bottom: 16px;
@@ -988,4 +974,27 @@
 }
 .mybook-img{
 	height: 130px !important;
+}
+.theend-genre-box{
+	width: 100%;
+	position: relative;
+}
+.theend-genre-btn{
+	position:absolute;
+	right:0;
+	width: 120px;
+	float: right;
+	text-align: center;
+	height: 50px;
+	border: 1px solid #e5e5e5;
+	appearance: none;
+	padding: 0 31px;
+}
+.genre-heading{
+	margin-top:50px;
+	width: 150px;
+	font-weight: bold;
+	height: 50px;
+	border-bottom: 2px solid #333;
+	text-align: center;
 }

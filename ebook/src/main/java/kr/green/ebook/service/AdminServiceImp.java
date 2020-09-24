@@ -32,8 +32,18 @@ public class AdminServiceImp implements AdminService {
 //작품 + 정렬
 	@Override
 	public ArrayList<ToonVo> toonList(Criteria cri) {
+		//연재에서 오늘 완결로 넘어가는 웹툰들을 찾아서 update 후 웹툰 전체 리스트를 넘겨줌
+		SimpleDateFormat nowTime = new SimpleDateFormat ( "yyyy-MM-dd");
+		String now = nowTime.format (System.currentTimeMillis());
+		ArrayList<ToonVo> toon = adminDao.toonEnd(cri,now);
+		for (int i = 0; i < toon.size(); i++) {
+			if(toon.get(i).getT_lastEpdate().equals(now)) {
+				toon.get(i).setLastEpisode("Y");
+				adminDao.updateToon(toon.get(i));
+				System.out.println(toon.get(i).getT_lastEpdate());
+			}
+		}
 		return adminDao.toonList(cri);
-
 	}
 
 //작품등록
@@ -78,12 +88,6 @@ public class AdminServiceImp implements AdminService {
 	public WeekVo getWeek(Integer t_week) {
 		if(t_week==null || t_week.SIZE==0) return null;
 		return adminDao.getWeek(t_week);
-	}
-//장르찾기
-	@Override
-	public GenreVo getGr(String t_type) {
-		if(t_type==null|| t_type.length()==0) return null;
-		return adminDao.getGr(t_type);
 	}
 //이벤트 전체
 	@Override

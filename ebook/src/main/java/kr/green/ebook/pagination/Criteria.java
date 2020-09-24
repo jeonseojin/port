@@ -18,7 +18,7 @@ public class Criteria {
 		type=1;
 		cweek=1;
 		notice="service";
-		genre ="로맨스";
+		genre ="";
 	}
 	//getter and setter
 	

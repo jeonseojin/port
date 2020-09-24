@@ -73,6 +73,7 @@
         .main-left,.main-right{
 	        box-sizing: border-box;
 	        padding: 0 15px;
+	        margin-bottom: 25px;
 	    }
         .banner-btn{
         	position: absolute;

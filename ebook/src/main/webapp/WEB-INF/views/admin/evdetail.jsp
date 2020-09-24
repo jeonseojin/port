@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<!DOCTYPE html>
+<c:if test="${member.name!=null&&member.auth=='ADMIN'}">
 	<div class="ad-event-list ad-event-record">
 		<table class="table">
 			<thead>
@@ -20,7 +20,7 @@
 		<table class="table">
 			<thead>
 				<tr>
-					<th>이벤트 주소</th>
+					<th class="adm-ev-url">이벤트 주소</th>
 					<c:if test="${event.ev_url==null}">
 						<th>URL 주소가 없습니다.</th>
 					</c:if>
@@ -33,7 +33,7 @@
 		<table class="table">
 			<thead>
 				<tr>
-					<th>이벤트 작품</th>
+					<th class="adm-ev-url">이벤트 작품</th>
 					<c:if test="${event.ev_t_title==null}">
 						<th>이벤트 연관 작품이 없습니다.</th>
 					</c:if>
@@ -59,6 +59,10 @@
 		</div>
 		<input type="hidden" id="title" value="${event.ev_engtitle}">
 	</div>
+</c:if>
+<c:if test="${member.name==null&&member.auth=='USER'}">
+	<h1>접근할 수 없는 경로 입니다.</h1>
+</c:if>
 <script>
 
 </script>

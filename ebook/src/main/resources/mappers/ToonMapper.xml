@@ -74,7 +74,8 @@
 				t_views = #{toon.t_views},
 				lastEpisode = #{toon.lastEpisode},
 				choice = #{toon.choice},
-				up = #{toon.up}
+				up = #{toon.up},
+				t_lastEpdate = #{toon.t_lastEpdate}
 			where
 				t_title = #{toon.t_title}
 	</update>
@@ -298,7 +299,7 @@
 	<select id="genreRank" resultType="kr.green.ebook.vo.ToonVo">
 		select * from toon
 		where 1=1
-		<if test="cri.genre!='전체'">
+		<if test="cri.genre!='전체장르'">
 			and t_type like concat('%',#{cri.genre},'%')
 		</if>
 	  	order by up desc
@@ -314,9 +315,22 @@
 		select * from pay
 		where p_usedate = #{now} and p_member = #{name}
 	</select>
-<!-- 쿠키가져오기 -->
-	<select id="getRecent" resultType="kr.green.ebook.vo.ToonVo">
+<!-- 완결 웹툰 기간 -->
+	<select id="toonEnd" resultType="kr.green.ebook.vo.ToonVo">
 		select * from toon
-		where t_title = #{value}
+		where t_lastEpdate = #{now}
+	</select>
+<!-- 장르 불러오기 -->
+	<select id="getGenrelist" resultType="kr.green.ebook.vo.GenreVo">
+		select * from genre
+	</select>
+<!-- 완결 장르 불러오기 -->
+	<select id="TheendGenre" resultType="kr.green.ebook.vo.ToonVo">
+		select * from toon
+			where lastEpisode='Y'
+		<if test="cri.genre">
+				and t_type like concat('%',#{cri.genre},'%')
+		</if>
+		order by up desc
 	</select>
 </mapper>

@@ -156,6 +156,8 @@ $(function(){
 		        success : function(data){
 					if(data["res"]!=null){
 						alert(data["res"]);
+					}else{
+						window.location.href = "<%=request.getContextPath()%>/toon/comic?Title="+title+"&edition="+edition;
 					}
 		        }
         
