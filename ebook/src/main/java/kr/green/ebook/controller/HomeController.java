@@ -174,5 +174,19 @@ public class HomeController {
 		
 		return mv;
 	}
+	@RequestMapping(value = "/myhome/info", produces="application/json; charset=utf8")
+	@ResponseBody
+	public Map<Object, Object> myhomeinfo(@RequestBody MemberVo member,Criteria cri) {
+		Map<Object, Object> map = new HashMap<Object, Object>();
+		System.out.println(member);
+		MemberVo mem = memberService.getMemberName(member.getName());
+		if(mem==null) {
+			memberService.updatecoin(member);
+			map.put("member", member);
+		}else {
+			map.put("res", "이미 존재하는 이름입니다.");
+		}
+		return map;
+	}
 	
 }

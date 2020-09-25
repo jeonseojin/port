@@ -1064,3 +1064,13 @@
 	width: 100%;
 	padding: 15px;
 }
+.info-myhome{
+	border: none;
+	text-align: center;
+}
+#form-myinfo{
+	margin-bottom: 20px;
+}
+.btn-myinfo{
+	margin-left: 50%;
+}

@@ -66,7 +66,10 @@
 	<update id="updatecoin">
 		update  member
 			set
-				coin=#{member.coin}
+				coin=#{member.coin},
+				email=#{member.email},
+				name=#{member.name}				
+				
 			where id=#{member.id}
 				
 	</update>

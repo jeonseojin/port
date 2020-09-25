@@ -184,7 +184,6 @@ public class AdminServiceImp implements AdminService {
 		@Override
 		public void getPay(String now) {
 			ArrayList<PayVo> pay= adminDao.getPay(now);
-			System.out.println(pay);
 			if(pay!=null) {
 				for (int i = 0; i < pay.size(); i++) {
 					MemberVo member = memberDao.getMember(pay.get(i).getP_member());
