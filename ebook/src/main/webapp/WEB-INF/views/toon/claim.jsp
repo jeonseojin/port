@@ -158,7 +158,7 @@
 												</div>
 											</c:if>
 											<c:if test="${answer.cl_answer!=cl.cl_num}">
-												<div class="noanswer-content">등록된 답편이 없습니다.</div>
+												<div class="noanswer-content">등록된 답변이 없습니다.</div>
 											</c:if>
 										</c:forEach>
 									</div>

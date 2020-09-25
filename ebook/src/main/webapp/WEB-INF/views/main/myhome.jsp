@@ -86,7 +86,6 @@
 									<c:if test="${pay.p_title=='출석이벤트'}">
 										<span> <i class="fas fa-coins myhome-coin-i"></i>+${pay.p_point}</span>
 									</c:if>
-									<span><i class="fas fa-money-bill-alt myhome-coin-m"></i>${pay.p_price}</span>
 									<span>${pay.p_title}</span>
 								</div>
 							</td>

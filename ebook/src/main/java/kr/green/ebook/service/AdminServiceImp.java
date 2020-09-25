@@ -182,20 +182,36 @@ public class AdminServiceImp implements AdminService {
 		}
 //출석포인트 차감
 		@Override
-		public PayVo getPay(String now,String id) {
-			PayVo pay= adminDao.getPay(now,id);
+		public void getPay(String now) {
+			ArrayList<PayVo> pay= adminDao.getPay(now);
+			System.out.println(pay);
 			if(pay!=null) {
-				pay.setP_point(1);
-				pay.setP_title("출석 포인트 유효기간 만료");
-				pay.setP_member(pay.getP_member());
-				pay.setP_usedate(null);
+				for (int i = 0; i < pay.size(); i++) {
+					MemberVo member = memberDao.getMember(pay.get(i).getP_member());
+					PayVo p = new PayVo();
+					p.setP_point(1);
+					p.setP_title("출석이벤트 유효기간 만료");
+					p.setP_member(pay.get(i).getP_member());
+					p.setP_usedate(null);
+					p.setP_one("N");
+					member.setCoin(member.getCoin()-1);
+					memberDao.updatecoin(member);
+					adminDao.insertPay(p);
+					adminDao.deletePay(pay.get(i));
+					
+				}
 			}
-			return pay;
 		}
 //문의답변
 		@Override
 		public ClaimVo getClaimAnswer(int num) {
 			return adminDao.getClaimAnswer(num);
+		}
+//지급된 출석 포인트 제거
+		@Override
+		public void deletePay(PayVo pay) {
+			adminDao.deletePay(pay);
+			
 		}
 		
 

@@ -109,7 +109,7 @@ public interface AdminDao {
 
 	public PayVo payattend(@Param("pay")PayVo pay);
 
-	public PayVo getPay(@Param("now")String now, @Param("id")String id);
+	public ArrayList<PayVo> getPay(@Param("now")String now);
 
 	public ArrayList<ToonVo> toonEnd(@Param("cri")Criteria cri, @Param("now")String now);
 
@@ -118,5 +118,7 @@ public interface AdminDao {
 	public ArrayList<ToonVo> TheendGenre(@Param("cri")Criteria cri);
 
 	public ClaimVo getClaimAnswer(@Param("num")int num);
+
+	public void deletePay(@Param("pay")PayVo pay);
 
 }

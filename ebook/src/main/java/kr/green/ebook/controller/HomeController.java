@@ -59,15 +59,8 @@ public class HomeController {
 		MemberVo member = memberService.getMember(r);
 		SimpleDateFormat nowTime = new SimpleDateFormat ( "yyyy-MM-dd");
 		String now = nowTime.format (System.currentTimeMillis());
-		if(member!=null) {
-			PayVo pay = adminService.getPay(now, member.getId());
-			if(pay!=null) {
-				member.setCoin(member.getCoin()-pay.getP_point());
-				pay.setP_title("출석이벤트 유효기간 만료");
-				adminService.insertPay(pay);
-				memberService.updatecoin(member);
-			}
-		}
+		adminService.getPay(now);
+			
 		ArrayList<BookeventVo> evlist = adminService.eventList(cri);
 		mv.addObject("evlist", evlist);
 		return mv;
@@ -141,7 +134,7 @@ public class HomeController {
 	@ResponseBody
 	public Map<Object, Object> namecheck(@RequestBody String name){
 	    Map<Object, Object> map = new HashMap<Object, Object>();
-	    map.put("res",memberService.getMember(name)==null);
+	    map.put("res",memberService.getMemberName(name)==null);
 	    return map;
 	}
 	//내서재 화면

@@ -155,7 +155,7 @@
 	</update>
 	<!-- 찜 삭제 -->
 	<delete id="deleteChoice">
-	DELETE FROM choice where ch_title =#{Title} and ch_id = #{id}
+		DELETE FROM choice where ch_title =#{Title} and ch_id = #{id}
 	</delete>
 <!-- 추천 기능 -->
 	<select id="getUp" resultType="kr.green.ebook.vo.UpVo">
@@ -224,6 +224,10 @@
 		select * from pay where p_member =#{id}
 		order by p_num desc
 	</select>
+<!-- 출석 포인트 삭제 -->
+	<delete id="deletePay">
+		DELETE FROM pay where p_usedate = #{pay.p_usedate}
+	</delete>
 <!-- 소장웹툰 -->
 	<select id="getPayToon" resultType="kr.green.ebook.vo.ToonVo">
 		select * from toon
@@ -317,7 +321,7 @@
 <!-- 출석포인트 확인 -->
 	<select id="getPay" resultType="kr.green.ebook.vo.PayVo" >
 		select * from pay
-		where p_usedate = #{now} and p_member = #{id}
+		where p_usedate = #{now}
 	</select>
 <!-- 완결 웹툰 기간 -->
 	<select id="toonEnd" resultType="kr.green.ebook.vo.ToonVo">

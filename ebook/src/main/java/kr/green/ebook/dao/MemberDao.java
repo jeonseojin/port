@@ -11,6 +11,8 @@ import kr.green.ebook.vo.MemberVo;
 public interface MemberDao {
     public MemberVo getMember(@Param("id")String id);
 
+	public MemberVo getMemberName(@Param("name")String name);
+
 	public void insertMember(@Param("member")MemberVo member);
 
 	ArrayList<MemberVo> memberList(@Param("cri")Criteria cri);
@@ -22,6 +24,7 @@ public interface MemberDao {
 	public void updateMember(@Param("member")MemberVo member);
 
 	public void updatecoin(@Param("member")MemberVo member);
+
     
 
 }
