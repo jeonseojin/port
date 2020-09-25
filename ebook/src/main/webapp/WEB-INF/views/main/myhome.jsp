@@ -1,7 +1,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<c:if test="${member.name==null}">
+<c:if test="${member.name==null||member.auth!='USER'}">
 	<h1>접근할 수 없는 경로 입니다.</h1>
 </c:if>
 <c:if test="${member.name!=null&&member.auth=='USER'}">
@@ -26,6 +26,13 @@
 				</tr>
 			</tbody>
 		</table>
+		<div class="myinfo-btn">
+			<a href="<%=request.getContextPath()%>/toon/help"><button class="btn btn-link">문의하기</button></a>
+			<div class="float-right">
+				<a><button class="btn btn-info">수정</button></a>
+				<a><button class="btn btn-danger">탈퇴</button></a>
+			</div>
+		</div>
 		<h4 class="myhome-h">코인 충전 내역</h4>
 		<table class="table">
 			<thead>

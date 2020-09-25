@@ -57,6 +57,6 @@
 			<input type="hidden" id="num" value="${toon.t_num}">
 		</form>
 	</c:if>
-	<c:if test="${member.name==null&&member.auth=='USER'}">
+	<c:if test="${member.name==null||member.auth=='USER'}">
 		<h1>접근할 수 없는 경로 입니다.</h1>
 	</c:if>

@@ -19,7 +19,7 @@
 		width: 73%;
 		float: right;
 	}
-	.hbox-right-tap{
+	.hbox-right-tap,.hbox-help-tap{
 		padding: 0 20px;
 	}
 	.help-box-text{
@@ -108,10 +108,10 @@
 	}
 }
 @media(min-width:1281px){
-	.hbox-right-tap-a{
+	.hbox-right-tap-a,.hbox-help-tap-a{
 		font-size: 16px;
 	}
-	.hbox-right-tap-a:nth-of-type(n+2){
+	.hbox-right-tap-a:nth-of-type(n+2),.hbox-help-tap-a:nth-of-type(n+2){
 		margin-left: 24px;
 	}
 	
@@ -119,10 +119,10 @@
 	
 }
 @media(max-width:1281px) and (min-width:961px){
-	.hbox-right-tap-a{
+	.hbox-right-tap-a,.hbox-help-tap-a{
 		font-size: 14px;
 	}
-	.hbox-right-tap-a:nth-of-type(n+2){
+	.hbox-right-tap-a:nth-of-type(n+2),.hbox-help-tap-a:nth-of-type(n+2){
 		margin-left: 20px;
 	}
 }
@@ -155,10 +155,10 @@
 	.help-box-right{
 		border-top: 1px solid #dbdee3;
 	}
-	.hbox-right-tap-a{
+	.hbox-right-tap-a,.hbox-help-tap-a{
 		font-size: 14px;
 	}
-	.hbox-right-tap-a:nth-of-type(n+2){
+	.hbox-right-tap-a:nth-of-type(n+2),.hbox-help-tap-a:nth-of-type(n+2){
 		margin-left: 16px;
 	}
 	.help-box-left{
@@ -167,7 +167,7 @@
 	.help-box-text{
 		padding: 0;
 	}
-	.hbox-right-tap{
+	.hbox-right-tap,.hbox-help-tap{
 		padding: 0 16px;
 	}
 	.clmylist-header{

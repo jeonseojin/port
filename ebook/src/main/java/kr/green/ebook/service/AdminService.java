@@ -68,4 +68,6 @@ PageMaker getPageMakerByToon(Criteria cri);
 
 	PayVo getPay(String now, String id);
 
+	ClaimVo getClaimAnswer(int cl_num);
+
 }

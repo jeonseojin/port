@@ -27,6 +27,6 @@
 		</c:if>
 	</div>
 </c:if>
-<c:if test="${member.name==null&&member.auth=='USER'}">
+<c:if test="${member.name==null||member.auth!='ADMIN'}">
 	<h1>접근할 수 없는 경로 입니다.</h1>
 </c:if>

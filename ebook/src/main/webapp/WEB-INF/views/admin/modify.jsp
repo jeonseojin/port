@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<c:if test="${member.name==null&&member.auth=='USER'}">
+<c:if test="${member.name==null||member.auth=='USER'}">
 	<h1>접근할 수 없는 경로 입니다.</h1>
 </c:if>
 <c:if test="${member.name!=null&&member.auth=='ADMIN'}">

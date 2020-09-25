@@ -192,6 +192,11 @@ public class AdminServiceImp implements AdminService {
 			}
 			return pay;
 		}
+//문의답변
+		@Override
+		public ClaimVo getClaimAnswer(int num) {
+			return adminDao.getClaimAnswer(num);
+		}
 		
 
 

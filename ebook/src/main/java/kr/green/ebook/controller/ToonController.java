@@ -207,6 +207,16 @@ public class ToonController {
 		mv.setViewName("/toon/claim");
 		ArrayList<ClaimVo> cl =adminService.getClaim(cri);
 		mv.addObject("cl", cl);
+		ArrayList<ClaimVo> answer = new ArrayList<ClaimVo>();
+		for (int j = 0; j < cl.size(); j++) {
+			if(cl.get(j).getCl_answer()!=0) {
+				ClaimVo c = adminService.getClaimAnswer(cl.get(j).getCl_num());
+				if(c!=null) {
+					answer.add(c);
+				}
+			}
+		}
+		mv.addObject("answer", answer);
 		return mv;
 	}
 	//문의 등록

@@ -174,8 +174,11 @@ public class HomeController {
 	public ModelAndView myhome(ModelAndView mv,HttpServletRequest r) {
 		mv.setViewName("/main/myhome");
 		MemberVo member=memberService.getMember(r);
-		ArrayList<PayVo> pay = toonService.getPayList(member.getId());
-		mv.addObject("pay", pay);
+		if(member!=null) {
+			ArrayList<PayVo> pay = toonService.getPayList(member.getId());
+			mv.addObject("pay", pay);
+		}
+		
 		return mv;
 	}
 	

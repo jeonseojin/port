@@ -117,4 +117,6 @@ public interface AdminDao {
 
 	public ArrayList<ToonVo> TheendGenre(@Param("cri")Criteria cri);
 
+	public ClaimVo getClaimAnswer(@Param("num")int num);
+
 }

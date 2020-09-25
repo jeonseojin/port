@@ -692,14 +692,14 @@
 	border-bottom: 1px solid #dbdee3;
 	font-weight: bold;
 }
-.hbox-right-tap{
+.hbox-right-tap,.hbox-help-tap{
 	margin-bottom: 4px;
 	background-color: #f3f5f8;
 	vertical-align: top;
 	font-size: 0;
 	
 }
-.hbox-right-tap-a{
+.hbox-right-tap-a,.hbox-help-tap-a{
 	position: relative;
 	display: inline-block;
 	vertical-align: middle;
@@ -718,7 +718,7 @@
 	text-align: left;
 	box-sizing: border-box;
 }
-.help-box-list>li:nth-child(n+2) {
+.help-box-list>li:nth-child(n+2),.helpbox-list>li:nth-child(n+2) {
 	border-top: 1px solid #dee0e3;
 }
 .hbox-item-content{
@@ -839,6 +839,22 @@
 }
 .comicInfo-btn-noup>i{
 	color:red;
+}
+.hbox-mycontent{
+	width: 100%;
+	padding: 20px;
+	border-bottom: 1px solid #e5e5e5;
+}
+.answer-content{
+	padding: 20px;
+	background-color: #e5e5e5;
+}
+.noanswer-content{
+	padding: 20px;
+	text-align: center;
+}
+.answer-itemT{
+	font-weight: bold;
 }
 /*랭킹css*/
 .ranking-box{
@@ -1043,4 +1059,8 @@
 }
 .myhome-coin{
 	text-align: center;
+}
+.myinfo-btn{
+	width: 100%;
+	padding: 15px;
 }

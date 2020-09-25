@@ -250,6 +250,10 @@
 	<select id="getClaimT" resultType="kr.green.ebook.vo.ClaimVo"> 
 		select * from claim where cl_num = #{num}
 	</select>
+<!-- 답변 찾아오기 -->
+	<select id="getClaimAnswer" resultType="kr.green.ebook.vo.ClaimVo"> 
+		select * from claim where cl_answer = #{num} and cl_auth = 'ADMIN'
+	</select>
 <!-- 문의&공지 등록 -->
 	<insert id="insertclaim">
 		insert into 

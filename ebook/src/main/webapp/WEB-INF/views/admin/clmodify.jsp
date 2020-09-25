@@ -31,7 +31,7 @@
 	</form>
 	<a href="<%=request.getContextPath() %>/admin/claim?page=${cri.page}&type=${cri.type}&search=${cri.search}" class="float-left"><button type="button" class="btn btn-outline-secondary">목록</button></a>
 </c:if>
-<c:if test="${member.name==null&&member.auth=='USER'}">
+<c:if test="${member.name==null||member.auth=='USER'}">
 	<h1>접근할 수 없는 경로 입니다.</h1>
 </c:if>
 <script>
