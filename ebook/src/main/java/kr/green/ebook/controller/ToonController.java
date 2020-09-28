@@ -76,7 +76,7 @@ public class ToonController {
 			ArrayList<EpisodeVo> epcov = toonService.getEpcoverlist(Title);
 			mv.addObject("epcov", epcov);
 			//페이지네이션
-			PageMaker pm = adminService.getPageMakerByToon(cri);
+			PageMaker pm = adminService.getEpisodepage(cri);
 			mv.addObject("pm", pm);
 			//찜
 			MemberVo member = memberService.getMember(r);
@@ -152,7 +152,7 @@ public class ToonController {
 		}else {
 			adminService.insertPay(pay);
 			member.setCoin(member.getCoin()-pay.getP_coin());
-			memberService.updatecoin(member);
+			memberService.updateMember(member);
 		}
 		return map;
 	}
@@ -167,6 +167,53 @@ public class ToonController {
 		map.put("cmtlist",cmtlist);
 		map.put("member",epcmt.getCo_member());
 		return map;
+	}
+	//댓글 좋아요
+	@RequestMapping(value ="/cmt/up", produces="application/json; charset=utf8")
+	@ResponseBody
+	public Map<Object, Object> commentUp(@RequestBody String num, HttpServletRequest r){
+	    Map<Object, Object> map = new HashMap<Object, Object>();
+	    //현재 로그인 중인 유저 정보
+	   MemberVo member = memberService.getMember(r);
+	    if(member == null) {
+	    	map.put("isMember",false);
+	    }else {
+	    	map.put("isMember",true);
+	    	int up = toonService.updatecommentUp(num, member.getId());
+	    	map.put("up",up);
+	    }
+	    return map;
+	}
+	//댓글 싫어요
+	@RequestMapping(value ="/cmt/down", produces="application/json; charset=utf8")
+	@ResponseBody
+	public Map<Object, Object> commentDown(@RequestBody String num, HttpServletRequest r){
+	    Map<Object, Object> map = new HashMap<Object, Object>();
+		   //현재 로그인 중인 유저 정보
+	   MemberVo member = memberService.getMember(r);
+		    if(member == null) {
+	    	map.put("isMember",false);
+	    }else {
+	   	map.put("isMember",true);
+	    	int down = toonService.updatecommentDown(num, member.getId());
+	    	map.put("down",down);
+	    }
+	    return map;
+	}
+	//댓글 삭제
+	@RequestMapping(value ="/toon/cmtdel", produces="application/json; charset=utf8")
+	@ResponseBody
+	public Map<Object, Object> cmtdel(@RequestBody String num, HttpServletRequest r){
+	    Map<Object, Object> map = new HashMap<Object, Object>();
+	    MemberVo member = memberService.getMember(r);
+	    if(member == null) {
+	    	map.put("isMember",false);
+	    }else {
+	    	map.put("isMember",true);
+		    toonService.deletecmt(num);
+		    map.put("res", "댓글이 삭제되었습니다.");
+	    }
+	    return map;
 	}
 	//찜하기
 	@RequestMapping(value = "/toon/choice", method = RequestMethod.POST)
@@ -285,7 +332,7 @@ public class ToonController {
 				member.setCoin(member.getCoin()+pay.getP_point());
 				pay.setP_title("출석이벤트");
 				adminService.insertPay(pay);
-				memberService.updatecoin(member);
+				memberService.updateMember(member);
 			}else {
 				map.put("res", "이미 출석체크를 완료하였습니다.");
 			}

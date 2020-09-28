@@ -27,7 +27,9 @@ public interface MemberService {
 
 	ArrayList<ChoiceVo> getChoiceList(String id);
 
-	void updatecoin(MemberVo member);
+	void updateMember(MemberVo member);
+
+	void newPw(String id, String newPw);
 
 
 }

@@ -4,11 +4,11 @@ public class Criteria {
 	private int page;//한 페이지 당 컨텐츠 갯수
 	private int perPageNum;
 	private int type;
-	private int cweek;
 	private String search;
 	private int event;
-	private String notice;//고객센터의 조건
 	private String genre;//작품 장르
+	private String Title;//영어제목
+	private String edition;//화
 	
 	//Criteria 디폴트 생성자 : 현재 페이지를 1페이지로, 한 페이지에 10개의 컨텐츠
 	public Criteria() {
@@ -16,8 +16,6 @@ public class Criteria {
 		perPageNum = 10;
 		search="";
 		type=1;
-		cweek=1;
-		notice="service";
 		genre ="";
 	}
 	//getter and setter
@@ -25,6 +23,22 @@ public class Criteria {
 	public int getPage() {
 		return page;
 	}
+	public String getTitle() {
+		return Title;
+	}
+
+	public void setTitle(String Title) {
+		this.Title = Title;
+	}
+
+	public String getEdition() {
+		return edition;
+	}
+
+	public void setEdition(String edition) {
+		this.edition = edition;
+	}
+
 	public String getGenre() {
 		return genre;
 	}
@@ -62,14 +76,6 @@ public class Criteria {
 	public void setSearch(String sech) {
 		this.search = sech;
 	}
-	public int getCweek() {
-		return cweek;
-	}
-	public void setCweek(int cweek) {
-		this.cweek=(type < 0 || type > 8) ? 1 : cweek;
-	}
-	
-
 	public int getEvent() {
 		return event;
 	}
@@ -77,17 +83,13 @@ public class Criteria {
 		this.event = (event < 0 || event > 2) ? 0 : event;
 	}
 
-	public String getNotice() {
-		return notice;
-	}
-	public void setNotice(String notice) {
-		this.notice = notice;
-	}
+	
 
 	@Override
 	public String toString() {
-		return "Criteria [page=" + page + ", perPageNum=" + perPageNum + ", type=" + type + ", cweek=" + cweek
-				+ ", search=" + search + ", event=" + event + ", notice=" + notice + ", genre=" + genre + "]";
+		return "Criteria [page=" + page + ", perPageNum=" + perPageNum + ", type=" + type 
+				+ ", search=" + search + ", event=" + event + ", genre=" + genre + ", Title=" + Title + ", edition="
+				+ edition + "]";
 	}
 
 	/* 쿼리문에서 limit에 사용되는 인덱스를 계산하는 getter */

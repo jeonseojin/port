@@ -194,7 +194,7 @@ public class AdminServiceImp implements AdminService {
 					p.setP_usedate(null);
 					p.setP_one("N");
 					member.setCoin(member.getCoin()-1);
-					memberDao.updatecoin(member);
+					memberDao.updateMember(member);
 					adminDao.insertPay(p);
 					adminDao.deletePay(pay.get(i));
 					
@@ -210,10 +210,15 @@ public class AdminServiceImp implements AdminService {
 		@Override
 		public void deletePay(PayVo pay) {
 			adminDao.deletePay(pay);
-			
+		}		
+//연재 페이지네이션
+		@Override
+		public PageMaker getEpisodepage(Criteria cri) {
+			PageMaker pm = new PageMaker();
+			pm.setCri(cri);
+			pm.setTotalCount(adminDao.getEpisodepage(cri));
+			return pm;
 		}
-		
-
 
 
 

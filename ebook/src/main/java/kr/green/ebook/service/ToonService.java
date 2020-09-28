@@ -49,5 +49,11 @@ public interface ToonService {
 
 	ArrayList<ToonVo> TheendGenre(Criteria cri);
 
+	int updatecommentUp(String num, String id);
+
+	int updatecommentDown(String num, String id);
+
+	void deletecmt(String num);
+
 
 }

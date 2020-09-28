@@ -137,10 +137,37 @@ public class ToonServiceImp implements ToonService {
 	public ArrayList<ToonVo> TheendGenre(Criteria cri) {
 		return adminDao.TheendGenre(cri);
 	}
-
-
-
-	
-
+//댓글 좋아요기능
+	@Override
+	public int updatecommentUp(String num, String id) {
+		if(adminDao.cmtUp(num,id) != 0) return -1;
+		//추천을 등록
+		adminDao.insertepcmtUp(num,id);
+		//추천수만 업데이트
+		adminDao.updateEmt(num);
+		//정보를 가져옴
+		EpcommentVo epcmt = adminDao.getCmt(num);
+		return epcmt.getCo_up();
+	}
+//댓글 좋아요기능
+	@Override
+	public int updatecommentDown(String num, String id) {
+		if(adminDao.cmtDown(num,id) != 0) return -1;
+		//추천을 등록
+		adminDao.insertepcmtDown(num,id);
+		//추천수만 업데이트
+		adminDao.updateEmt(num);
+		//정보를 가져옴
+		EpcommentVo epcmt = adminDao.getCmt(num);
+		return epcmt.getCo_down();
+	}
+//댓글지우기
+	@Override
+	public void deletecmt(String num) {
+		EpcommentVo cmt = adminDao.getCmt(num);
+		if(cmt!=null) {
+			adminDao.deletecmt(num);
+		}
+	}
   
 }

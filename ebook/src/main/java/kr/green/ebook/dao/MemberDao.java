@@ -23,8 +23,6 @@ public interface MemberDao {
 
 	public void updateMember(@Param("member")MemberVo member);
 
-	public void updatecoin(@Param("member")MemberVo member);
-
     
 
 }

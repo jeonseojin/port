@@ -13,15 +13,12 @@
 	
 	<!-- Root Context: defines shared resources visible to all other web components -->
 		
-		<bean id="dataSource"
-		      class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-		    <property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
-		    <property name="url"
-		              value="jdbc:mysql://localhost:3306/ebook?useSSL=false&amp;serverTimezone=Asia/Seoul">
-		    </property>
-		    <property name="username" value="root"></property>
-		    <property name="password" value="cjgreen"></property>
-		</bean>  
+	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+	   <property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
+	    <property name="url" value="jdbc:mysql://localhost:3306/ebook?useSSL=false&amp;serverTimezone=Asia/Seoul"></property>
+	    <property name="username" value="root"></property>
+	    <property name="password" value="cjgreen"></property>
+	</bean>  
 
 		
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
@@ -29,5 +26,19 @@
 	    <property name="mapperLocations" value="classpath:mappers/**/*Mapper.xml"></property>
 	</bean>
 	<mybatis-spring:scan base-package="kr.green.ebook.dao"/>
-
+	<!-- 메일보내기 -->
+	<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+	    <property name="host" value="smtp.gmail.com" />
+	    <property name="port" value="587" />
+	    <property name="username" value="931030jsj@gmail.com" />
+	    <property name="password" value="jeonseojin1030" />
+	    <property name="javaMailProperties">
+	        <props>
+	            <prop key="mail.transport.protocol">smtp</prop>
+	            <prop key="mail.smtp.auth">true</prop>
+	            <prop key="mail.smtp.starttls.enable">true</prop>
+	            <prop key="mail.debug">true</prop>
+		        </props>
+	    </property>
+	</bean>
 </beans>

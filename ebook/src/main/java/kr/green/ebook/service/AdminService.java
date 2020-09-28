@@ -72,4 +72,6 @@ PageMaker getPageMakerByToon(Criteria cri);
 
 	void deletePay(PayVo pay);
 
+	PageMaker getEpisodepage(Criteria cri);
+
 }
