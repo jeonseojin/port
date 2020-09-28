@@ -88,7 +88,7 @@ public class ToonController {
 				plist = toonService.getPayList(member.getId());
 				Cookie[] cook = r.getCookies();
 				Cookie cookie = new Cookie(Title,Title);
-				cookie.setMaxAge(60*5);
+				cookie.setMaxAge(60*60*24*5);
 				cookie.setPath("/");
 				rs.addCookie(cookie);
 			}			
