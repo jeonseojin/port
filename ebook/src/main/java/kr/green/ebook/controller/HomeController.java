@@ -181,9 +181,11 @@ public class HomeController {
 	public Map<Object, Object> myhomepass(@RequestBody String pw,HttpServletRequest r) {
 		Map<Object, Object> map = new HashMap<Object, Object>();
 		MemberVo member = memberService.getMember(r);
-		member.setPw(pw);
-		memberService.updateMember(member);
-		map.put("res", "비밀번호가 변경되었습니다.");
+		if(pw!=null) {
+			member.setPw(pw);
+			memberService.updateMember(member);
+			map.put("res", "비밀번호가 변경되었습니다.");
+		}
 		return map;
 	}
 			
