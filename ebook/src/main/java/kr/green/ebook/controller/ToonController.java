@@ -321,6 +321,7 @@ public class ToonController {
 		Map<Object, Object> map = new HashMap<Object, Object>();
 		//현재 로그인 중인 유저 정보
 		MemberVo member =memberService.getMember(r);
+		System.out.println("member:"+member);
 		if(member==null) {
 			map.put("isMember",false);
 		}

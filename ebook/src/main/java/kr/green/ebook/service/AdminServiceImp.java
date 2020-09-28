@@ -192,7 +192,9 @@ public class AdminServiceImp implements AdminService {
 					p.setP_title("출석이벤트 유효기간 만료");
 					p.setP_member(pay.get(i).getP_member());
 					p.setP_usedate(null);
-					p.setP_one("N");
+					if(p.getP_one()==null) {
+						p.setP_one("N");
+					}
 					member.setCoin(member.getCoin()-1);
 					memberDao.updateMember(member);
 					adminDao.insertPay(p);

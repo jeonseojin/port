@@ -16,6 +16,7 @@
 		<input type="hidden" name="p_point" value="1">
 		<input type="hidden" name="lastdate" value="<%=sf.format(nowTime)%>">
 		<input type="hidden" name="p_title" value="충전이벤트">
+		<input type="hidden" name="p_one" value="N">
 	</form>
 <script type="text/javascript">
 $(".attend-btn").click(function(){
@@ -23,11 +24,12 @@ $(".attend-btn").click(function(){
 	var point = $('input[name=p_point]').val();
 	var title = $('input[name=p_title]').val();
 	var date = $('input[name=p_usedate]').val();
+	var one = $('input[name=p_one]').val();
 	$.ajax({
 		async: true,
 		type:'POST',
 		url:"<%=request.getContextPath()%>/event/attend",
-		data:JSON.stringify({"p_member":member,"p_point":point,"p_title":title,"p_usedate":date}),
+		data:JSON.stringify({"p_member":member,"p_point":point,"p_title":title,"p_usedate":date,"p_one":one}),
 		dataType:"json",
 		contentType:"application/json; charset=UTF-8",
 		success:function(data){
