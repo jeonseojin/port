@@ -40,7 +40,7 @@
 				<thead>
 					<tr>
 						<th class="myhome-coin-date">날짜</th>
-						<th class="myhome-info-text">내역</th>
+						<th class="myhome-coin-info">내역</th>
 					</tr>
 				</thead>
 		 		<tbody>
@@ -70,7 +70,7 @@
 				<thead>
 					<tr>
 						<th class="myhome-coin-date">날짜</th>
-						<th class="myhome-info-text">내역</th>
+						<th class="myhome-coin-info">내역</th>
 					</tr>
 				</thead>
 		 		<tbody>

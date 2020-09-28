@@ -1062,6 +1062,10 @@
 	border-bottom: 1px solid #e5e5e5;
 	height: 50px;
 }
+.myhome-coin-info{
+	width: 500px;
+	text-align: center;
+}
 .myhome-info{
 	width: 300px;
 	margin-left: 80px;
@@ -1127,4 +1131,5 @@
 .myhome-coin-box{
 	width: 100%;
 	height: 400px;
+	overflow-y: scroll;
 }
